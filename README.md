@@ -1,7 +1,7 @@
 # Simple MVC
 
 ## Déploiement
-Your project master branch will be deployed on https://tlse-php-2021-march-project-2-group-1.phprover.wilders.dev/item/index
+Your project master branch will be deployed on https://tlse-php-2021-march-project-2-group-1.phprover.wilders.dev
 ## Description
 
 This repository is a simple PHP MVC structure from scratch.
