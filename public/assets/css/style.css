@@ -1,0 +1,30 @@
+/*---------------- Carousel présentation ----------------*/
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: orange;
+}
+
+#carouselExampleIndicators{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 120px;
+    text-align: center;
+}
+
+.carousel-inner {
+    margin-bottom: 50px;
+}
+
+.carousel-item h1 {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.carousel-item img {
+    text-align: center;
+}
+
+/*---------------- FIN Carousel présentation ----------------*/
