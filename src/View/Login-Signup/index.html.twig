@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
-{% include 'Components/header.html.twig'%}
+{% block header %}
+    {% include 'Components/header.html.twig'%}
+{% endblock %}
 
 
 {% block content %}
@@ -10,5 +12,7 @@
     </form>
 {% endblock %}
 
-{% include 'Components/footer.html.twig'%}
+{% block footer %}
+    {% include 'Components/footer.html.twig'%}
+{% endblock %}
 

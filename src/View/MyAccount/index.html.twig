@@ -1,10 +1,13 @@
 {% extends 'layout.html.twig' %}
-{% include 'Components/header.html.twig'%}
+{% block header %}
+    {% include 'Components/header.html.twig'%}
+{% endblock %}
 
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
+    <h1>Mon compte</h1>
 {% endblock %}
 
-{% include 'Components/footer.html.twig'%}
-
+{% block footer %}
+    {% include 'Components/footer.html.twig'%}
+{% endblock %}
