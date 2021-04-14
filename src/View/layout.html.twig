@@ -11,11 +11,9 @@
     {% block stylesheet %}{% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
+{% block header %}{% endblock %}
 
-{% block header %}
-    {% block navbar %}{% endblock %}
-{% endblock %}
-
+{% block navbar %}{% endblock %}
 <body>
     {% block content %}{% endblock %}
     {% block javascript %}{% endblock %}
