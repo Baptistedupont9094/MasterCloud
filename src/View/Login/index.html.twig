@@ -4,11 +4,10 @@
 {% endblock %}
 
 {% block content %}
-    <form>Formulaire inscription
-    </form>
-
-    <form>Formulaire connexion
-    </form>
+    <h1>Login/Signup</h1>
+    {% include 'Components/sidebar.html.twig'%}
+    {% include 'Login/form-login.html.twig' %}
+    {% include 'Login/form-signup.html.twig' %}
 {% endblock %}
 
 {% block footer %}
