@@ -1,4 +1,4 @@
-/*Suppression de la data base si elle existe */
+/*Suppression de la data base si elle existe*/
 DROP DATABASE IF EXISTS mastercloud;
 
 /*Création de la base de donnée*/
