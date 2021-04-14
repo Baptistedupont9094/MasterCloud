@@ -1,8 +1,50 @@
 {% block navbar %}
-    <nav>
-        <a href= "/explorer/index">Explorer</a>
-        <a href="/home/index">Home</a> 
-        <a href="/login/index">Login/Signup</a>
-        <a href="/myAccount/index">Mon compte</a>
-    </nav>
+<<<<<<< HEAD
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+        <a href="../Explorer.index.html.twig">Explorer</a>
+        <a href="../Home.index.html.twig">Home</a> 
+        <a href="../Login-Signup.index.html.twig">Login/Signup</a>
+        <a href="../MyAccount.index.html.twig">Mon compte</a>
+    </button>
+  </nav>
+</div>
+=======
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Navbar</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href= "/explorer/index"> Explorer <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-Home">
+        <a class="nav-link" href="/home/index">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-login">
+        <a class="nav-link disabled" href="/login/index">Login<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-myAccount">
+        <a class="nav-link disabled" href="/myAccount/index">myAccount<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+
+>>>>>>> b9649cbb5c2f2cf42131afc89a8678a8fbf73cd9
 {% endblock %}
