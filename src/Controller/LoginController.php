@@ -9,7 +9,7 @@
 
 namespace App\Controller;
 
-class LoginSignupController extends AbstractController
+class LoginController extends AbstractController
 {
     /**
      * Affiche page Login/Signup
@@ -21,6 +21,6 @@ class LoginSignupController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Login-Signup/index.html.twig');
+        return $this->twig->render('Login/index.html.twig');
     }
 }
