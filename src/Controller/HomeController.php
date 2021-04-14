@@ -12,7 +12,7 @@ namespace App\Controller;
 class HomeController extends AbstractController
 {
     /**
-     * Display home page
+     * Affiche page Home
      *
      * @return string
      * @throws \Twig\Error\LoaderError

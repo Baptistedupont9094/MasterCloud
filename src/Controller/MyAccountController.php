@@ -12,7 +12,7 @@ namespace App\Controller;
 class MyAccountController extends AbstractController
 {
     /**
-     * Display home page
+     * Affiche page Mon compte
      *
      * @return string
      * @throws \Twig\Error\LoaderError

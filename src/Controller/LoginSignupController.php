@@ -12,7 +12,7 @@ namespace App\Controller;
 class LoginSignupController extends AbstractController
 {
     /**
-     * Display home page
+     * Affiche page Login/Signup
      *
      * @return string
      * @throws \Twig\Error\LoaderError
