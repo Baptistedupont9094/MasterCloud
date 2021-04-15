@@ -1,7 +1,66 @@
 {% block content %}
 
-    <style>
- /* sign in FORM */
+{# Formulaire de base pour s'inscrire et se connecter #}
+
+    {# Formulaire "d'accueil" pour s'inscrire ou se connecter #}
+
+    <div id="logreg-forms">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Se connecter</h1>
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> via Google+</span> </button>
+            </div>
+            <p style="text-align:center"> OU </p>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" required="" autofocus="">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required="">
+            
+            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Connexion</button>
+            <a href="#" id="forgot_pswd">Mot de passe oublié ?</a>
+
+
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Créer un nouveau compte </button>
+        </form>
+
+    {# Modal formulaire réinitialiser le mot de passe #}
+
+        <form action="/reset/password/" class="form-reset">
+            <input type="email" id="resetEmail" class="form-control" placeholder="Adresse email" required="" autofocus="">
+            <button class="btn btn-primary btn-block" type="submit">Réinitialiser le mot de passe</button>
+            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Retour</a>
+        </form>
+
+     {# Modal formulaire d'inscription #}   
+
+        <form action="/signup/" class="form-signup">
+                <div class="social-login">
+                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
+                </div>
+                <div class="social-login">
+                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> via Google+</span> </button>
+                </div>
+                
+                <p style="text-align:center">OU</p>
+
+                <input type="text" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="">
+                <input type="email" id="user-email" class="form-control" placeholder="Adresse email" required autofocus="">
+                <input type="password" id="user-pass" class="form-control" placeholder="Mot de passe" required autofocus="">
+                <input type="password" id="user-repeatpass" class="form-control" placeholder="Répétez le mot de passe" required autofocus="">
+
+                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> S'inscrire</button>
+                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
+        </form>         
+    </div>
+
+
+{# ----------------------------------------------------------FIN FORMULAIRE------------------------------------------------------------------------------- #}
+
+
+{# --------------------------------------------------- Style CSS pour le formulaire ---------------------------------------------------------------------- #}
+
+<style>
+ 
+ /* Sign in FORM */
 #logreg-forms{
     width:412px;
     margin:10vh auto;
@@ -74,7 +133,7 @@
     margin: 0 auto;
 }
 
-/* Mobile */
+/* Medias queries pour adapter/faire disparaitre certains boutons en mode mobile */
 
 @media screen and (max-width:500px){
     #logreg-forms{
@@ -110,80 +169,13 @@
     
 }   
 
+</style>
+
+{# ----------------------------------------------------- FIN STYLE CSS ----------------------------------------------------------------------------- #}
+
+
+{# --------------------------------------------------- Script JS pour modals ------------------------------------------------------------------------ #}
     
-    
-    </style>
-
-
-    <div id="logreg-forms">
-        <form class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Se connecter</h1>
-            <div class="social-login">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
-                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> via Google+</span> </button>
-            </div>
-            <p style="text-align:center"> OU </p>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" required="" autofocus="">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required="">
-            
-            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Connexion</button>
-            <a href="#" id="forgot_pswd">Mot de passe oublié ?</a>
-            <hr>
-            <!-- <p>Don't have an account!</p>  -->
-            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Créer un nouveau compte </button>
-            </form>
-
-            <form action="/reset/password/" class="form-reset">
-                <input type="email" id="resetEmail" class="form-control" placeholder="Adresse email" required="" autofocus="">
-                <button class="btn btn-primary btn-block" type="submit">Réinitialiser le mot de passe</button>
-                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Retour</a>
-            </form>
-            
-            <form action="/signup/" class="form-signup">
-                <div class="social-login">
-                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
-                </div>
-                <div class="social-login">
-                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> via Google+</span> </button>
-                </div>
-                
-                <p style="text-align:center">OU</p>
-
-                <input type="text" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="">
-                <input type="email" id="user-email" class="form-control" placeholder="Adresse email" required autofocus="">
-                <input type="password" id="user-pass" class="form-control" placeholder="Mot de passe" required autofocus="">
-                <input type="password" id="user-repeatpass" class="form-control" placeholder="Répétez le mot de passe" required autofocus="">
-
-                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> S'inscrire</button>
-                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
-            </form>
-            <br>
-            
-    </div>
-    <p style="text-align:center">
-        <a href="http://bit.ly/2RjWFMfunction toggleResetPswd(e){
-    e.preventDefault();
-    $('#logreg-forms .form-signin').toggle() // display:block or none
-    $('#logreg-forms .form-reset').toggle() // display:block or none
-    }
-
-    function toggleSignUp(e){
-        e.preventDefault();
-        $('#logreg-forms .form-signin').toggle(); // display:block or none
-        $('#logreg-forms .form-signup').toggle(); // display:block or none
-    }
-
-    $(()=>{
-        // Login Register Form
-        $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-        $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-        $('#logreg-forms #btn-signup').click(toggleSignUp);
-        $('#logreg-forms #cancel_signup').click(toggleSignUp);
-    })g" target="_blank" style="color:black">Par l'équipe du projet 2</a>
-        </p>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     <script>
         function toggleResetPswd(e){
             e.preventDefault();
@@ -204,7 +196,7 @@
             $('#logreg-forms #btn-signup').click(toggleSignUp);
             $('#logreg-forms #cancel_signup').click(toggleSignUp);
         })
-    
-    
     </script>
-    {% endblock %}
+
+
+{% endblock %}
