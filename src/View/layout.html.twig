@@ -4,18 +4,34 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{% block title %}{% endblock %}</title>
-
+    {# Classes Bootstrap #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
     <link rel="stylesheet" href="/assets/css/style.css">
+    {# JQuery #}
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+
+
     {% block stylesheet %}{% endblock %}
-    <link rel="icon" href="/assets/images/favicon.png">
 </head>
 
-<body>
-    {% block content %}{% endblock %}
+<body class="h-100">
+    <div class="container-fluid p-0 overflow-hidden h-100 d-flex flex-column">
+            {% block navbar %}{% endblock %}
+        <div class="row flex-grow-1 m-0">
+            <div class="col-3 col-lg-2 bg-secondary">
+                {% block sidebar %}{% include 'Components/sidebar.html.twig' %}{% endblock %} 
+            </div>
+            <div class="col-9 col-lg-10 p-0 overflow-hidden h-100 d-flex flex-column">
+                <div class="flex-grow-1 overflow-auto" style="height: calc(100vh - 112px);">
+                    {% block content %}{% endblock %}
+                </div>
+                {% block footer %}{% endblock %}
+            </div>
+        </div>
+    </div>
     {% block javascript %}{% endblock %}
+ {# Script Bootstrap #}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"> 
+</script>
 </body>
 </html>
-
-

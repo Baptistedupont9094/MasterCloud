@@ -9,10 +9,10 @@
 
 namespace App\Controller;
 
-class HomeController extends AbstractController
+class LoginController extends AbstractController
 {
     /**
-     * Affiche page Home
+     * Affiche page Login/Signup
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -21,6 +21,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        return $this->twig->render('Login/index.html.twig');
     }
 }
