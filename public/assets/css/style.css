@@ -106,19 +106,17 @@ body{
     width: 35vw;
     margin : 5% 0% 0 0%;
   }
+
+  .info-card
+  {
+    width: 50vw;
+  }
 }
 
 @media (min-width: 580px) and (max-width: 720px) {
   .modify-account
   {
     margin : 30% 0 0 0;
-  }
-}
-
-@media (min-width: 800px) {
-  .top-body
-  {
-    height: 50%;
   }
 }
 
