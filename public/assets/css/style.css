@@ -1,13 +1,50 @@
 /*---------------- Carousel Top ----------------*/
-.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
-.MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
-    .MultiCarousel .MultiCarousel-inner .item { float: left;}
-    .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
-.MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
-.MultiCarousel .leftLst { left:0; }
-.MultiCarousel .rightLst { right:0; }
+    .MultiCarousel 
+    { 
+      float: left;
+      overflow: hidden;
+      padding: 15px;
+      width: 100%;
+      position:relative;
+    }
+    .MultiCarousel .MultiCarousel-inner 
+    {
+      transition: 1s ease all;
+      float: left;
+    }
+    .MultiCarousel .MultiCarousel-inner .item 
+    {
+      float: left;
+    }
+    .MultiCarousel .MultiCarousel-inner .item > div 
+    { 
+      text-align: center; 
+      padding:10px; 
+      margin:10px; 
+      background:#f1f1f1; 
+      color:#666;
+    }
+    .MultiCarousel .leftLst, .MultiCarousel .rightLst 
+    { 
+      position:absolute; 
+      border-radius:50%;
+      top:calc(50% - 20px); 
+    }
+    .MultiCarousel .leftLst 
+    { 
+      left:0; 
+    }
+    .MultiCarousel .rightLst 
+    { 
+      right:0;
+    }
 
-    .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+      .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over 
+      { 
+        pointer-events: none; 
+        background:#ccc; 
+      }
+
 
 /*---------------- Fin Carousel Top ----------------*/
 
@@ -41,3 +78,49 @@ body{
 }
 
 /*---------------- FIN Carousel présentation ----------------*/
+
+/*---------------- DEBUT mon Compte ----------------*/
+
+/* Rend la photo de profil ronde */
+
+.profile-pic
+{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#top-body
+{
+  height: 60vh;
+}
+/* Bouton 'modifier' responsive pour sa marge du haut */
+
+@media (max-width: 580px) {
+  .modify-account
+  {
+    width: 35vw;
+    margin : 5% 0% 0 0%;
+  }
+}
+
+@media (min-width: 580px) and (max-width: 720px) {
+  .modify-account
+  {
+    margin : 30% 0 0 0;
+  }
+}
+
+@media (min-width: 800px) {
+  .top-body
+  {
+    height: 50%;
+  }
+}
+
+
+/*---------------- FIN mon Compte ----------------*/

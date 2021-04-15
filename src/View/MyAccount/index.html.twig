@@ -8,42 +8,9 @@
 {% block content %}
     <h1>Mon compte</h1>
 
-{# A ajouter dans style.css #}
-
-<style>
-
-{# Rend la photo de profil ronde #}
-
-.profile-pic
-{
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-
-{# Bouton 'modifier' responsive pour sa marge du haut #}
-
-@media (max-width: 580px) {
-  .modify-account
-  {
-    margin : 5% 0 0 0;
-  }
-}
-
-@media (min-width: 580px) and (max-width: 720px) {
-  .modify-account
-  {
-    margin : 30% 0 0 0;
-  }
-}
-</style>
 {# ------------------------------------------------------------------------------------------------------------------------ #}
     
-<div class="row no-gutters" id="top-body">
+<div class="row no-gutters h-60" id="top-body">
     <div class="row col-12 col-sm-7" id="A">
 
         <div class="col-12 col-sm-4 offset-1" id="A1">
@@ -64,9 +31,9 @@
     </div>
 
 
-    <div class="row col-12 col-sm-5" id="B">
+    <div class="row col-10 offset-2 offset-sm-0 col-sm-5" id="B">
         <div class"col-12 col-sm-7 offset-1" id="B1">
-            <div class="card" >
+            <div class="card info-card" >
             <div class="card-header">
                 Information utilisateur
             </div>
@@ -88,7 +55,7 @@
 
 <hr>
 
-<div class="row" id="bottom-body">
+<div class="row h-25" id="bottom-body">
     <div class="col-11" id="A" style="margin-left : 2%">
         <button type="button" class="btn btn-primary">Créer playlist</button>    
     </div>
@@ -128,6 +95,7 @@
             </div>
 
       </div>
+    </div>
         {% else %}
 
         {# En commentant le tableau (en le faisant disparaître)
@@ -139,7 +107,6 @@
 {# ------------------------------------------------------------------------------------------------------------------------ #}
 
 
-    </div>
 </div>
 
 
