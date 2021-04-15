@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
         {# Classes Bootstrap #}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     {# JQuery #}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
@@ -14,15 +13,20 @@
 
     {% block stylesheet %}{% endblock %}
 </head>
-<body class="container-fluid no-gutters">
-    <header class="col-12">
-        {% block navbar %}{% endblock %}
-    </header>
-    <div class="container-fluid">
-        <div class='row'>
-        {% block sidebar %}{% endblock %} 
-        {% block content %}{% endblock %}
+
+<body class="h-100">
+    <div class="container-fluid p-0 overflow-hidden h-100 d-flex flex-column">
+            {% block navbar %}{% endblock %}
+        <div class="row flex-grow-1">
+            <div class="col-3 col-lg-2 bg-secondary">
+                {% block sidebar %}{% endblock %} 
+            </div>
+            <div class="col-9 col-lg-10 g-0 d-flex flex-column no-gutters">
+                <div class="flex-grow-1 overflow-auto" style="height: calc(100vh - 112px);">
+                    {% block content %}{% endblock %}
+                </div>
         {% block footer %}{% endblock %}
+            </div>
         </div>
     </div>
     {% block javascript %}{% endblock %}
@@ -31,5 +35,3 @@
 </script>
 </body>
 </html>
-
-

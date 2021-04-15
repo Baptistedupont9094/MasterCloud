@@ -1,11 +1,10 @@
 {% extends 'layout.html.twig' %}
-{% block header %}
-    {% include 'Components/header.html.twig'%}
+{% block navbar %}
+    {% include 'Components/navbar.html.twig'%}
 {% endblock %}
 
 {% block content %}
     <h1>Login/Signup</h1>
-    {% include 'Components/sidebar.html.twig'%}
     {% include 'Login/form-login.html.twig' %}
 {% endblock %}
 
