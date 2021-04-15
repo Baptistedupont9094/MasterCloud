@@ -1,11 +1,13 @@
 {% extends 'layout.html.twig' %}
-{% block header %}
-    {# {% include 'Components/sidebar.html.twig'%} #}
-    {% include 'Components/header.html.twig' %}
+{% block navbar %}
+    <link rel="stylesheet" href="/assets/css/carousel.css">
+    {% include 'Components/navbar.html.twig' %}
 {% endblock %}
 
 {% block content %}
-    <h1>Mon compte</h1>
+<link
+    {% include 'Components/sidebar.html.twig'%}
+    {# <h1>Mon compte</h1> #}
 
 {# A ajouter dans style.css #}
 
@@ -146,6 +148,3 @@
 
 {% endblock %}
 
-{% block footer %}
-    {% include 'Components/footer.html.twig'%}
-{% endblock %}

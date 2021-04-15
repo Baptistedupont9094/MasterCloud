@@ -1,14 +1,14 @@
 {% extends 'layout.html.twig' %}
-{% block header %}
-    {% include 'Components/header.html.twig'%}
+{% block navbar %}
+    {% include 'Components/navbar.html.twig'%}
 {% endblock %}
 
 {% block content %}
     {% include 'Home/carousel_top.html.twig'%}
-{% endblock %}
 
-{% block carousel_presentation %}
-    {% include 'Home/carousel_presentation.html.twig'%}
+    <div class='row'>
+        {% include 'Home/carousel_presentation.html.twig'%}
+    </div>
 {% endblock %}
 
 {% block footer %}
