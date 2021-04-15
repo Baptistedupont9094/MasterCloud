@@ -1,31 +1,49 @@
 {% block navbar %}
+{# 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-      <li class="nav-Home">
-        <a class="nav-link" href="/home/index">Home<span class="sr-only"></a>
-      <li class="nav-Explorer">
-        <a class="nav-link" href= "/explorer/index">Explorer <span class="sr-only"></a>
-      </li>
-      <li class="nav-login">
-        <a class="nav-link" href="/login/index">Login<span class="sr-only"></a>
-        </li>
-      <li class="nav-myAccount">
-        <a class="nav-link" href="/myAccount/index">myAccount<span class="sr-only"></a>
-        </li>
-                </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-              </div>
-            </div>
-        </nav>
+      Permet de centrer la barre de recherche dans la navbar
+          <style>
+              .navbar-center 
+              {
+                  position: absolute;
+                  left: 50%;
+                  transform: translatex(-50%);
+              }
+          </style>
+ #}
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-Home col-2">
+              <a class="nav-link" href="/home/index">Home<span class="sr-only"></a>
+            </li>
+            <li class="nav-Explorer col-2">
+              <a class="nav-link" href= "/explorer/index">Explorer <span class="sr-only"></a>
+            </li>
+            <li class="nav-login col-2">
+              <a class="nav-link" href="/login/index">Login<span class="sr-only"></a>
+            </li>
+            <li class="nav-myAccount col-2">
+              <a class="nav-link" href="/myAccount/index">myAccount<span class="sr-only"></a>
+            </li>
+          </ul>
+
+          {# Le deuxième collapse-navbar permet de placer la barre de recherche toute à droite #}
+          
+          <div class="collapse navbar-collapse"></div>
+            <form class="form-inline my-2 my-lg-0 navbar-center">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </nav>
 {% endblock %}
