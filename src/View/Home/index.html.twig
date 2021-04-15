@@ -1,16 +1,36 @@
-{% extends 'layout.html.twig' %}
-{% block header %}
-    {% include 'Components/header.html.twig'%}
-{% endblock %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        {# Classes Bootstrap #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    {# JQuery #}
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
 
-{% block content %}
-    {% include 'Home/carousel_top.html.twig'%}
-{% endblock %}
 
-{% block carousel_presentation %}
-    {% include 'Home/carousel_presentation.html.twig'%}
-{% endblock %}
+</head>
 
-{% block footer %}
-    {% include 'Components/footer.html.twig'%}
-{% endblock %}
+<body class="h-100">
+    <div class="container-fluid p-0 overflow-hidden h-100 d-flex flex-column">
+        {% include 'Components/navbar.html.twig'%}
+        <div class="row flex-grow-1">
+            <div class="col-12 g-0 d-flex flex-column no-gutters">
+                <div class="flex-grow-1 overflow-auto" style="height: calc(100vh - 112px);">
+                    {% include 'Home/carousel_top.html.twig'%}
+
+                    <div class='row'>
+                        {% include 'Home/carousel_presentation.html.twig'%}
+                    </div>
+                </div>
+                {% include 'Components/footer.html.twig'%}
+            </div>
+        </div>
+    </div>
+ {# Script Bootstrap #}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"> 
+</script>
+</body>
+</html>
