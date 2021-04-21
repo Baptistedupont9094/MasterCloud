@@ -143,9 +143,9 @@ h3{
   text-align: center;
 }
 
-div a{
-  padding: 3%;
-  justify-content: space-between;
+.logo{
+  padding: 5%;
+  align-items: space-between;
 }
 
 
