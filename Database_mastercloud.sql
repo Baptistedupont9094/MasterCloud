@@ -29,6 +29,7 @@ CREATE TABLE `playlist`(
 
 CREATE TABLE `utilisateur`(
 	`id` INT NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(255) NOT NULL,
 	`nom` VARCHAR(80) NOT NULL,
 	`mot_de_passe` VARCHAR(25) NOT NULL,
 	`playlist_id` INT,

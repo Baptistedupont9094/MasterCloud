@@ -26,7 +26,7 @@ use PDOException;
  */
 class Connection
 {
-    private PDO $pdoConnection;
+    private ?PDO $pdoConnection = NULL;
 
     private string $user;
 
