@@ -14,6 +14,14 @@ h1 {
   color:#EAF0FF;
 }
 
+.sidebar {
+  background-color: #000;
+}
+
+body {
+  background-color:#181818;
+}
+
 /*---------------- FIN Couleur site----------------*/
 /*---------------- Carousel Top ----------------*/
     .MultiCarousel 
@@ -395,13 +403,17 @@ ul {
   padding: 0;
   margin: 0;
   text-align: center;
+  letter-spacing: .2rem;
 }
 
 a:visited {color: #FFFF;}
 
-a:hover {color: #311d86;}
+a:hover {
+  color: #23465A;
+  text-decoration: underline overline #23465A
 
-a:focus {color: #cfcc1f;}
+}
+
 
 h3{
   text-align: center;
