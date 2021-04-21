@@ -123,3 +123,26 @@ body{
 
 /*---------------- FIN mon Compte ----------------*/
 
+
+/*---------------- SideBar ----------------*/
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+a:visited {color: #FFFF;}
+
+a:hover {color: #311d86;}
+
+a:focus {color: #cfcc1f;}
+
+h3{
+  text-align: center;
+}
+
+
+
+/*---------------- FIN SideBar----------------*/
