@@ -408,7 +408,7 @@ ul {
 
 a:visited {color: #FFFF;}
 
-a:hover {
+.sidebar a:hover {
   color: #23465A;
   text-decoration: underline overline #23465A
 
@@ -426,6 +426,7 @@ h3{
 .liste {
   white-space: pre-line;
 }
+
 
 
 
