@@ -1,4 +1,4 @@
-/*Suppression de la data base si elle existe*/
+/*Suppression de la data base si elle existe */
 DROP DATABASE IF EXISTS mastercloud;
 
 /*Création de la base de donnée*/
@@ -10,21 +10,21 @@ USE mastercloud;
 /*Création des tables*/
 CREATE TABLE `musique`(
 	`id`INT NOT NULL AUTO_INCREMENT,
-	`nom` VARCHAR(80) NOT NULL,
-	`artiste` VARCHAR(25) NOT NULL,
-	`album` VARCHAR(80) NOT NULL,
-	`genre` VARCHAR(25) NOT NULL,
-	`nombres_likes` INT,
+	`nom` VARCHAR(255) NOT NULL,
+	`artiste` VARCHAR(255) NOT NULL,
+	`album` VARCHAR(255) NOT NULL,
+	`genre` VARCHAR(255) NOT NULL,
+	`nombre_likes` INT,
 	`image` VARCHAR(255) NOT NULL,
 	`source` VARCHAR(255) NOT NULL,
 	PRIMARY KEY(`id`));
 
 CREATE TABLE `playlist`(
 	`id`INT NOT NULL AUTO_INCREMENT,
-	`nom_playlist` VARCHAR(80) NOT NULL,
-	`nombres_likes` INT,
-	`commentaires` VARCHAR(255),
+	`nom` VARCHAR(255) NOT NULL,
 	`image` VARCHAR(255) NOT NULL,
+	`est_privee` BOOLEAN,
+	`nombre_likes` INT,
 	PRIMARY KEY(`id`));
 
 CREATE TABLE `utilisateur`(
@@ -34,7 +34,8 @@ CREATE TABLE `utilisateur`(
 	`mot_de_passe` VARCHAR(25) NOT NULL,
 	`playlist_id` INT,
 	`musique_id` INT,
-	`is_logged` BOOLEAN,
+	`est_connecte` BOOLEAN,
+	`derniere_connection` DATETIME NOT NULL,
 	PRIMARY KEY(`id`),
 	CONSTRAINT fk_utilisateur_playlist
 			FOREIGN KEY (playlist_id)
@@ -61,10 +62,8 @@ CREATE TABLE `commentaire`(
 );
 
 CREATE TABLE `playlist_musique`(
-	`id`INT NOT NULL AUTO_INCREMENT,
 	`playlist_id` INT NOT NULL,
 	`musique_id` INT NOT NULL,
-	PRIMARY KEY(`id`),
 	CONSTRAINT fk_playlist_musique_palylist
 			FOREIGN KEY (playlist_id)
 			REFERENCES playlist(id),
@@ -72,3 +71,10 @@ CREATE TABLE `playlist_musique`(
 			FOREIGN KEY (musique_id)
 			REFERENCES musique(id)
 );
+
+
+
+
+
+
+
