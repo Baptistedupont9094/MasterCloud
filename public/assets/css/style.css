@@ -122,6 +122,76 @@ body{
 
 
 /*---------------- FIN mon Compte ----------------*/
+/* ---------------------- MEDIA PLAYER -------------------------*/
+
+.media-controls {
+    align-items: center;
+    background: #23465A;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.button-icons {
+    background-color: #59788a;
+    border-radius: 100%;
+    margin-bottom: 4px;
+    margin-top: auto;
+    padding: 16px;
+}
+
+.media-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.media-button {
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (min-width: 421px)
+{
+  
+  .media-button {
+    padding: 12px;
+}
+}
+
+.media-progress {
+    align-self: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.milli {
+    font-size: 13px;
+    line-height: 1.23076923;
+    font-weight: 400;
+}
+
+input[type=range].custom-slider {
+  opacity: .8;
+  margin-top: 24px;
+  width: 100%;
+  margin-bottom: 20px;
+
+}
+
+/* ---------------------- MEDIA PLAYER -------------------------*/
+
 
 
 /*---------------- SideBar ----------------*/
