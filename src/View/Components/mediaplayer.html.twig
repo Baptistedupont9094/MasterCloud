@@ -1,0 +1,46 @@
+{% block footer %}
+{% set videoid = 'ETEg-SB01QY' %}
+<div data-id="{{ videoid }}" id="videoid"></div>
+
+    <footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+			<div class="d-none" id="video-placeholder"></div>
+			<i id='play'class='btn btn-primary'>PLAY</i>
+			<i id='pause'class='btn btn-primary'>PAUSE</i>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+  </div>
+  <!-- Copyright -->
+</footer>
+{% endblock %}
+{% block javascript %}
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+var id = document.querySelector('#videoid').dataset.id;
+var player,
+    time_update_interval = 0;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video-placeholder', {
+        width: 600,
+        height: 400,
+        videoId: id,
+        playerVars: {
+        },
+        events: {
+            onReady: initialize
+        }
+    });
+}
+</script>
+<script src="/assets/js/script.js"></script>
+{% endblock %}
+
