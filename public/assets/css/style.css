@@ -269,6 +269,85 @@ input[type=range].mediaplayer-bar
   margin-bottom: 20px;
 }
 
+@media (max-width: 800px)
+{
+  
+  #volume-input
+  {
+    width: 6rem;
+  }
+}
+
+@media (max-width: 700px)
+{
+  
+  .play-pause
+  {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 600px)
+{
+  
+  #volume-input
+  {
+    width: 4rem;
+  }
+
+    .play-pause
+  {
+    font-size: 5rem;
+  }
+}
+
+.back-button .button-icons, .skip-button .button-icons {
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 2em;
+}
+/* input[type=range] {
+  outline: none;
+  padding: 0;
+  border-radius: 10px;
+  cursor: pointer; 
+  background-color: #dedede;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff5e00), color-stop(100%, #ff5e00));
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  box-shadow: none;
+  border: none;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 18px;
+  width: 28px;
+  border: 0;
+  background: #fff;
+  border: 1px solid #777;
+  border-radius: 8px;
+  box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+  -webkit-appearance: none;
+}*/
+
+input[type=range]{
+  height: 2px;
+  margin: auto;
+}
+
+input[type=range].mediaplayer-bar
+{
+  opacity: .8;
+  margin-top: 24px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 /* ---------------------- MEDIA PLAYER -------------------------*/
 
 
