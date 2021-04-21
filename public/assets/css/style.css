@@ -14,6 +14,14 @@ h1 {
   color:#EAF0FF;
 }
 
+.sidebar {
+  background-color: #000;
+}
+
+body {
+  background-color:#181818;
+}
+
 /*---------------- FIN Couleur site----------------*/
 /*---------------- Carousel Top ----------------*/
     .MultiCarousel 
@@ -151,3 +159,35 @@ body{
 
 /*---------------- FIN mon Compte ----------------*/
 
+
+/*---------------- SideBar ----------------*/
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  letter-spacing: .2rem;
+}
+
+a:visited {color: #FFFF;}
+
+a:hover {
+  color: #23465A;
+  text-decoration: underline overline #23465A
+
+}
+
+
+h3{
+  text-align: center;
+}
+
+.logo{
+  padding: 5%;
+  align-items: space-between;
+}
+
+
+
+/*---------------- FIN SideBar----------------*/
