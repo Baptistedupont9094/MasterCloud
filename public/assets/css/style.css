@@ -162,6 +162,19 @@ body{
 
 /*---------------- SideBar ----------------*/
 
+.sidebar{
+  height:auto;
+  padding:0;
+  display:flex;
+}
+
+.categorie{
+  margin-left: auto;
+  margin-right: auto;
+  width: 16%;
+  position:fixed;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -184,7 +197,7 @@ h3{
 
 .logo{
   padding: 5%;
-  align-items: space-between;
+  justify-content: center;
 }
 
 
