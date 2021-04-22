@@ -1,7 +1,24 @@
 {% block sidebar %} 
-
-{# Visuel pour remplir la sidebar #}
-    {% for i in 1..5 %}
-      <p>Bouton {{i}}</p>
-    {% endfor %}
+  <div class="liste shadow-lg bg-secondary shadow-lg p-3 mb-5 rounded">
+    <ul>
+      <li><a href="">Playlist</a></li>
+      <li><a href="">Communauté</a></li>
+      <li><a href="">Musique</a></li>
+    </ul> 
+      <ul>
+        <li><a href="">#Top 1</a></li>
+        <li><a href="">#Top 10</a></li>
+        <li><a href="">#Top 100</a></li>
+      </ul>
+    <ul>
+      <li><a href="">New</a></li>
+      <li><a href="">Genre</a></li>
+      <li><a href="">Mes plalist</a></li>
+      <li><a href="">Meilleur playlist du mois</a></li>
+    </ul>
+    <div class="col-lg-10 col-sm-6 logo">
+      <a href=""><img src="/assets/images/github.png"></a>
+      <a href=""><img src="/assets/images/wild.png"></a>
+    </div>
+  </div>
  {% endblock %}
