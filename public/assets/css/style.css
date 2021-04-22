@@ -395,16 +395,16 @@ input[type=range].mediaplayer-bar
 /*---------------- SideBar ----------------*/
 
 .sidebar{
-  height:auto;
   padding:0;
+  height: auto;
+  position:fixed;
 }
 
 .categorie{
-  white-space: pre-line;
+  white-space: pre;
   margin-left: auto;
   margin-right: auto;
   width: 16%;
-  position:fixed;
 }
 
 ul {
