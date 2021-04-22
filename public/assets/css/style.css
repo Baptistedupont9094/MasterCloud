@@ -437,4 +437,49 @@ h3{
 
 
 
+
+/*---------------- SideBar ----------------*/
+
+.sidebar{
+  height:auto;
+  padding:0;
+  display:flex;
+}
+
+.categorie{
+  margin-left: auto;
+  margin-right: auto;
+  width: 16%;
+  position:fixed;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  letter-spacing: .2rem;
+}
+
+a:visited {color: #FFFF;}
+
+.sidebar a:hover {
+  color: #23465A;
+  text-decoration: underline overline #23465A
+
+}
+
+h3{
+  text-align: center;
+}
+
+.logo{
+  padding: 5%;
+  justify-content: center;
+}
+
+
+
+
 /*---------------- FIN SideBar----------------*/
