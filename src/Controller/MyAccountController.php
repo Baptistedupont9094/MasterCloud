@@ -21,6 +21,10 @@ class MyAccountController extends AbstractController
      */
     public function index()
     {
+        session_start();
+        if (!isset($_SESSION['user'])) {
+            header('location: /');
+        }
         return $this->twig->render('MyAccount/index.html.twig');
     }
 }

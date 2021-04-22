@@ -1,19 +1,22 @@
 {% block content %}
 
+
+
+
 {# Formulaire de base pour s'inscrire et se connecter #}
 
     {# Formulaire "d'accueil" pour s'inscrire ou se connecter #}
 
     <div id="logreg-forms">
-        <form class="form-signin">
+        <form class="form-signin" method = 'POST' action ="">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Se connecter</h1>
             <div class="social-login">
                 <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
                 <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> via Google+</span> </button>
             </div>
             <p style="text-align:center"> OU </p>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Adresse email" required="" autofocus="">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required="">
+            <input type="email" id="inputEmail" name ="email" class="form-control" placeholder="Adresse email" required="" autofocus="">
+            <input type="password" id="inputPassword" name ="password" class="form-control" placeholder="Mot de passe" required="">
             
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Connexion</button>
             <a href="#" id="forgot_pswd">Mot de passe oublié ?</a>
@@ -32,7 +35,7 @@
 
      {# Modal formulaire d'inscription #}   
 
-        <form action="/signup/" class="form-signup">
+        <form action="/login/register" class="form-signup" method='POST'>
                 <div class="social-login">
                     <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
                 </div>
@@ -42,10 +45,10 @@
                 
                 <p style="text-align:center">OU</p>
 
-                <input type="text" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="">
-                <input type="email" id="user-email" class="form-control" placeholder="Adresse email" required autofocus="">
-                <input type="password" id="user-pass" class="form-control" placeholder="Mot de passe" required autofocus="">
-                <input type="password" id="user-repeatpass" class="form-control" placeholder="Répétez le mot de passe" required autofocus="">
+                <input type="text" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="" name='user'>
+                <input type="email" id="user-email" class="form-control" placeholder="Adresse email" required autofocus="" name='email'>
+                <input type="password" id="user-pass" class="form-control" placeholder="Mot de passe" required autofocus="" name='password1'>
+                <input type="password" id="user-repeatpass" class="form-control" placeholder="Répétez le mot de passe" required autofocus="" name='repeatpassword'>
 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> S'inscrire</button>
                 <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
