@@ -395,7 +395,16 @@ input[type=range].mediaplayer-bar
 /*---------------- SideBar ----------------*/
 
 .sidebar{
-  width: 100%;
+  height:auto;
+  padding:0;
+  display:flex;
+}
+
+.categorie{
+  margin-left: auto;
+  margin-right: auto;
+  width: 16%;
+  position:fixed;
 }
 
 ul {
@@ -420,11 +429,7 @@ h3{
 
 .logo{
   padding: 5%;
-  white-space: nowrap;
-}
-
-.liste {
-  white-space: pre-line;
+  justify-content: center;
 }
 
 
