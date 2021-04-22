@@ -244,11 +244,6 @@ body{
   border-style: double;
   border-width:0px 0px 0px 60px;
 }
-
-#pause
-{
-  display : none;
-}
 /* input[type=range] {
   outline: none;
   padding: 0;
@@ -300,15 +295,6 @@ input[type=range].mediaplayer-bar
   }
 }
 
-@media (max-width: 700px)
-{
-  
-  .play-pause
-  {
-    font-size: 6rem;
-  }
-}
-
 @media (max-width: 600px)
 {
   
@@ -317,10 +303,6 @@ input[type=range].mediaplayer-bar
     width: 4rem;
   }
 
-    .play-pause
-  {
-    font-size: 5rem;
-  }
 }
 
 .back-button .button-icons, .skip-button .button-icons {
