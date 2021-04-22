@@ -22,9 +22,11 @@ class UserManager extends AbstractManager
      */
     public function update(array $item): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
-        $statement->bindValue('id', $item['id'], \PDO::PARAM_INT);
-        $statement->bindValue('title', $item['title'], \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET `nom`,'mot_de_passe','email' = :title WHERE email=:email");
+        $statement->bindValue('email', $item['email'], \PDO::PARAM_INT);
+        $statement->bindValue('mot_de_passe', $item['mot_de_passe'], \PDO::PARAM_STR);
+        $statement->bindValue('nom', $item['nom'], \PDO::PARAM_STR);
 
         return $statement->execute();
     }
