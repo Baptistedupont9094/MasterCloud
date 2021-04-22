@@ -27,6 +27,7 @@ class LoginController extends AbstractController
 
         if (isset($_SESSION["user"])) {
             header('Location: /explorer/index');
+            
         }
         define('EMAIL', 'seif@gmail.com');
         define('PASSWORD', 'test');
@@ -45,6 +46,7 @@ class LoginController extends AbstractController
     }
     public function register()
     {
+        
 
         if ($_POST['password1'] === $_POST['repeatpassword']) {
             $userManager = new UserManager();
@@ -54,9 +56,11 @@ class LoginController extends AbstractController
                 'mot_de_passe' => trim($_POST['password1']),
             ]);
 
-            header('Location: /');
-        } else {
-             header('Location: /login/index');
+            header('Location: /');   
+
+        } 
+        else {
+             header('Location: /login/index'); 
         }
     }
 }
