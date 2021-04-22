@@ -49,9 +49,8 @@
 
 {% block javascript %}
 <script>
-
-
-
+//Initialisation API + définition du player
+// Avec musique
 
 var tag = document.createElement('script');
 
@@ -59,7 +58,14 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var id = document.querySelector('#videoid').dataset.id;
+// Récupère l'id du lien youtube
+// var. pas encore au point car on passe par l'id d'une div pour récupérer 
+// l'id du lien YT. A voir quand il y aura connexion vers BDD
+
+var lienVersYT = document.querySelector('#videoid').dataset.id;
+
+//Player avec les fonctionnalités
+
 var player,
     time_update_interval = 0;
 
@@ -67,7 +73,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         width: 600,
         height: 400,
-        videoId: id,
+        videoId: lienVersYT,
         playerVars: {
         },
         events: {
