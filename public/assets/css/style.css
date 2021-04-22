@@ -401,6 +401,7 @@ input[type=range].mediaplayer-bar
 }
 
 .categorie{
+  display: block;
   position: fixed;
   white-space: normal;
   margin-left: auto;
