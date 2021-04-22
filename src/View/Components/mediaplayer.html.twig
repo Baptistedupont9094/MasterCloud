@@ -23,8 +23,8 @@
 			</div>
 
 			<div class="col-1 offset-1">
-				<i id='play' class='play-pause far fa-play-circle'></i>			
-				<i id='pause' class='play-pause far fa-pause-circle'></i>
+				<div class="box">
+				</div>
 			</div>
 			<div class="col-1 offset-1">
 				<button class='skip-button media-button' label='skip'>
@@ -48,8 +48,17 @@
 
 
 {% block javascript %}
-<script src="https://www.youtube.com/iframe_api"></script>
 <script>
+
+
+
+
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 var id = document.querySelector('#videoid').dataset.id;
 var player,
     time_update_interval = 0;
@@ -62,11 +71,14 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
         },
         events: {
-            onReady: initialize
+            onReady: initialize,
+			onStateChange: function(event){
+				//permet de récupérer l'état du player
+    }
         }
     });
-}
 
+}
 </script>
 <script src="/assets/js/script.js"></script>
 {% endblock %}
