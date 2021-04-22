@@ -122,6 +122,238 @@ body{
 
 
 /*---------------- FIN mon Compte ----------------*/
+/* ---------------------- MEDIA PLAYER -------------------------*/
+
+.media-controls {
+    align-items: center;
+    background: #23465A;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.button-icons {
+    background-color: #59788a;
+    border-radius: 100%;
+    margin-bottom: 4px;
+    margin-top: auto;
+    padding: 16px;
+}
+
+.media-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.media-button {
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (min-width: 421px)
+{
+  
+  .media-button {
+    padding: 12px;
+}
+}
+
+.media-progress {
+    align-self: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.play-pause
+{
+  font-size: 7rem;
+}
+
+@media (max-width: 1000px)
+{
+  
+  #volume-input
+  {
+    width: 8rem;
+  }
+}
+
+@media (max-width: 800px)
+{
+  
+  #volume-input
+  {
+    width: 6rem;
+  }
+}
+
+@media (max-width: 700px)
+{
+  
+  .play-pause
+  {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 600px)
+{
+  
+  #volume-input
+  {
+    width: 4rem;
+  }
+
+    .play-pause
+  {
+    font-size: 5rem;
+  }
+}
+
+.back-button .button-icons, .skip-button .button-icons {
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+.box
+{
+  width: 74px;
+  height: 74px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 37px 0px 37px 74px;
+  border-color: transparent transparent transparent white;
+  transition: all 100ms ease-in-out;
+}
+
+
+.pause{
+  border-style: double;
+  border-width:0px 0px 0px 60px;
+}
+/* input[type=range] {
+  outline: none;
+  padding: 0;
+  border-radius: 10px;
+  cursor: pointer; 
+  background-color: #dedede;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff5e00), color-stop(100%, #ff5e00));
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  box-shadow: none;
+  border: none;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 18px;
+  width: 28px;
+  border: 0;
+  background: #fff;
+  border: 1px solid #777;
+  border-radius: 8px;
+  box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+  -webkit-appearance: none;
+}*/
+
+input[type=range]{
+  height: 2px;
+  margin: auto;
+}
+
+input[type=range].mediaplayer-bar
+{
+  opacity: .8;
+  margin-top: 24px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 800px)
+{
+  
+  #volume-input
+  {
+    width: 6rem;
+  }
+}
+
+@media (max-width: 600px)
+{
+  
+  #volume-input
+  {
+    width: 4rem;
+  }
+
+}
+
+.back-button .button-icons, .skip-button .button-icons {
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 2em;
+}
+/* input[type=range] {
+  outline: none;
+  padding: 0;
+  border-radius: 10px;
+  cursor: pointer; 
+  background-color: #dedede;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff5e00), color-stop(100%, #ff5e00));
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  box-shadow: none;
+  border: none;
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 18px;
+  width: 28px;
+  border: 0;
+  background: #fff;
+  border: 1px solid #777;
+  border-radius: 8px;
+  box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+  -webkit-appearance: none;
+}*/
+
+input[type=range]{
+  height: 2px;
+  margin: auto;
+}
+
+input[type=range].mediaplayer-bar
+{
+  opacity: .8;
+  margin-top: 24px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* ---------------------- MEDIA PLAYER -------------------------*/
+
 
 
 /*---------------- SideBar ----------------*/
