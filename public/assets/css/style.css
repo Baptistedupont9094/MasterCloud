@@ -126,6 +126,10 @@ body{
 
 /*---------------- SideBar ----------------*/
 
+.sidebar{
+  width: 100%;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -145,7 +149,11 @@ h3{
 
 .logo{
   padding: 5%;
-  align-items: space-between;
+  white-space: nowrap;
+}
+
+.liste {
+  white-space: pre-line;
 }
 
 
