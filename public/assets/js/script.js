@@ -191,3 +191,20 @@ function onYouTubeIframeAPIReady() {
 
 
 }
+
+// ---------------------------- Début Background Video ---------------------------- //
+
+(function () {
+
+  var bv = new Bideo();
+  bv.init({
+    videoEl: document.querySelector('#background_video'),
+    container: document.querySelector('body'),
+    resize: true,
+    
+    onLoad: function () {
+      document.querySelector('#video_cover').style.display = 'none';
+    }
+  });
+}());
+// ---------------------------- Fin Background Video ---------------------------- //
