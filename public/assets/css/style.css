@@ -27,6 +27,30 @@ body {
 }
 
 /*---------------- FIN Couleur site----------------*/
+
+/*---------------- DEBUT navbar ----------------*/
+
+.navbar-brand img {
+  height: 40px;
+  margin: 0px;
+}
+
+.searchBar {
+  width: 800px;
+  background: #181818;
+  border-color:#424242;
+}
+
+
+.searchButton {
+  background: #424242;
+  border-color:#424242;
+}
+
+/*---------------- FIN navbar ----------------*/
+
+
+
 /*---------------- Carousel Top ----------------*/
     .MultiCarousel 
     { 
