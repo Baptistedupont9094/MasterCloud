@@ -1,6 +1,10 @@
 /*---------------- DEBUT Couleur site ----------------*/
 .navbar{
-  background-color: none;
+  background-color: #23465A;
+}
+
+.bg-none{
+  background: none;
 }
 
 footer{
