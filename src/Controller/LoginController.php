@@ -36,14 +36,12 @@ class LoginController extends AbstractController
             $password = $_POST['password'];
             $userManager = new UserManager();
             $emailArray = $userManager->selectOneByEmail($email);
-            
 
-            if ($email ===$emailArray[0]['email'] && $password === $emailArray[0]['mot_de_passe']) {
+            if ($email === $emailArray[0]['email'] && $password === $emailArray[0]['mot_de_passe']) {
                 $emailArray[0]['is_logged'] = true;
                 $_SESSION['user'] = $emailArray;
                 header('location: /explorer/index');
             }
-            
         }
         return $this->twig->render('Login/index.html.twig');
     }
@@ -56,14 +54,12 @@ class LoginController extends AbstractController
                 'email' => trim($_POST['email']),
                 'mot_de_passe' => trim($_POST['password1']),
             ]);
-            
-        $emailArray = $userManager->selectOneByEmail($_POST['email']);
-        $emailArray[0]['is_logged'] = true;
-        $_SESSION['user'] = $emailArray;
+            $emailArray = $userManager->selectOneByEmail($_POST['email']);
+            $emailArray[0]['is_logged'] = true;
+            $_SESSION['user'] = $emailArray;
             header('Location: /');
-            
         } else {
-             header('Location: /login/index');
+            header('Location: /login/index');
         }
     }
 }

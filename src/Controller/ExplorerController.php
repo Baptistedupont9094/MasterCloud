@@ -26,6 +26,6 @@ class ExplorerController extends AbstractController
         if (!isset($_SESSION['user'])) {
             header('location: /login/index');
         }
-        return $this->twig->render('Explorer/index.html.twig',['arrayUserTwig'=>$_SESSION['user']]);
+        return $this->twig->render('Explorer/index.html.twig');
     }
 }
