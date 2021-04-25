@@ -28,7 +28,7 @@ class LoginController extends AbstractController
         if (isset($_SESSION["user"])) {
             header('Location: /explorer/index');
         }
-        define('EMAIL', 'seif@gmail.com');
+        define('EMAIL', 'pe_capel_show@gmail.com');
         define('PASSWORD', 'test');
 
         if (!empty($_POST)) {
