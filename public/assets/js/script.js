@@ -198,7 +198,7 @@ function onYouTubeIframeAPIReady() {
 
   var bv = new Bideo();
   bv.init({
-    videoEl: document.querySelector('#background_video'),
+    videoEl: document.querySelector('#background_video'),   
     container: document.querySelector('body'),
     resize: true,
     
