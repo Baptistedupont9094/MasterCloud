@@ -49,13 +49,13 @@ class LoginController extends AbstractController
     {
         if ($_POST['password1'] === $_POST['repeatpassword']) {
             $userManager = new UserManager();
-            $passwordHashed = password_hash($_POST['password1']);
+            $passwordHashed = password_hash($_POST['password1'], PASSWORD_BCRYPT);
             $userManager->insert([
                 'nom' => trim($_POST['user']),
                 'email' => trim($_POST['email']),
                 'mot_de_passe' => trim($passwordHashed),
             ]);
-            $emailArray = $userManager->selectOneByEmail($_POST['email'], PASSWORD_BCRYPT);
+            $emailArray = $userManager->selectOneByEmail($_POST['email']);
             $emailArray[0]['is_logged'] = true;
             $_SESSION['user'] = $emailArray;
             header('Location: /');
