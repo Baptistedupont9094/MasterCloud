@@ -55,7 +55,7 @@ class LoginController extends AbstractController
                 'email' => trim($_POST['email']),
                 'mot_de_passe' => trim($passwordHashed),
             ]);
-            $emailArray = $userManager->selectOneByEmail($_POST['email']);
+            $emailArray = $userManager->selectOneByEmail($_POST['email'], PASSWORD_BCRYPT);
             $emailArray[0]['is_logged'] = true;
             $_SESSION['user'] = $emailArray;
             header('Location: /');
