@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+{% block navbar %}
+    {% include 'Components/navbar.html.twig'%}
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 25rem;">
+    <div class="card-body">
+        <form class="form-group" action='/myPlaylist/index' method='post'>
+            
+            <div class="col">
+                <input class="form-control" type="text" id='image-playlist' name="image-playlist" placeholder="Nom playlist" required>
+            </div>
+
+            <div class="input-group col mt-4 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Image playlist</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choisir image</label>
+                </div>
+            </div>
+
+            <div class="col mt-2">
+                <p>Souhaitez-vous que la playlist soit privée ou publique ?<p>
+            </div>
+            <div class="form-check mb-2 mr-sm-2">
+                <label class="col-6 form-check-label" for="privé">Privée</label>
+                <input class="col-1 form-check-input" type="radio" id="privé" name="est-privé" value="privé" required>
+            </div>
+
+            <div class="form-check mb-2 mr-sm-2">
+                <label class="col-6 form-check-label" for="publique"> Publique</label>
+                <input class="col-1 form-check-input" type="radio" id="publique" name="est-privé" value="publique" required>
+            </div>
+
+            <button name="envoyer" class="col btn btn-info mt-4 mb-2">Envoyer</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class ItemManager extends AbstractManager
+class PlaylistManager extends AbstractManager
 {
     public const TABLE = 'item';
 
