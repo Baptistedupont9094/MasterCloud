@@ -2,14 +2,6 @@
 {% block navbar %}
     {% include 'Components/navbar.html.twig'%}
 {% endblock %}
-{% block stylesheet %}
-<style>
-.navbar{
-  background-color: #23465A;
-}
-
-</style>
-{% endblock %}
 
 {% block content %}
     <div class="col-12">
@@ -20,9 +12,8 @@
         {% for i in 0..50 %}
             <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
             <img src="https://picsum.photos/300/200"  class="card-img">
-        </div>
         {% endfor %}
-        </div> 
+        </div>
     </div>
 {% endblock %}
 
