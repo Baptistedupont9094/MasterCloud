@@ -31,11 +31,10 @@ CREATE TABLE `utilisateur`(
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`email` VARCHAR(255) NOT NULL,
 	`nom` VARCHAR(80) NOT NULL,
-	`mot_de_passe` VARCHAR(25) NOT NULL,
+	`mot_de_passe` VARCHAR(255) NOT NULL,
 	`playlist_id` INT,
 	`musique_id` INT,
 	`est_connecte` BOOLEAN,
-	`derniere_connection` DATETIME NOT NULL,
 	PRIMARY KEY(`id`),
 	CONSTRAINT fk_utilisateur_playlist
 			FOREIGN KEY (playlist_id)
@@ -44,7 +43,7 @@ CREATE TABLE `utilisateur`(
 			FOREIGN KEY (musique_id)
 			REFERENCES musique(id)
 	
-);		
+);
 
 CREATE TABLE `commentaire`(
 	`id`INT NOT NULL AUTO_INCREMENT,
@@ -71,7 +70,6 @@ CREATE TABLE `playlist_musique`(
 			FOREIGN KEY (musique_id)
 			REFERENCES musique(id)
 );
-
 
 
 
