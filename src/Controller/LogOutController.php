@@ -9,7 +9,7 @@
 
 namespace App\Controller;
 
-class MyAccountController extends AbstractController
+class LogOutController extends AbstractController
 {
     /**
      * Affiche page Mon compte
@@ -19,12 +19,18 @@ class MyAccountController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
+
+    // Fonction pour déconnecter un utilisateur
+
     public function index()
     {
-        // session_start();
-        // if (!isset($_SESSION['user'])) {
-        //     header('location: /');
-        // }
-        return $this->twig->render('MyAccount/index.html.twig');
+        if(isset($_SESSION["name"]))
+        {
+            session_start();
+            session_unset();
+            session_destroy();
+            header('Location: /');
+        }
+        return $this->twig->render('LogOut/index.html.twig');
     }
 }

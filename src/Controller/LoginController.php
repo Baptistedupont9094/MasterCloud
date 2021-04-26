@@ -23,7 +23,7 @@ class LoginController extends AbstractController
      */
     public function index()
     {
-        session_start();
+        // session_start();
 
         if (isset($_SESSION["user"])) {
             header('Location: /explorer/index');
@@ -41,7 +41,7 @@ class LoginController extends AbstractController
             if ($email === $emailArray['email'] && password_verify($password, $emailArray['mot_de_passe'])) {
                 $emailArray['est_connecte'] = true;
                 $_SESSION['user'] = $emailArray;
-                header('location: /explorer/index');
+                header('Location: /explorer/index');
             }
         }
         return $this->twig->render('Login/index.html.twig');
@@ -64,4 +64,5 @@ class LoginController extends AbstractController
             header('Location: /login/index');
         }
     }
+
 }
