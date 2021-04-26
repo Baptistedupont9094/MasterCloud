@@ -37,8 +37,9 @@ class LoginController extends AbstractController
             $userManager = new UserManager();
             $emailArray = $userManager->selectOneByEmail($email);
 
-            if ($email === $emailArray[0]['email'] && password_verify($password, $emailArray[0]['mot_de_passe'])) {
-                $emailArray[0]['is_logged'] = true;
+
+            if ($email === $emailArray['email'] && password_verify($password, $emailArray['mot_de_passe'])) {
+                $emailArray['est_connecte'] = true;
                 $_SESSION['user'] = $emailArray;
                 header('location: /explorer/index');
             }
@@ -56,7 +57,7 @@ class LoginController extends AbstractController
                 'mot_de_passe' => trim($passwordHashed),
             ]);
             $emailArray = $userManager->selectOneByEmail($_POST['email']);
-            $emailArray[0]['is_logged'] = true;
+            $emailArray['est_connecte'] = true;
             $_SESSION['user'] = $emailArray;
             header('Location: /');
         } else {
