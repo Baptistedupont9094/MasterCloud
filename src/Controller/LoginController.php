@@ -34,28 +34,33 @@ class LoginController extends AbstractController
         if (!empty($_POST)) {
             $email = $_POST['email'];
             $password = $_POST['password'];
+            $userManager = new UserManager();
+            $emailArray = $userManager->selectOneByEmail($email);
 
-            if ($email === EMAIL && $password === PASSWORD) {
-                $_SESSION['user'] = $email;
+            if ($email === $emailArray[0]['email'] && password_verify($password, $emailArray[0]['mot_de_passe'])) {
+                $emailArray[0]['is_logged'] = true;
+                $_SESSION['user'] = $emailArray;
                 header('location: /explorer/index');
             }
         }
-
         return $this->twig->render('Login/index.html.twig');
     }
     public function register()
     {
         if ($_POST['password1'] === $_POST['repeatpassword']) {
             $userManager = new UserManager();
+            $passwordHashed = password_hash($_POST['password1'], PASSWORD_BCRYPT);
             $userManager->insert([
                 'nom' => trim($_POST['user']),
                 'email' => trim($_POST['email']),
-                'mot_de_passe' => trim($_POST['password1']),
+                'mot_de_passe' => trim($passwordHashed),
             ]);
-
+            $emailArray = $userManager->selectOneByEmail($_POST['email']);
+            $emailArray[0]['is_logged'] = true;
+            $_SESSION['user'] = $emailArray;
             header('Location: /');
         } else {
-             header('Location: /login/index');
+            header('Location: /login/index');
         }
     }
 }
