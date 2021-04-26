@@ -27,10 +27,10 @@ class MyAccountController extends AbstractController
         // if (!isset($_SESSION['user'])) {
         //     header('location: /');
         // }
-        
+
         $playlistManager = new PlaylistManager();
         $playlists = $playlistManager->selectAll();
-                
+
         return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists]);
     }
 }
