@@ -5,9 +5,15 @@
 
 {% block content %}
 
+{% if errors %}
+    {% for error in errors %}
+       <p style='color : #FF0000'>{{ error }}</p>
+    {% endfor %}
+{% endif %}
+
 <div class="card" style="width: 25rem;">
     <div class="card-body">
-        <form class="form-group" action='/myPlaylist/index' method='post' enctype="multipart/form-data">
+        <form class="form-group" action='/myPlaylist/create' method='post' enctype="multipart/form-data">
             
             <div class="col">
                 <input class="form-control" type="text" id='nom-playlist' name="nom-playlist" placeholder="Nom playlist" required>

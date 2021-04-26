@@ -21,31 +21,26 @@ class MyPlaylistController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+
+    public function create()
     {
         session_start();
         // if (!isset($_SESSION['user'])) {
             //     header('location: /');
             // }
 
-
-        //var pour récup. nom du fichier
-        $file = "";
-
+        $errors = [];
 
         //si le formulaire est envoyé par post
-        if($_SERVER['REQUEST_METHOD'] === "POST")
-        {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
             //const, idéal pour modif la taille sans changer chaque ligne
             define('MAX_SIZE_FILE', 1000000);
-            
 
         //----------------------------------------------------------------------------//
 
             //récup. le chemin du dossier pour y stocker les fichiers uploadés
-            //puis crée un tableau avec les seuls formats autorisés 
+            //puis crée un tableau avec les seuls formats autorisés
             //+ récup. l'extension du fichier pour test à venir.
-
             $dirPath = 'assets/upload/playlist/';
 
             $arrExtensionsOK = ['jpg','webp','png'];
@@ -59,26 +54,26 @@ class MyPlaylistController extends AbstractController
             $filePath = $dirPath . uniqid() . ".$extension";
 
             //premier test : voir si l'extension du fichier est correct
-            if(!in_array($extension, $arrExtensionsOK))
-            {
-                echo $errors[] = "<p style='color : #FF0000'> Veuillez sélectionner un fichier au bon format (jpg, png, webp).</p>.";
+            if (!in_array($extension, $arrExtensionsOK)) {
+                array_push($errors, 'Veuillez sélectionner un fichier au bon format(jpg, png, webp).');
             }
 
             //deuxième test: voir si la taille ne dépasse pas la taille max. autorisée
-            if(file_exists($_FILES['image-playlist']['tmp_name']) && filesize($_FILES['image-playlist']['tmp_name']) > MAX_SIZE_FILE)
-            {
-                echo $errors[] = "<p style='color : #FF0000'>Votre fichier dépasse la taille maximale (1Mo).</p>";
+            if (file_exists($_FILES['image-playlist']['tmp_name'])) {
+                if (filesize($_FILES['image-playlist']['tmp_name']) > MAX_SIZE_FILE) {
+                    array_push($errors, 'Votre fichier dépasse la taille maximale (1Mo).');
+                }
             }
 
 
             //Si aucun message d'erreur, le fichier peut être uploadé
-            if(empty($errors))
-            {
+            if (empty($errors)) {
                 //on récupère le chemin du fichier pour le garder en dehors du scope
                 $_SESSION['file'] = $filePath;
                 $playlistManager = new PlaylistManager();
-                if($_POST['est-privee'] === 'privee')
-                {
+                
+                //Si la playlist est privée, renvoie true
+                if ($_POST['est-privee'] === 'privee') {
                     $playlistManager->insert([
                         'nom' => trim($_POST['nom-playlist']),
                         'image' => trim($filePath),
@@ -86,102 +81,33 @@ class MyPlaylistController extends AbstractController
                     ]);
                     move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 }
-                else
-                {
+                //Si la playlist est publique, renvoie false
+                else {
                     $playlistManager->insert([
                         'nom' => trim($_POST['nom-playlist']),
                         'image' => trim($filePath),
                         'est_privee' => false,
                     ]);
+
+                    //Le fichier est uploadé dans le dossier /assets/upload/playlist
                     move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 }
                 $playlists = $playlistManager->selectAll();
-                return $this->twig->render('MyPlaylist/index.html.twig', ['playlistsTwig' => $playlists]);
+                header('Location: /myAccount/index');
+            } else {
+                return $this->twig->render('Playlist/create.html.twig', ['errors' => $errors]);
             }
         }
-        else
-            {
-                $playlistManager = new PlaylistManager();
-                $playlists = $playlistManager->selectAll();
-                return $this->twig->render('MyPlaylist/index.html.twig', ['playlistsTwig' => $playlists]);
-            }
+        return $this->twig->render('MyPlaylist/create.html.twig');
     }
 
-        public function createPlaylist()
+    public function show($id)
     {
-        session_start();
+        $id = (int)$_GET['id'];
+        $playlistManager = new PlaylistManager();
+        $playlist = $playlistManager->selectOneById($id);
 
-        return $this->twig->render('MyPlaylist/createPlaylist.html.twig');
-    }
-
-    /**
-     * Show informations for a specific item
-     */
-    public function show(int $id): string
-    {
-        $itemManager = new ItemManager();
-        $item = $itemManager->selectOneById($id);
-
-        return $this->twig->render('Item/show.html.twig', ['item' => $item]);
-    }
-
-
-    /**
-     * Edit a specific item
-     */
-    public function edit(int $id): string
-    {
-        $itemManager = new ItemManager();
-        $item = $itemManager->selectOneById($id);
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $item = array_map('trim', $_POST);
-
-            // TODO validations (length, format...)
-
-            // if validation is ok, update and redirection
-            $itemManager->update($item);
-            header('Location: /item/show/' . $id);
-        }
-
-        return $this->twig->render('Item/edit.html.twig', [
-            'item' => $item,
-        ]);
-    }
-
-
-    /**
-     * Add a new item
-     */
-    public function add(): string
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $item = array_map('trim', $_POST);
-
-            // TODO validations (length, format...)
-
-            // if validation is ok, insert and redirection
-            $itemManager = new ItemManager();
-            $id = $itemManager->insert($item);
-            header('Location:/item/show/' . $id);
-        }
-
-        return $this->twig->render('Item/add.html.twig');
-    }
-
-
-    /**
-     * Delete a specific item
-     */
-    public function delete(int $id)
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $itemManager = new ItemManager();
-            $itemManager->delete($id);
-            header('Location:/item/index');
-        }
+        return $this->twig->render('MyPlaylist/show.html.twig', ['playlist' => $playlist]);
     }
 }
 
