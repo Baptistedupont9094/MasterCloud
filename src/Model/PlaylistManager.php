@@ -4,15 +4,18 @@ namespace App\Model;
 
 class PlaylistManager extends AbstractManager
 {
-    public const TABLE = 'item';
+    public const TABLE = 'playlist';
 
     /**
      * Insert new item in database
      */
-    public function insert(array $item): int
+    public function insert(array $playlist): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
-        $statement->bindValue('title', $item['title'], \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+        "(nom, image, est_privee) VALUES (:nom,:image,:est_privee)");
+        $statement->bindValue(':nom', $playlist['nom'], \PDO::PARAM_STR);
+        $statement->bindValue(':image', $playlist['image'], \PDO::PARAM_STR);
+        $statement->bindValue(':est_privee', $playlist['est_privee'], \PDO::PARAM_BOOL);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
