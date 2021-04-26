@@ -105,12 +105,10 @@ body{
   height: 100%;
 }
 
-.home{
-  /*background-image: url('/assets/images/background_home.jpg');*/
-  /* background-repeat: no-repeat; */
+/* .home{
   min-width: 100%;
   min-height: 100%;
-}
+} */
 
 .presentation_home{
 background-color: none;
@@ -128,14 +126,12 @@ background-color: none;
   text-align: center;
 }
 
-
-
 .carousel-inner {
   margin-bottom: 50px;
 }
 
 .carousel-item h1 {
-  width: 100%;
+  width: auto;
   height: auto;
   text-align: center;
 }
