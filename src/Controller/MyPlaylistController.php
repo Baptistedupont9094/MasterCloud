@@ -126,7 +126,7 @@ class MyPlaylistController extends AbstractController
     {
         session_start();
 
-
+ 
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -185,7 +185,7 @@ class MyPlaylistController extends AbstractController
                         'genre' => trim($_POST['genre']),
                         'image' => trim($filePath),
                         'source' => trim($queriesFromYT['v']),
-                        'playlist_id' => $_SESSION['user']['id']
+                        'playlist_id' => $_SESSION['id-playlist']
                     ]
                 );
                 //Le fichier est uploadé dans le dossier /assets/upload/playlist

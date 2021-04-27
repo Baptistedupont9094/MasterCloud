@@ -22,18 +22,22 @@
   </div>
     <div class="mt-6 flex justify-between">
         <div class="flex">
+
+        {# Si la playlist a des musiques, elle affiche des boutons
+        (play, ajouter musiques, modifier playlist, supprimer musique)
+        et elle affiche toutes les musiques de la playlist.#}
 {% if listeMusiques %}
     <!-- action buttons -->
 
             <button class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</button>
-            <button class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter musique</button>
-            <button class="mr-2 border border-white block p-2 rounded-full"><img src="https://image.flaticon.com/icons/svg/2485/2485986.svg" height="25" width="25"></button>
+<a href="/myPlaylist/addmusic" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter musique</a>
+<button class="mr-2 border border-white block p-2 rounded-full"><img src="https://image.flaticon.com/icons/svg/2485/2485986.svg" height="25" width="25"></button>
             <div class="btn-group dropup">
               <button type="button" class="mr-2 border border-white block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ...
               </button>
                <div class="dropdown-menu bg-dark">
-     <a class="dropdown-item" href="#">Modifier playlist</a>
+<a class="dropdown-item" href="#">Modifier playlist</a>
     <a class="dropdown-item" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer playlist</a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="#">Partager</a>
@@ -81,13 +85,14 @@
             <div class="p-3 w-full">{{ musique.album }}</div>
             <div class="p-3 w-full">2:20</div>
             <a href='/myPlaylist/deleteMusic/?id={{ musique.id}}'class="p-3 w-12 flex-shrink-0 text-right">
-                <img src='https://img.icons8.com/nolan/344/delete-sign.png' height="40" width="40">
+                  <img src='https://img.icons8.com/nolan/344/delete-sign.png' height="40" width="40">
             </a>
+           </div>
+
         {% endfor %}
         {% else %}
         <p> Ta playlist est bien vide, tu peux ajouter des musiques </p>
     {% endif %}
-    </div>
   </div>
 </div>
     {% include 'Components/mediaplayer.html.twig'%}
