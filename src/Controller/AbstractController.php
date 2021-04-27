@@ -37,9 +37,8 @@ abstract class AbstractController
         );
 
         $this->twig->addExtension(new DebugExtension());
-        
         $authService = new AuthService();
         $this->twig->addGlobal('is_logged', $authService->isLogged());
-        // $this->twig->addGlobal('user_name', $authService->getUserName());
+        $this->twig->addGlobal('user', $authService->getUser());
     }
 }

@@ -64,5 +64,4 @@ class LoginController extends AbstractController
             header('Location: /login/index');
         }
     }
-
 }
