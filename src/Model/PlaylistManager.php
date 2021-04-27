@@ -24,7 +24,7 @@ class PlaylistManager extends AbstractManager
 
     public function selectForUpdateByPlaylistId(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT nom, image, est_privee, id FROM " . static::TABLE . 
+        $statement = $this->pdo->prepare("SELECT nom, image, est_privee, id FROM " . static::TABLE .
         " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
