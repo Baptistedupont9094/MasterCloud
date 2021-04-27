@@ -237,7 +237,6 @@ class MyPlaylistController extends AbstractController
 
         //si le formulaire est envoyé par post
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
             //const, idéal pour modif la taille sans changer chaque ligne
             define('MAX_SIZE_FILE', 1000000);
 
