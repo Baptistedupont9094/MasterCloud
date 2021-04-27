@@ -22,14 +22,27 @@ class PlaylistManager extends AbstractManager
         return (int)$this->pdo->lastInsertId();
     }
 
+    public function selectForUpdateByPlaylistId(int $id)
+    {
+        $statement = $this->pdo->prepare("SELECT nom, image, est_privee, id FROM " . static::TABLE . 
+        " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
     /**
      * Update item in database
      */
-    public function update(array $item): bool
+    public function update(array $playlist): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
-        $statement->bindValue('id', $item['id'], \PDO::PARAM_INT);
-        $statement->bindValue('title', $item['title'], \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `nom` = :nom, 
+        `image` = :image, `est_privee` = :est_privee WHERE id=:id");
+        $statement->bindValue('id', $playlist['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':nom', $playlist['nom'], \PDO::PARAM_STR);
+        $statement->bindValue(':image', $playlist['image'], \PDO::PARAM_STR);
+        $statement->bindValue(':est_privee', $playlist['est_privee'], \PDO::PARAM_BOOL);
 
         return $statement->execute();
     }

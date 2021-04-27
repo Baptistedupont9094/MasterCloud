@@ -29,7 +29,7 @@ class MyPlaylistController extends AbstractController
 
         if (!isset($_SESSION['user'])) {
                 header('location: /');
-            }
+        }
 
         $errors = [];
 
@@ -126,7 +126,6 @@ class MyPlaylistController extends AbstractController
     {
         session_start();
 
- 
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -222,5 +221,86 @@ class MyPlaylistController extends AbstractController
         $musicManager->delete($id);
 
         header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
+    }
+
+    public function edit()
+    {
+        session_start();
+
+        $id = $_GET['id'];
+
+        $playlistManager = new PlaylistManager();
+
+        $playlistToEdit = $playlistManager->selectForUpdateByPlaylistId($id);
+
+        $errors = [];
+
+        //si le formulaire est envoyé par post
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+
+            //const, idéal pour modif la taille sans changer chaque ligne
+            define('MAX_SIZE_FILE', 1000000);
+
+        //----------------------------------------------------------------------------//
+
+            //récup. le chemin du dossier pour y stocker les fichiers uploadés
+            //puis crée un tableau avec les seuls formats autorisés
+            //+ récup. l'extension du fichier pour test à venir.
+            $dirPath = 'assets/upload/playlist/';
+
+            $arrExtensionsOK = ['jpg','webp','png'];
+
+            $extension = pathinfo($_FILES['image-playlist']['name'], PATHINFO_EXTENSION);
+
+        //----------------------------------------------------------------------------//
+
+
+            //var qui contient le futur chemin du fichier à uploader
+            $filePath = $dirPath . uniqid() . ".$extension";
+
+            //premier test : voir si l'extension du fichier est correct
+            if (!in_array($extension, $arrExtensionsOK)) {
+                array_push($errors, 'Veuillez sélectionner un fichier au bon format(jpg, png, webp).');
+            }
+
+            //deuxième test: voir si la taille ne dépasse pas la taille max. autorisée
+            if (file_exists($_FILES['image-playlist']['tmp_name'])) {
+                if (filesize($_FILES['image-playlist']['tmp_name']) > MAX_SIZE_FILE) {
+                    array_push($errors, 'Votre fichier dépasse la taille maximale (1Mo).');
+                }
+            }
+
+
+            //Si aucun message d'erreur, le fichier peut être uploadé
+            if (empty($errors)) {
+                //on récupère le chemin du fichier pour le garder en dehors du scope
+                $_SESSION['file'] = $filePath;
+                $playlistManager = new PlaylistManager();
+
+                if ($_POST['est-privee'] === 'privee') {
+                    //Si la playlist est privée, renvoie true
+                    $playlistToEdit['nom'] = trim($_POST['nom-playlist']);
+                    $playlistToEdit['image'] = trim($filePath);
+                    $playlistToEdit['est_privee'] = true;
+
+                    $playlistManager->update($playlistToEdit);
+
+                    move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
+                } else {
+                    //Si la playlist est publique, renvoie false
+                    $playlistToEdit['nom'] = trim($_POST['nom-playlist']);
+                    $playlistToEdit['image'] = trim($filePath);
+                    $playlistToEdit['est_privee'] = false;
+                    $playlistManager->update($playlistToEdit);
+
+                    //Le fichier est uploadé dans le dossier /assets/upload/playlist
+                    move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
+                }
+                header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
+            } else {
+                return $this->twig->render('MyPlaylist/edit.html.twig', ['errors' => $errors]);
+            }
+        }
+        return $this->twig->render('MyPlaylist/edit.html.twig',['playlist' => $playlistToEdit]);
     }
 }
