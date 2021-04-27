@@ -39,8 +39,6 @@
     <a class="dropdown-item" href="#">Partager</a>
                 </div>
             </div>
-
-                 {# <button class="mr-2 border border-white block p-2 rounded-full">...</button>  #}
           </div>
           <div class="text-gray-600 text-sm tracking-widest text-right">
           <h5 class="mb-1">Followers</h5>
@@ -67,22 +65,24 @@
     <!-- song list header -->
     <div class="flex text-gray-600">
       <div class="p-2 w-8 flex-shrink-0"></div>
-      <div class="p-2 w-8 flex-shrink-0"></div>
       <div class="p-2 w-full">Title</div>
       <div class="p-2 w-full">Artist</div>
       <div class="p-2 w-full">Album</div>
-      <div class="p-2 w-12 flex-shrink-0 text-right">⏱</div>
+      <div class="p-2 w-full">⏱</div>
+      <div class="p-2 w-12 flex-shrink-0 text-right">Supprimer</div>
     </div>
 
     {% if listeMusiques %}
         {% for musique in listeMusiques %}
             <div class="flex border-b border-gray-800 hover:bg-gray-800">
             <div class="p-3 w-8 flex-shrink-0">▶️</div>
-            <div class="p-3 w-8 flex-shrink-0">❤️</div>
             <div class="p-3 w-full">{{ musique.nom }}</div>
             <div class="p-3 w-full">{{ musique.artiste }}</div>
             <div class="p-3 w-full">{{ musique.album }}</div>
-            <div class="p-3 w-12 flex-shrink-0 text-right"></div>
+            <div class="p-3 w-full">2:20</div>
+            <a href='/myPlaylist/deleteMusic/?id={{ musique.id}}'class="p-3 w-12 flex-shrink-0 text-right">
+                <img src='https://img.icons8.com/nolan/344/delete-sign.png' height="40" width="40">
+            </a>
         {% endfor %}
         {% else %}
         <p> Ta playlist est bien vide, tu peux ajouter des musiques </p>

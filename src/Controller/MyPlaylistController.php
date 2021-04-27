@@ -210,4 +210,17 @@ class MyPlaylistController extends AbstractController
 
         header('Location: /myAccount/index');
     }
+
+    public function deleteMusic($id)
+    {
+        session_start();
+
+        $musicManager = new MusicManager();
+
+        $id = $_GET['id'];
+
+        $musicManager->delete($id);
+
+        header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
+    }
 }
