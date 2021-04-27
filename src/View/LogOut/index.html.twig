@@ -9,6 +9,7 @@
 <h1> Vous avez été déconnecté de votre compte MasterCloud </h1>       
 
 <p> Vous allez être redirigé vers la page d'accueil dans 5 secondes...</p>
+<script>setTimeout(() => document.location.href = "/", 5000)</script>
 
 {% endblock %}
 
@@ -16,4 +17,4 @@
     {% include 'Components/mediaplayer.html.twig'%}
 {% endblock %}
 
-<script>setTimeout(() => document.location.href = "/", 5000)</script>
+
