@@ -6,9 +6,13 @@
 
 {% block content %}
 
-<h1> Vous avez été déconnecté de votre compte MasterCloud </h1>       
+<div class="container">
+    <div class="card text-white text-center mt-5" style="width=80px; background-color:#23465A;">
+        <h5 class="card-title">Vous avez été <b>déconnecté</b> de votre compte <b>MasterCloud</b> </h5>
+        <p class="card-text">Redirection vers la <b>page d'accueil</b> dans 5 secondes...</p>
+    </div>
+</div>
 
-<p> Vous allez être redirigé vers la page d'accueil dans 5 secondes...</p>
 <script>setTimeout(() => document.location.href = "/", 5000)</script>
 
 {% endblock %}
