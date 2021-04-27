@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
 {% endblock %}
 {% block navbar %}
     {% include 'Components/navbar.html.twig' %}
@@ -30,20 +30,34 @@
             <button class="mr-2 border border-white block p-2 rounded-full"><img src="https://image.flaticon.com/icons/svg/2485/2485986.svg" height="25" width="25"></button>
             <div class="btn-group dropup">
               <button type="button" class="mr-2 border border-white block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Dropup
+                ...
               </button>
-              <div class="dropdown-menu">
-    <!-- Dropdown menu links -->
-              </div>
+               <div class="dropdown-menu bg-dark">
+     <a class="dropdown-item" href="#">Modifier playlist</a>
+    <a class="dropdown-item" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer playlist</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Partager</a>
+                </div>
             </div>
-            
-            <button class="mr-2 border border-white block p-2 rounded-full">...</button>
-            </div>
-            <div class="text-gray-600 text-sm tracking-widest text-right">
-            <h5 class="mb-1">Followers</h5>
-            <p>5,055</p>
+
+                 {# <button class="mr-2 border border-white block p-2 rounded-full">...</button>  #}
+          </div>
+          <div class="text-gray-600 text-sm tracking-widest text-right">
+          <h5 class="mb-1">Followers</h5>
+          <p>5,055</p>
   {% else %}
     <a href="/myPlaylist/addmusic" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter musique</a>
+            <div class="btn-group dropup">
+              <button type="button" class="mr-2 border border-white block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ...
+              </button>
+               <div class="dropdown-menu bg-dark">
+     <a class="dropdown-item" href="#">Modifier playlist</a>
+    <a class="dropdown-item" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer playlist</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Partager</a>
+                </div>
+            </div>
 {% endif %}
     </div>
   </div>

@@ -26,9 +26,10 @@ class MyPlaylistController extends AbstractController
     public function create()
     {
         session_start();
-        // if (!isset($_SESSION['user'])) {
-            //     header('location: /');
-            // }
+
+        if (!isset($_SESSION['user'])) {
+                header('location: /');
+            }
 
         $errors = [];
 
@@ -79,6 +80,7 @@ class MyPlaylistController extends AbstractController
                         'nom' => trim($_POST['nom-playlist']),
                         'image' => trim($filePath),
                         'est_privee' => true,
+                        'utilisateur_id' => $_SESSION['user']['id']
                     ]);
                     move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 } else {
@@ -87,6 +89,7 @@ class MyPlaylistController extends AbstractController
                         'nom' => trim($_POST['nom-playlist']),
                         'image' => trim($filePath),
                         'est_privee' => false,
+                        'utilisateur_id' => $_SESSION['user']['id']
                     ]);
 
                     //Le fichier est uploadé dans le dossier /assets/upload/playlist
@@ -94,10 +97,10 @@ class MyPlaylistController extends AbstractController
                 }
                 header('Location: /myAccount/index');
             } else {
-                return $this->twig->render('myPlaylist/create.html.twig', ['errors' => $errors]);
+                return $this->twig->render('MyPlaylist/create.html.twig', ['errors' => $errors]);
             }
         }
-        return $this->twig->render('myPlaylist/create.html.twig');
+        return $this->twig->render('MyPlaylist/create.html.twig');
     }
 
     public function show($id)
@@ -113,7 +116,7 @@ class MyPlaylistController extends AbstractController
         $playlist = $playlistManager->selectOneById($id);
 
         $musicManager = new MusicManager();
-        $musics = $musicManager->selectAll();
+        $musics = $musicManager->selectAllMusicsbyPlaylistID($id);
 
 
         return $this->twig->render('MyPlaylist/show.html.twig', ['playlist' => $playlist, 'listeMusiques' => $musics]);
@@ -126,8 +129,7 @@ class MyPlaylistController extends AbstractController
 
         $errors = [];
 
-        if($_SERVER['REQUEST_METHOD'] === 'POST')
-        {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //const, idéal pour modif la taille sans changer chaque ligne
             define('MAX_SIZE_FILE', 1000000);
 
@@ -163,38 +165,49 @@ class MyPlaylistController extends AbstractController
             //Récupère en chaîne de caractères le nom de l'host,
             //nécéssaire pour des test plus tard
             $urlHost = parse_url($_POST['url'], PHP_URL_HOST);
-            
-            //Récupère dans un tableau les query string de l'url Youtube
-            parse_str(parse_url($_POST['url'], PHP_URL_QUERY), $queriesFromYT);
-            
-            if($urlHost !== 'www.youtube.com')
-            {
+
+
+            if ($urlHost !== 'www.youtube.com') {
                 array_push($errors, "Ceci n'est pas un lien Youtube, veuillez réessayez.");
             }
-            
-            if(empty($errors))
-            {
+
+            if (empty($errors)) {
+                $queriesFromYT = [];
+                //Récupère dans un tableau les query string de l'url Youtube
+                parse_str(parse_url($_POST['url'], PHP_URL_QUERY), $queriesFromYT);
+
                 $musicManager = new MusicManager();
                 $musicManager->insert(
                     [
                         'nom' => trim($_POST['nom-musique']),
                         'artiste' => trim($_POST['artiste']),
-                        'album' => trim($_POST['album']), 
+                        'album' => trim($_POST['album']),
                         'genre' => trim($_POST['genre']),
                         'image' => trim($filePath),
-                        'source' => trim($queriesFromYT['v'])
+                        'source' => trim($queriesFromYT['v']),
+                        'playlist_id' => $_SESSION['user']['id']
                     ]
                 );
                 //Le fichier est uploadé dans le dossier /assets/upload/playlist
                 move_uploaded_file($_FILES['image-musique']['tmp_name'], $filePath);
                 header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
-            }
-            else
-            {
+            } else {
                 return $this->twig->render('MyPlaylist/addmusic.html.twig', ['errors' => $errors]);
             }
-
         }
         return $this->twig->render('MyPlaylist/addmusic.html.twig');
+    }
+
+    public function deletePlaylist($id)
+    {
+        session_start();
+
+        $playlistManager = new PlaylistManager();
+
+        $id = $_SESSION['id-playlist'];
+
+        $playlistManager->delete($id);
+
+        header('Location: /myAccount/index');
     }
 }

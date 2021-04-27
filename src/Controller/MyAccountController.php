@@ -24,13 +24,17 @@ class MyAccountController extends AbstractController
     public function index()
     {
         session_start();
-        // if (!isset($_SESSION['user'])) {
-        //     header('location: /');
-        // }
+        if (!isset($_SESSION['user'])) {
+            header('Location: /');
+        } else {
+            $playlistManager = new PlaylistManager();
+            $playlists = $playlistManager->selectAllPlaylistsbyUserID($_SESSION['user']['id']);
+            return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists]);
+        }
 
-        $playlistManager = new PlaylistManager();
-        $playlists = $playlistManager->selectAll();
+        // var_dump($playlists);
+        // exit;
 
-        return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists]);
+        return $this->twig->render('MyAccount/index.html.twig');
     }
 }
