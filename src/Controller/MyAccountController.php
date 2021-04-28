@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use App\Model\PlaylistManager;
+
 class MyAccountController extends AbstractController
 {
     /**
@@ -23,8 +25,13 @@ class MyAccountController extends AbstractController
     {
         session_start();
         if (!isset($_SESSION['user'])) {
-            header('location: /');
+            header('Location: /');
+        } else {
+            $playlistManager = new PlaylistManager();
+            $playlists = $playlistManager->selectAllPlaylistsbyUserID($_SESSION['user']['id']);
+            return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists]);
         }
+
         return $this->twig->render('MyAccount/index.html.twig');
     }
 }
