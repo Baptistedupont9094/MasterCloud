@@ -264,26 +264,14 @@ class MyPlaylistController extends AbstractController
                 //on récupère le chemin du fichier pour le garder en dehors du scope
                 $_SESSION['file'] = $filePath;
                 $playlistManager = new PlaylistManager();
-
-                if ($_POST['est-privee'] === 'privee') {
-                    //Si la playlist est privée, renvoie true
-                    $playlistToEdit['nom'] = trim($_POST['nom-playlist']);
-                    $playlistToEdit['image'] = trim($filePath);
-                    $playlistToEdit['est_privee'] = true;
-
-                    $playlistManager->update($playlistToEdit);
-
-                    move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
-                } else {
-                    //Si la playlist est publique, renvoie false
-                    $playlistToEdit['nom'] = trim($_POST['nom-playlist']);
-                    $playlistToEdit['image'] = trim($filePath);
-                    $playlistToEdit['est_privee'] = false;
-                    $playlistManager->update($playlistToEdit);
-
-                    //Le fichier est uploadé dans le dossier /assets/upload/playlist
-                    move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
-                }
+                $playlistManager->insert([
+                    $playlistToEdit['nom'] => trim($_POST['nom-playlist']),
+                    $playlistToEdit['image'] => trim($filePath),
+                    //Si la playlist est privée, renvoie true (1 en SQL), sinon false (0)
+                    $playlistToEdit['est_privee'] => ($_POST['est-privee'] === 'privee' ? true : false),
+                    ]);
+                //Le fichier est uploadé dans le dossier /assets/upload/playlist
+                move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
             } else {
                 return $this->twig->render('MyPlaylist/edit.html.twig', ['errors' => $errors]);
