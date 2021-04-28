@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use App\Model\SearchManager;
+
 class ExplorerController extends AbstractController
 {
     /**
@@ -23,9 +25,25 @@ class ExplorerController extends AbstractController
     {
         session_start();
 
-        if (!isset($_SESSION['user'])) {
-            header('location: /login/index');
-        }
+        $searchManager = new SearchManager();
+
+        if (!empty($_POST))
+            {
+            $searchItem = $_POST['search']; 
+            $searchItem = strtolower($searchItem);
+            $result=$searchManager->search($searchItem);
+            return $this->twig->render('Explorer/index.html.twig',["resultArray"=>$result]);
+
+            }
+            else
+            {
+                $message = "Vous devez entrer votre requete";
+            }
+
+
+        // if (!isset($_SESSION['user'])) {
+        //     header('location: /login/index');
+        // }
         return $this->twig->render('Explorer/index.html.twig');
     }
 }
