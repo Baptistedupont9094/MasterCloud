@@ -23,8 +23,6 @@ class LoginController extends AbstractController
      */
     public function index()
     {
-        // session_start();
-
         if (isset($_SESSION["user"])) {
             header('Location: /explorer/index');
         }
@@ -64,4 +62,5 @@ class LoginController extends AbstractController
             header('Location: /login/index');
         }
     }
+
 }
