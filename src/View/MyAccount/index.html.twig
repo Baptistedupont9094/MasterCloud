@@ -65,7 +65,7 @@
 
 <div class="row h-25" id="bottom-body">
     <div class="col-11" id="A" style="margin-left : 2%">
-        <button type="button" class="btn btn-primary">Créer playlist</button>    
+        <a href="/myPlaylist/create" class="btn btn-info" role="button">Créer playlist</a> 
     </div>
     <hr>
     <div class="col-12" id="B">
@@ -73,31 +73,18 @@
 {# ------------------------------------------------------------------------------------------------------------------------ #}
 
 
-        {# initialisation d'un tableau pour exemple carousel #}
-        {# A enlever quand la BDD ira chercher les images des playlists #}
-
-        {% set playlistTableau = [
-          '#d3e9fe',
-          '#e6d74f',
-          '#ffadda',
-          '#a00a4d',
-          '#2e84d5',
-          '#e3fb69'
-        ]%}
-
-        {# Pourra être remplacer par une fonction d'affichage dans le controller #}
-
-        {% if playlistTableau %}
+        {% if playlistsTwig %}
            
-           {# Si il y a des données dans le tableau playlistTableau
+           {# Si il y a des données dans le tableau playlistTwig
            la condition est remplie et une boucle traversant
            le tableau permet d'afficher les images des playlists
            dans la div carousel #}
 
             <div class="carousel">
                 <div class="carousel-row">
-            {% for playlist in playlistTableau %}
-                    <div class="carousel-tile" style="background-color : {{playlist}};"></div>
+            {% for playlist in playlistsTwig %}
+                    <a class="carousel-tile" href="/myPlaylist/show/?id={{ playlist.id }}" style="background : url(/{{ playlist.image }}); background-size: cover;">
+                    </a>
             {% endfor %}
                 </div>
             </div>
@@ -106,17 +93,16 @@
     </div>
         {% else %}
 
-        {# En commentant le tableau (en le faisant disparaître)
-        on montre à l'utilisateur qu'il n'y a aucune playlist #}
-
-        <p> Aucune playlist existante </p>
+        <p style='color : white;'> Aucune playlist existante </p>
         {% endif %}
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
 
 
 </div>
-    {% include 'Components/footer.html.twig'%}
+
+    {% include 'Components/mediaplayer.html.twig'%}
+
 
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}

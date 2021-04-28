@@ -35,7 +35,6 @@ class LoginController extends AbstractController
             $userManager = new UserManager();
             $emailArray = $userManager->selectOneByEmail($email);
 
-
             if ($email === $emailArray['email'] && password_verify($password, $emailArray['mot_de_passe'])) {
                 $emailArray['est_connecte'] = true;
                 $_SESSION['user'] = $emailArray;
