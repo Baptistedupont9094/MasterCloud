@@ -9,22 +9,22 @@
 
 namespace App\Controller;
 
-class ExplorerController extends AbstractController
+class LogOutController extends AbstractController
 {
     /**
-     * Affiche page Explorer
+     * Affiche page Mon compte
      *
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
+
+    // Fonction pour déconnecter un utilisateur
+
     public function index()
     {
-
-        if (!isset($_SESSION['user'])) {
-            header('location: /login/index');
-        }
-        return $this->twig->render('Explorer/index.html.twig');
+        session_destroy();
+        return $this->twig->render('LogOut/index.html.twig');
     }
 }

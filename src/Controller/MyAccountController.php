@@ -31,7 +31,6 @@ class MyAccountController extends AbstractController
             $playlists = $playlistManager->selectAllPlaylistsbyUserID($_SESSION['user']['id']);
             return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists]);
         }
-
         return $this->twig->render('MyAccount/index.html.twig');
     }
 }
