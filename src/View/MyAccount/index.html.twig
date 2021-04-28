@@ -14,7 +14,7 @@
 
 
 {% block content %}
-    <h1>Bonjour 'nom-user'.</h1>
+    <h1>Bonjour {{user.nom}}.</h1>
     <p> Ravi de vous voir !</p>
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
@@ -30,11 +30,13 @@
 							<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Maxwell Admin">
                             </p> Changer votre avatar </p>
 						</div>
-						<h4 class="user-name">User Pseudo</h4>
+						<h4 class="user-name">{{user.nom}}</h4>
 						<h5 class="user-email">Inscrit depuis le ...</h5>
 					</div>
 					<div class="about">
-						<h6 class="mb-2 text-primary">Vous avez 'nombre-playlists' playlist(s).</h6>
+						<h6 class="mb-2 text-primary">
+                            Vous avez {{ nbPlaylists.somme }} playlist(s).
+                        </h6>
 					</div>
 				</div>
 			</div>
@@ -85,7 +87,7 @@
             <a href="/myPlaylist/create" class="btn btn-info" role="button">Créer playlist</a> 
         </div>
     {# div réservée pour le mediaplayer - A NE PAS SUPPRIMER #}
-    <div class="col-12" id="B">
+{# <div class="col-12" id="B"> #}
 </div>
 </div>
 
@@ -108,6 +110,7 @@
             {% endfor %}
                 </div>
             </div>
+            <div class="col-12" id="B">
 
       </div>
     </div>

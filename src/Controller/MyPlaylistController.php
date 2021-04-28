@@ -92,8 +92,6 @@ class MyPlaylistController extends AbstractController
 
     public function show($id)
     {
-        session_start();
-
         $id = (int)$_GET['id'];
         //conserve l'id, pour pouvoir revenir en arrière après
         //soumission de formulaire.
@@ -111,8 +109,6 @@ class MyPlaylistController extends AbstractController
 
     public function addmusic()
     {
-        session_start();
-
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -186,7 +182,6 @@ class MyPlaylistController extends AbstractController
 
     public function deletePlaylist($id)
     {
-        session_start();
 
         $playlistManager = new PlaylistManager();
 
@@ -199,7 +194,6 @@ class MyPlaylistController extends AbstractController
 
     public function deleteMusic($id)
     {
-        session_start();
 
         $musicManager = new MusicManager();
 
@@ -212,8 +206,6 @@ class MyPlaylistController extends AbstractController
 
     public function edit()
     {
-        session_start();
-
         $id = $_GET['id'];
 
         $playlistManager = new PlaylistManager();
