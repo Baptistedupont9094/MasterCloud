@@ -10,20 +10,20 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-Explorer">
-              <a class="nav-link" href="/Explorer/index" >Explorer<span class="sr-only"></a>
+              <a class="nav-link" href="/explorer/index" >Explorer<span class="sr-only"></a>
             </li>
             {# Si l'utilisateur EST connecté, alors on affiche seulement les boutons suivants #}
             {% if is_logged %}
             <li class="nav-Login col-2">
-              <a class="nav-link" href="/myAccount/index">Mon compte<span class="sr-only"></a>
+              <a class="nav-link" href="/myaccount/index">Mon compte<span class="sr-only"></a>
             </li>
             <li class="nav-Login col-7">
-              <a class="nav-link" href="/LogOut/index">Se déconnecter<span class="sr-only"></a>
+              <a class="nav-link" href="/logout/index">Se déconnecter<span class="sr-only"></a>
             </li>
             {# Si l'utilisateur N'EST PAS connecté, alors on affiche les boutons suivants #}
             {% else %}  
             <li class="nav-Login-1">
-              <a class="nav-link" href="/Login/index">S'inscrire | Se connecter<span class="sr-only"></a>
+              <a class="nav-link" href="/login/index">S'inscrire | Se connecter<span class="sr-only"></a>
             </li>
             {% endif %}
         </div>

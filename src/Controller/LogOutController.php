@@ -25,7 +25,6 @@ class LogOutController extends AbstractController
     public function index()
     {
         session_destroy();
-        // header('Location: /');
         return $this->twig->render('LogOut/index.html.twig');
     }
 }
