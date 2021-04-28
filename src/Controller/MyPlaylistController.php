@@ -25,8 +25,6 @@ class MyPlaylistController extends AbstractController
 
     public function create()
     {
-        session_start();
-
         if (!isset($_SESSION['user'])) {
                 header('location: /');
         }
