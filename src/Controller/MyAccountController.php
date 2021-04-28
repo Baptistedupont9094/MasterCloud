@@ -32,9 +32,6 @@ class MyAccountController extends AbstractController
             return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists]);
         }
 
-        // var_dump($playlists);
-        // exit;
-
         return $this->twig->render('MyAccount/index.html.twig');
     }
 }

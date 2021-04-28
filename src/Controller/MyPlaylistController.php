@@ -75,23 +75,13 @@ class MyPlaylistController extends AbstractController
                 $playlistManager = new PlaylistManager();
 
                 if ($_POST['est-privee'] === 'privee') {
-                    //Si la playlist est privée, renvoie true
-                    $playlistManager->insert([
+                        $playlistManager->insert([
                         'nom' => trim($_POST['nom-playlist']),
                         'image' => trim($filePath),
-                        'est_privee' => true,
+                        //Si la playlist est privée, renvoie true (1 en SQL), sinon false (0)
+                        'est_privee' => ($_POST['est-privee'] === 'privee' ? true : false),
                         'utilisateur_id' => $_SESSION['user']['id']
                     ]);
-                    move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
-                } else {
-                    //Si la playlist est publique, renvoie false
-                    $playlistManager->insert([
-                        'nom' => trim($_POST['nom-playlist']),
-                        'image' => trim($filePath),
-                        'est_privee' => false,
-                        'utilisateur_id' => $_SESSION['user']['id']
-                    ]);
-
                     //Le fichier est uploadé dans le dossier /assets/upload/playlist
                     move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 }
