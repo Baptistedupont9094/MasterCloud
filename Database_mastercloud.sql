@@ -35,12 +35,22 @@ CREATE TABLE `musique`(
 	`album` VARCHAR(255) NOT NULL,
 	`genre` VARCHAR(255) NOT NULL,
 	`nombre_likes` INT,
+	`nombre_dislikes` INT,
 	`image` VARCHAR(255) NOT NULL,	
 	`source` VARCHAR(255) NOT NULL,
 	`playlist_id` INT NOT NULL,	
 	PRIMARY KEY(`id`),
 	FOREIGN KEY(`playlist_id`) REFERENCES `playlist`(`id`) ON DELETE CASCADE
 	);
+
+CREATE TABLE `votes` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`playlist_id` INT NOT NULL,
+	`ref` VARCHAR(50) NOT NULL,
+	`utilisateur_id` INT NOT NULL,
+	`vote` INT NOT NULL,
+	`created_at` DATETIME,
+)
 
 
 -- CREATE TABLE `commentaire`(
