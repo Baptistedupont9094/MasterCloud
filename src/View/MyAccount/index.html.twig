@@ -50,11 +50,11 @@
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
 							<label for="nom">Nom</label>
-							<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+							<input type="text" class="form-control" id="fullName" placeholder="<nom récupéré de la BDD>">
 						</div>
                         <div class="form-group">
 							<label for="prenom">Prénom</label>
-							<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+							<input type="text" class="form-control" id="fullName" placeholder="<prenom récupéré de la BDD<">
 						</div>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
 							<label for="eMail">Email</label>
-							<input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
+							<input type="email" class="form-control" id="eMail" placeholder="<Email récupéré de la BDD>">
 						</div>
 					</div>
 				</div>
@@ -77,23 +77,18 @@
 			</div>
 		</div>
 	</div>
-</div>
-</div>
-        
-        <div class="col-12 col-sm-3 offset-1" id="B2">
+    <div class="col-12 col-sm-3 offset-1" id="B2">
         <button type="button" class="btn btn-primary modify-account" style:"margin : 2% 0;">Modifier compte</button>    
-        </div>
-
     </div>
-
+    <div class="row h-25" id="bottom-body">
+        <div class="col-11" id="A" style="margin-left : 2%">
+            <a href="/myPlaylist/create" class="btn btn-info" role="button">Créer playlist</a> 
+        </div>
+    {# div réservée pour le mediaplayer - A NE PAS SUPPRIMER #}
+    <div class="col-12" id="B">
+</div>
 </div>
 
-
-<div class="row h-25" id="bottom-body">
-    <div class="col-11" id="A" style="margin-left : 2%">
-        <a href="/myPlaylist/create" class="btn btn-info" role="button">Créer playlist</a> 
-    </div>
-    <div class="col-12" id="B">
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
 
