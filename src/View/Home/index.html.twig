@@ -14,35 +14,30 @@
 </head>
 
 <body class="h-100">
-                     <div id="container">
+    <div id="container">
+        <video id="background_video" autoplay muted loop>
+            <source src="/assets/Vvideo2.mp4" type="video/mp4">
+            <div id="video_cover"></div>
+            <div id="overlay"></div>
+        </video>
+    </div>
 
-                    
-                    <video
-                    id="background_video" autoplay muted loop>
-                    <source src="/assets/Vvideo2.mp4" type="video/mp4">
-                    <div id="video_cover"></div>
-                    <div id="overlay"></div>
-
-                    </video>
-                    </div>
-
-    <div class="container-fluid p-0 overflow-hidden h-100 d-flex flex-column">
+    <div class="fluid p-0 overflow-hidden h-100 d-flex flex-column">
 
         {% include 'Components/navbar_home.html.twig'%}
-        <div class="row flex-grow-1">
 
-            <div class="col-12 g-0 d-flex flex-column no-gutters">
-                <div class="flex-grow-1 overflow-auto" style="height: calc(100vh - 254px);">
-
-                    {% include 'Home/carousel_top.html.twig'%}
-                    <div class='row'>
-                        {% include 'Home/carousel_presentation.html.twig'%}
-                    </div>
-                </div>
-                {% include 'Components/footer.html.twig'%}
-            </div>
-        </div>
     </div>
+    <div class="col-12 p-0 g-0 d-flex flex-column no-gutters">
+
+        {% include 'Home/carousel_top.html.twig'%}
+
+        {% include 'Home/carousel_presentation.html.twig'%}
+
+        {% include 'Components/footer.html.twig'%}
+
+    </div>
+
+
  {# Script Bootstrap #}
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"> 
 </script>
