@@ -27,18 +27,12 @@ class ExplorerController extends AbstractController
 
         $searchManager = new SearchManager();
 
-        if (!empty($_POST))
-            {
-            $searchItem = $_POST['search']; 
+        if (!empty($_POST)) {
+            $searchItem = $_POST['search'];
             $searchItem = strtolower($searchItem);
-            $result=$searchManager->search($searchItem);
-            return $this->twig->render('Explorer/index.html.twig',["resultArray"=>$result]);
-
-            }
-            else
-            {
-                $message = "Vous devez entrer votre requete";
-            }
+            $result = $searchManager->search($searchItem);
+            return $this->twig->render('Explorer/index.html.twig', ["resultArray" => $result]);
+        }
 
 
         // if (!isset($_SESSION['user'])) {

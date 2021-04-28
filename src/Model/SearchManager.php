@@ -8,10 +8,8 @@ class SearchManager extends AbstractManager
 
     public function search(string $item): array
     {
-        $query= "SELECT * FROM playlist WHERE nom LIKE '%". $item. "%'";
+        $query = "SELECT * FROM playlist WHERE nom LIKE '%" . $item . "%'";
 
         return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
     }
-
 }
-
