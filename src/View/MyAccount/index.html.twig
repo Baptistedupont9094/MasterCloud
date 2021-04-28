@@ -14,44 +14,71 @@
 
 
 {% block content %}
-    <h1>Mon compte</h1>
+    <h1>Bonjour 'nom-user'.</h1>
+    <p> Ravi de vous voir !</p>
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
-    
-<div class="row no-gutters" id="top-body">
-    <div class="row col-12 col-sm-7" id="A">
-
-        <div class="col-12 col-sm-4 offset-1" id="A1">
-            <img class='profile-pic' src='https://picsum.photos/200/300'> {# A changer quand la BDD sera en place#}
-        </div>
-
-        <div class="col-12 col-sm-6 offset-1"id="A2">
-            
-            <div id="A2a">
-            NOM USER
-            </div>
-            
-             <div id="A2b">
-             NOMBRE PLAYLISTS
-            </div>
-        
-        </div>
-    </div>
-
-
-    <div class="row col-10 offset-2 offset-sm-0 col-sm-5" id="B">
-        <div class"col-12 col-sm-7 offset-1" id="B1">
-            <div class="card info-card" >
-            <div class="card-header">
-                Information utilisateur
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Pseudo</li>
-                <li class="list-group-item">Email</li>
-                <li class="list-group-item">Date d'inscription</li>
-            </ul>
-            </div>
-        </div>
+           
+<div class="container">
+<div class="row gutters">
+	<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+		<div class="card h-100">
+			<div class="card-body">
+				<div class="account-settings">
+					<div class="user-profile">
+						<div class="user-avatar">
+							<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Maxwell Admin">
+                            </p> Changer votre avatar </p>
+						</div>
+						<h4 class="user-name">User Pseudo</h4>
+						<h5 class="user-email">Inscrit depuis le ...</h5>
+					</div>
+					<div class="about">
+						<h6 class="mb-2 text-primary">Vous avez 'nombre-playlists' playlist(s).</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+		<div class="card h-100">
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<h6 class="mb-3 text-primary">Vos informations</h6>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="nom">Nom</label>
+							<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+						</div>
+                        <div class="form-group">
+							<label for="prenom">Prénom</label>
+							<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+						</div>
+					</div>
+				</div>
+				<div class="row gutters">
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="eMail">Email</label>
+							<input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
+						</div>
+					</div>
+				</div>
+				<div class="row gutters">
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="text-right">
+							<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+							<button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
         
         <div class="col-12 col-sm-3 offset-1" id="B2">
         <button type="button" class="btn btn-primary modify-account" style:"margin : 2% 0;">Modifier compte</button>    
@@ -61,13 +88,11 @@
 
 </div>
 
-<hr>
 
 <div class="row h-25" id="bottom-body">
     <div class="col-11" id="A" style="margin-left : 2%">
         <a href="/myPlaylist/create" class="btn btn-info" role="button">Créer playlist</a> 
     </div>
-    <hr>
     <div class="col-12" id="B">
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
