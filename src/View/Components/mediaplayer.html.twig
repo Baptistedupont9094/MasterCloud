@@ -1,47 +1,43 @@
 {% block footer %}
 
 
-{# Variable avec id du lien youtube, à changer avec BDD #}
+{# Tableau des musiques de la playlist #}
 
-{% set videoid = 'NUYvbT6vTPs' %}
-<div data-id="{{ videoid }}" id="videoid"></div>
+{% for key, musique in listeMusiques %}
+  <div class='hiddenVideoID' data-id="{{ musique.source }}" id="videoid{{key}}"></div>
+{% endfor %}
 
     <footer>
 
 			<div class="d-none" id="video-placeholder"></div>
 			<div class='media-controls p-4 pb-0'>
-			<div class='media-progress'>
-				<input type="range" id="progress-bar" class='mediaplayer-bar' value="0">
-				<p><span id="current-time">0:00</span> / <span id="duration">0:00</span></p>
-			</div>
-			<div class='media-buttons row'>
-			<div class='col-1 col-lg-2' style="display: block; margin: auto;">
-				<input id="volume-input" type="range" max="100" min="0">
-			</div>
-
-			<div class="col-1 offset-1 offset-lg-2">
-				<button id="prev" class='back-button media-button' label='back'>
-				<i class='fas fa-step-backward button-icons'></i>
-				</button>
-			</div>
-
-			<div class="col-1 offset-1">
-				<div class="box">
+				<div class='media-progress'>
+					<input type="range" id="progress-bar" class='mediaplayer-bar' value="0">
+					<p><span id="current-time">0:00</span> / <span id="duration">0:00</span></p>
 				</div>
-			</div>
-			<div class="col-1 offset-1">
-				<button class='skip-button media-button' label='skip'>
-				<i id="next" class='fas fa-step-forward button-icons'></i>
-				</button>
-			</div>
+				<div class='media-buttons row'>
+				<div class='col-1 col-lg-2' style="display: block; margin: auto;">
+					<input id="volume-input" type="range" max="100" min="0">
+				</div>
 
-			<div class="offset-4"></div>
+				<div class="col-1 offset-1 offset-lg-2">
+					<button id="prev" class='back-button media-button' label='back'>
+					<i class='fas fa-step-backward button-icons'></i>
+					</button>
+				</div>
 
-
-				
-				
+				<div class="col-1 offset-1">
+					<div class="box">
+					</div>
+				</div>
+				<div class="col-1 offset-1">
+					<button id="next" class='skip-button media-button' label='skip'>
+					<i class='fas fa-step-forward button-icons'></i>
+					</button>
+				</div>
+				<div class="offset-4"></div>				
 			
-			</div>
+				</div>
 			</div>
 
 </footer>
