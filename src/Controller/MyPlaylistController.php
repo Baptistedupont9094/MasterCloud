@@ -70,7 +70,6 @@ class MyPlaylistController extends AbstractController
                 //on récupère le chemin du fichier pour le garder en dehors du scope
                 $_SESSION['file'] = $filePath;
                 $playlistManager = new PlaylistManager();
-
                 $playlistManager->insert([
                     'nom' => trim($_POST['nom-playlist']),
                     'image' => trim($filePath),
@@ -86,7 +85,7 @@ class MyPlaylistController extends AbstractController
                 return $this->twig->render('MyPlaylist/create.html.twig', ['errors' => $errors]);
             }
         }
-        return $this->twig->render('MyPlaylist/create.html.twig', );
+        return $this->twig->render('MyPlaylist/create.html.twig');
     }
 
     public function show($id)
