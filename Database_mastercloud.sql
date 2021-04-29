@@ -15,14 +15,16 @@ CREATE TABLE `utilisateur`(
 	`mot_de_passe` VARCHAR(255) NOT NULL,
 	`image` VARCHAR(255),
 	`est_connecte` BOOLEAN,
-	PRIMARY KEY(`id`));
+	PRIMARY KEY(`id`)
+	);
 
 CREATE TABLE `playlist`(
 	`id`INT NOT NULL AUTO_INCREMENT,
 	`nom` VARCHAR(255) NOT NULL,
 	`image` VARCHAR(255) NOT NULL,
 	`est_privee` BOOLEAN,
-	`nombre_likes` INT,
+	`nombre_likes` INT NOT NULL DEFAULT 0,
+	`nombre_dislikes` INT NOT NULL DEFAULT 0,
 	`utilisateur_id` INT NOT NULL,	
 	PRIMARY KEY(`id`),
 	FOREIGN KEY(`utilisateur_id`) REFERENCES `utilisateur`(`id`)
@@ -34,8 +36,6 @@ CREATE TABLE `musique`(
 	`artiste` VARCHAR(255) NOT NULL,
 	`album` VARCHAR(255) NOT NULL,
 	`genre` VARCHAR(255) NOT NULL,
-	`nombre_likes` INT,
-	`nombre_dislikes` INT,
 	`image` VARCHAR(255) NOT NULL,	
 	`source` VARCHAR(255) NOT NULL,
 	`playlist_id` INT NOT NULL,	
@@ -43,14 +43,17 @@ CREATE TABLE `musique`(
 	FOREIGN KEY(`playlist_id`) REFERENCES `playlist`(`id`) ON DELETE CASCADE
 	);
 
-CREATE TABLE `votes` (
+CREATE TABLE `votes`(
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`playlist_id` INT NOT NULL,
+	`playlist_id` INT,
 	`ref` VARCHAR(50) NOT NULL,
 	`utilisateur_id` INT NOT NULL,
 	`vote` INT NOT NULL,
 	`created_at` DATETIME,
-)
+	PRIMARY KEY(`id`),
+	FOREIGN KEY(`utilisateur_id`) REFERENCES `utilisateur`(`id`),
+	FOREIGN KEY(`playlist_id`) REFERENCES `playlist`(`id`)
+);
 
 
 -- CREATE TABLE `commentaire`(

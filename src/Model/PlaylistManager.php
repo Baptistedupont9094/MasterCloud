@@ -62,4 +62,21 @@ class PlaylistManager extends AbstractManager
 
         return $this->pdo->query($query)->fetch();
     }
+
+    public function selectAllVotes(int $playlistId)
+    {
+        $query = 'SELECT nombre_likes, nombre_dislikes FROM ' . static::TABLE . ' WHERE id=' . $playlistId . ';';
+
+        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function likes()
+    {
+        $query = 'UPDATE' . static::TABLE . 'SET nombre_likes = nombre_likes+1';
+    }
+
+    public function dislikes()
+    {
+        $query = 'UPDATE' . static::TABLE . 'SET nombre_dislikes = nombre_dislikes+1';
+    }
 }

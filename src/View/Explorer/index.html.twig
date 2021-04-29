@@ -5,33 +5,31 @@
 
 {% block content %}
     <div class="col-12">
-        <h1> Explorer </h1>       
+        <h1> Explorer </h1>    
+
         {# Test boucle pour rendu thumbnails de playlist #}
-         <div class="row search-result">
-            {% if resultArray %}
-                {% for playlist in resultArray %}
-                    <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
-                        <img src="/{{ playlist.image }}"  class="card-img">
-                    </div>
-                {% endfor %}
-            {% else %}
-                {% for i in 0..50 %}
-            <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
-                <img src="https://picsum.photos/300/200"  class="card-img">
-                <div class="vote">
+         <div class="row">
+            {% for playlist in playlistTableau %}
+                <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
+                    <img src="/{{playlist.image}}" class="card-img">
 
-                    <div class="vote_bar">
-                        <div class="vote_progress"></div>
+                    <div>
+                        {{playlist.nom}}
                     </div>
+                    
+                    <div class="vote">
 
-                    <div class="vote_btns">
-                        <button class="vote_btn vote_like"><i class="bi bi-hand-thumbs-up-fill"></i> 154</button>
-                        <button class="vote_btn vote_dislike"><i class="bi bi-hand-thumbs-down-fill"></i> 2</button>
+                        <div class="vote_bar">
+                            <div class="vote_progress"></div>
+                        </div>
+
+                        <div class="vote_btns">
+                            <button class="vote_btn vote_like"><i class="bi bi-hand-thumbs-up-fill"></i> {{playlist.nombre_likes}} </button>
+                            <button class="vote_btn vote_dislike"><i class="bi bi-hand-thumbs-down-fill"></i> {{playlist.nombre_dislikes}} </button>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-        {% endfor %}
-        {% endif %}
+            {% endfor %}
         </div>
 {% endblock %}
