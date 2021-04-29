@@ -72,11 +72,15 @@ class PlaylistManager extends AbstractManager
 
     public function likes()
     {
-        $query = 'UPDATE' . static::TABLE . 'SET nombre_likes = nombre_likes+1';
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET 'nombre_likes' = :nombre_likes+1 WHERE id=:id");
+        return $statement->execute();
     }
 
     public function dislikes()
     {
-        $query = 'UPDATE' . static::TABLE . 'SET nombre_dislikes = nombre_dislikes+1';
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET 'nombre_dislikes' = :nombre_dislikes+1 WHERE id=:id");
+        return $statement->execute();
     }
 }

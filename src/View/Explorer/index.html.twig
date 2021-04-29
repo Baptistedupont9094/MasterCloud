@@ -18,16 +18,22 @@
                     </div>
                     
                     <div class="vote">
-
                         <div class="vote_bar">
-                            <div class="vote_progress"></div>
+                            <div class="vote_progress" style="width:{{(playlist.nombre_likes + playlist.nombre_dislikes) == 0 ? 100 : (100 * (playlist.nombre_likes/(playlist.nombre_likes + playlist.nombre_dislikes)))}}%"></div>
                         </div>
 
-                        <div class="vote_btns">
-                            <button class="vote_btn vote_like"><i class="bi bi-hand-thumbs-up-fill"></i> {{playlist.nombre_likes}} </button>
-                            <button class="vote_btn vote_dislike"><i class="bi bi-hand-thumbs-down-fill"></i> {{playlist.nombre_dislikes}} </button>
-                        </div>
+                        <div class="vote">
 
+                            <div class="vote_bar">
+                                <div class="vote_progress"></div>
+                            </div>
+
+                            <div class="vote_btns">
+                                <button class="vote_btn vote_like"><i class="bi bi-hand-thumbs-up-fill"></i> {{playlist.nombre_likes}} </button>
+                                <button class="vote_btn vote_dislike"><i class="bi bi-hand-thumbs-down-fill"></i> {{playlist.nombre_dislikes}} </button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             {% endfor %}
