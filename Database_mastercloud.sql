@@ -32,7 +32,7 @@ CREATE TABLE `musique`(
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`nom` VARCHAR(255) NOT NULL,
 	`artiste` VARCHAR(255) NOT NULL,
-	`album` VARCHAR(255) NOT NULL,git 
+	`album` VARCHAR(255) NOT NULL,
 	`genre` VARCHAR(255) NOT NULL,
 	`nombre_likes` INT,
 	`image` VARCHAR(255) NOT NULL,	
