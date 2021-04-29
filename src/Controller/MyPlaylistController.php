@@ -25,7 +25,6 @@ class MyPlaylistController extends AbstractController
 
     public function create()
     {
-        session_start();
 
         if (!isset($_SESSION['user'])) {
                 header('location: /');
@@ -94,8 +93,6 @@ class MyPlaylistController extends AbstractController
 
     public function show($id)
     {
-        session_start();
-
         $id = (int)$_GET['id'];
         //conserve l'id, pour pouvoir revenir en arrière après
         //soumission de formulaire.
@@ -107,13 +104,11 @@ class MyPlaylistController extends AbstractController
         $musicManager = new MusicManager();
         $musics = $musicManager->selectAllMusicsbyPlaylistID($id);
 
-
         return $this->twig->render('MyPlaylist/show.html.twig', ['playlist' => $playlist, 'listeMusiques' => $musics]);
     }
 
     public function addmusic()
     {
-        session_start();
 
         $errors = [];
 
@@ -188,7 +183,6 @@ class MyPlaylistController extends AbstractController
 
     public function deletePlaylist($id)
     {
-        session_start();
 
         $playlistManager = new PlaylistManager();
 
@@ -201,7 +195,6 @@ class MyPlaylistController extends AbstractController
 
     public function deleteMusic($id)
     {
-        session_start();
 
         $musicManager = new MusicManager();
 
@@ -214,7 +207,6 @@ class MyPlaylistController extends AbstractController
 
     public function edit()
     {
-        session_start();
 
         $id = $_GET['id'];
 
@@ -264,12 +256,12 @@ class MyPlaylistController extends AbstractController
                 //on récupère le chemin du fichier pour le garder en dehors du scope
                 $_SESSION['file'] = $filePath;
                 $playlistManager = new PlaylistManager();
-                $playlistManager->insert([
-                    $playlistToEdit['nom'] => trim($_POST['nom-playlist']),
-                    $playlistToEdit['image'] => trim($filePath),
-                    //Si la playlist est privée, renvoie true (1 en SQL), sinon false (0)
-                    $playlistToEdit['est_privee'] => ($_POST['est-privee'] === 'privee' ? true : false),
-                    ]);
+                $playlistToEdit['nom'] = trim($_POST['nom-playlist']);
+                $playlistToEdit['image'] = trim($filePath);
+                //Si la playlist est privée, renvoie true (1 en SQL), sinon false (0)
+                $playlistToEdit['est_privee'] = ($_POST['est-privee'] === 'privee' ? true : false);
+
+                $playlistManager->update($playlistToEdit);
                 //Le fichier est uploadé dans le dossier /assets/upload/playlist
                 move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
