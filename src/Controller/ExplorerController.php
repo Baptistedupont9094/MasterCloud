@@ -23,7 +23,6 @@ class ExplorerController extends AbstractController
      */
     public function index()
     {
-        session_start();
 
         $searchManager = new SearchManager();
 

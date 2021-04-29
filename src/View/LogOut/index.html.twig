@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig'%}
+
+{% block navbar %}
+    {% include 'Components/navbar.html.twig'%}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card cardLogout text-white text-center mt-5">
+        <h5 class="card-title">Vous avez été <b>déconnecté</b> de votre compte <b>MasterCloud</b> </h5>
+        <p class="card-text">Redirection vers la <b>page d'accueil</b> dans 5 secondes...</p>
+    </div>
+</div>
+
+<script>setTimeout(() => document.location.href = "/", 5000)</script>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'Components/mediaplayer.html.twig'%}
+{% endblock %}
+
+

@@ -10,6 +10,7 @@
 
 namespace App\Controller;
 
+use App\Service\AuthService;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -34,6 +35,10 @@ abstract class AbstractController
                 'debug' => APP_DEV,
             ]
         );
+
         $this->twig->addExtension(new DebugExtension());
+        $authService = new AuthService();
+        $this->twig->addGlobal('is_logged', $authService->isLogged());
+        $this->twig->addGlobal('user', $authService->getUser());
     }
 }

@@ -1,31 +1,31 @@
 {% block navbar %}
-  <nav class="navbar navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/home/index">
-        <img src="/assets/images/logo.png" alt="logo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home/index">
+      <img src="/assets/images/logo.png" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-Explorer col-1">
-              <a class="nav-link" href= "/explorer/index">Explorer<span class="sr-only"></a>
+            <li class="nav-Explorer">
+              <a class="nav-link" href="/Explorer/index" >Explorer<span class="sr-only"></a>
             </li>
-            <li class="nav-login col-2">
-
-            {# Revoir cette partie avec Twig #}
-
-            <li class="nav-myAccount col-2">
+            {# Si l'utilisateur EST connecté, alors on affiche seulement les boutons suivants #}
+            {% if is_logged %}
+            <li class="nav-Login col-2">
               <a class="nav-link" href="/myAccount/index">Mon compte<span class="sr-only"></a>
             </li>
-            {# <li class="nav-myAccount col-2">
-              <a class="nav-link" href="#">Se déconnecter<span class="sr-only"></a>
-            </li> #}
             <li class="nav-Login col-7">
-              <a class="nav-link" href="/Login/index">S'inscrire<br>Se connecter</br><span class="sr-only"></a>
+              <a class="nav-link" href="/LogOut/index">Se déconnecter<span class="sr-only"></a>
             </li>
-
+            {# Si l'utilisateur N'EST PAS connecté, alors on affiche les boutons suivants #}
+            {% else %}  
+            <li class="nav-Login-1">
+              <a class="nav-link" href="/Login/index">S'inscrire | Se connecter<span class="sr-only"></a>
+            </li>
+            {% endif %}
         </div>
 
         {# Le deuxième collapse-navbar permet de placer la barre de recherche au centre #}
@@ -49,5 +49,6 @@
           </ul>
         </div>
       </div>
+    </div>
   </nav>
 {% endblock %}
