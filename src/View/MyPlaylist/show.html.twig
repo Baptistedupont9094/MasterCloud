@@ -27,7 +27,7 @@
         <div class="flex">
         {% if listeMusiques %}
             {# Fait apparaître le bouton play #}
-            <button class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</button>
+            <a onClick='player.playVideo()' class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</a>
           {% endif %}
             <a href="/myPlaylist/addmusic" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter une musique</a>
             <button class="mr-2 border border-white block p-2 rounded-full"><img src="https://image.flaticon.com/icons/svg/2485/2485986.svg" height="25" width="25"></button>
@@ -64,7 +64,7 @@
             <div class="p-3 w-full">{{ musique.nom }}</div>
             <div class="p-3 w-full">{{ musique.artiste }}</div>
             <div class="p-3 w-full">{{ musique.album }}</div>
-            <div class="p-3 w-full">2:20</div>
+            <div class="p-3 w-full"></div>
             <a href='/myPlaylist/deleteMusic/?id={{ musique.id}}'class="p-3 w-12 flex-shrink-0 text-right">
               <img src='https://img.icons8.com/nolan/344/delete-sign.png' height="40" width="40">
             </a>
@@ -74,8 +74,7 @@
         <p> Votre playlist est actuellement vide. Trouvez l'inspiration dans la section Explorer. </p>
     {% endif %}
   </div>
-</div>
+{% endblock %}
+{% block footer %}
     {% include 'Components/mediaplayer.html.twig'%}
-
-</div>
 {% endblock %}

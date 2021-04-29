@@ -10,8 +10,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // Récupère l'id du lien youtube
 // var. pas encore au point car on passe par l'id d'une div pour récupérer 
 // l'id du lien YT. A voir quand il y aura connexion vers BDD
+var keyMusicPlaylist = 0; 
 
-var lienVersYT = document.querySelector('#videoid').dataset.id;
+var idHTML = '#videoid' + keyMusicPlaylist;
+
+var lienVersYT = document.querySelector('#videoid0').dataset.id;
 
 //Player avec les fonctionnalités
 
@@ -27,9 +30,7 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             onReady: initialize,
-            onStateChange: function (event) {
-                //permet de récupérer l'état du player
-            }
+            onStateChange: onPlayerStateChange
         }
     });
 
@@ -70,7 +71,6 @@ function onYouTubeIframeAPIReady() {
         $('#progress-bar').val((player.getCurrentTime() / player.getDuration()) * 100);
     }
 
-
     // Progress bar
 
     $('#progress-bar').on('mouseup touchend', function (e) {
@@ -84,71 +84,86 @@ function onYouTubeIframeAPIReady() {
 
     });
 
+    //Bouton play/pause
 
-    // Playback
+    //permet d'animer le bouton play et d'actionner en même temps le player
 
-    $('#play').on('click', function () {
-        player.playVideo();
+    const box = document.querySelector('.box');
+    box.addEventListener('click', (e) => {
+            e.target.classList.toggle('pause');
+            const playButtonArr = box.classList;
+    
+            for (let classPlayButton of playButtonArr) {
+                if (classPlayButton === 'pause') {
+                    player.playVideo();
+                }
+                else {
+                    player.pauseVideo();
+                }
+            }
     });
 
+    //---------------------------------------------------------------------------------------------------------//
 
-    $('#pause').on('click', function () {
-        player.pauseVideo();
-    });
+    // Fonctions utiles pour passer à travers les vidéos.
+
+    function passToNextMusic()
+    {
+        var playlistMusiques = document.querySelectorAll(".hiddenVideoID");
+
+        if(keyMusicPlaylist < playlistMusiques.length)
+        {
+            ++keyMusicPlaylist;
+            idHTML = '#videoid' + keyMusicPlaylist;
+            lienVersYT = document.querySelector(idHTML).dataset.id;
+            player.loadVideoById(lienVersYT)
+            player.playVideo();
+        }
+    }
+
+    function backToPrevMusic()
+    {
+        if(keyMusicPlaylist >= 0)
+        {   
+            if(keyMusicPlaylist !== 0)
+            {            
+                --keyMusicPlaylist;
+            }
+            idHTML = '#videoid' + keyMusicPlaylist;
+            lienVersYT = document.querySelector(idHTML).dataset.id;
+            player.loadVideoById(lienVersYT)
+            player.playVideo();
+        }
+    }
+
+    //---------------------------------------------------------------------------------------------------------//
 
 
     // Sound volume
 
-
-    $('#mute-toggle').on('click', function () {
-        var mute_toggle = $(this);
-
-        if (player.isMuted()) {
-            player.unMute();
-            mute_toggle.text('volume_up');
-        }
-        else {
-            player.mute();
-            mute_toggle.text('volume_off');
-        }
-    });
 
     $('#volume-input').on('change', function () {
         player.setVolume($(this).val());
     });
 
 
-    // Other options
 
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+            passToNextMusic();
+        }
+      }
 
-    $('#speed').on('change', function () {
-        player.setPlaybackRate($(this).val());
+    // Bouton next
+
+    document.querySelector('#next').addEventListener('click', () => {
+        passToNextMusic();
     });
 
-    $('#quality').on('change', function () {
-        player.setPlaybackQuality($(this).val());
-    });
+    //Bouton prev
 
-
-    // Playlist
-
-    $('#next').on('click', function () {
-        player.nextVideo()
-    });
-
-    $('#prev').on('click', function () {
-        player.previousVideo()
-    });
-
-
-    // Load video
-
-    $('.thumbnail').on('click', function () {
-
-        var url = $(this).attr('data-video-id');
-
-        player.cueVideoById(url);
-
+        document.querySelector('#prev').addEventListener('click', () => {
+            backToPrevMusic();
     });
 
 
@@ -171,24 +186,6 @@ function onYouTubeIframeAPIReady() {
     });
 
     //--------------- FIN JS MEDIAPLAYER ------------------ //
-
-    //permet d'animer le bouton play et d'actionner en même temps le player
-
-    const box = document.querySelector('.box');
-    box.addEventListener('click', (e) => {
-        e.target.classList.toggle('pause');
-        const playButtonArr = box.classList;
-
-        for (let classPlayButton of playButtonArr) {
-            if (classPlayButton === 'pause') {
-                player.playVideo();
-            }
-            else {
-                player.pauseVideo();
-            }
-        }
-    });
-
 
 }
 

@@ -101,7 +101,6 @@ class MyPlaylistController extends AbstractController
         $musicManager = new MusicManager();
         $musics = $musicManager->selectAllMusicsbyPlaylistID($id);
 
-
         return $this->twig->render('MyPlaylist/show.html.twig', ['playlist' => $playlist, 'listeMusiques' => $musics]);
     }
 
@@ -252,12 +251,12 @@ class MyPlaylistController extends AbstractController
                 //on récupère le chemin du fichier pour le garder en dehors du scope
                 $_SESSION['file'] = $filePath;
                 $playlistManager = new PlaylistManager();
-                $playlistManager->insert([
-                    $playlistToEdit['nom'] => trim($_POST['nom-playlist']),
-                    $playlistToEdit['image'] => trim($filePath),
-                    //Si la playlist est privée, renvoie true (1 en SQL), sinon false (0)
-                    $playlistToEdit['est_privee'] => ($_POST['est-privee'] === 'privee' ? true : false),
-                    ]);
+                $playlistToEdit['nom'] = trim($_POST['nom-playlist']);
+                $playlistToEdit['image'] = trim($filePath);
+                //Si la playlist est privée, renvoie true (1 en SQL), sinon false (0)
+                $playlistToEdit['est_privee'] = ($_POST['est-privee'] === 'privee' ? true : false);
+
+                $playlistManager->update($playlistToEdit);
                 //Le fichier est uploadé dans le dossier /assets/upload/playlist
                 move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
