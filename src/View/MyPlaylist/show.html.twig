@@ -79,12 +79,19 @@
 <div class="containingPlaylistId" value="{{ playlist.id }}" ></div>
 
 <script>
-const playlistId = document.querySelector('.containingPlaylistId').getAttribute("value");
+    //---------------------------------------------------------------------------------------------------------//
 
-const pathToPlayer = '/mediaplayer/playing/?id=' + playlistId;
+    // Permet d'envoyer à partir d'une page playlist/show une fenêtre ouvrant le mediaplayer
 
-document.querySelector('#loadmediaplayer').addEventListener('click', function(){
-  window.open(pathToPlayer, 'Mediaplayer', "height=228,width=1500,titlebar=no");
-});
+    const playlistId = document.querySelector('.containingPlaylistId').getAttribute("value");
+
+    const pathToPlayer = '/mediaplayer/playing/?id=' + playlistId;
+
+    document.querySelector('#loadmediaplayer').addEventListener('click', function(){
+    window.open(pathToPlayer, 'Mediaplayer', "height=228,width=1500,titlebar=no");
+    });
+
+
+    //---------------------------------------------------------------------------------------------------------//
 </script>
 {% endblock %}
