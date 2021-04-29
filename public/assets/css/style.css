@@ -152,6 +152,14 @@ background-color: none;
   background-size: cover;
 } */
 
+.accueil {
+  text-align: center;
+}
+
+.form-group {
+  color:#ccc;
+}
+
 #top-body
 {
   height: 60vh;
@@ -188,6 +196,7 @@ background-color: none;
   .account-settings .user-profile .user-avatar img {
       width: 90px;
       height: 90px;
+      margin: 0 auto;
       -webkit-border-radius: 100px;
       -moz-border-radius: 100px;
       border-radius: 100px;
@@ -542,8 +551,9 @@ h3{
 
 /*----------------- DEBUT Fichier Logout---------------*/
 
-h5 p {
+h4, h5, p {
   color:#ccc;
+  margin: 1em;
 }
 
 .cardLogout {

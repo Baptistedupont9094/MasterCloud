@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\PlaylistManager;
+use App\Model\UserManager;
 
 class MyAccountController extends AbstractController
 {

@@ -14,8 +14,10 @@
 
 
 {% block content %}
-    <h1>Bonjour {{user.nom}}.</h1>
+<div class="accueil">
+    <h1>Bonjour <b>{{user.nom}}</b>.</h1>
     <p> Ravi de vous voir !</p>
+</div>
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
            
@@ -27,11 +29,11 @@
 				<div class="account-settings">
 					<div class="user-profile">
 						<div class="user-avatar">
-							<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Maxwell Admin">
-                            </p> Changer votre avatar </p>
+							<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar-user">
+                             <a class="updateUserImage" href="#" ><p>Changer votre avatar</p></a>
 						</div>
-						<h4 class="user-name">{{user.nom}}</h4>
-						<h5 class="user-email">Inscrit depuis le ...</h5>
+						<h4 class="user-name"><b>{{user.nom}}</b></h4>
+						<h5 class="user-email">Inscrit(e) depuis le ...</h5>
 					</div>
 					<div class="about">
 						<h6 class="mb-2 text-primary">
@@ -52,11 +54,11 @@
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
 							<label for="nom">Nom</label>
-							<input type="text" class="form-control" id="fullName" placeholder="<nom récupéré de la BDD>">
+							<input type="text" class="form-control" id="fullName" placeholder="Entrez un nouveau nom">
 						</div>
                         <div class="form-group">
 							<label for="prenom">Prénom</label>
-							<input type="text" class="form-control" id="fullName" placeholder="<prenom récupéré de la BDD<">
+							<input type="text" class="form-control" id="fullName" placeholder="Entrez un nouveau prénom">
 						</div>
 					</div>
 				</div>
@@ -64,35 +66,39 @@
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
 							<label for="eMail">Email</label>
-							<input type="email" class="form-control" id="eMail" placeholder="<Email récupéré de la BDD>">
+							<input type="email" class="form-control" id="eMail" placeholder="Entre un nouvel email">
 						</div>
 					</div>
 				</div>
 				<div class="row gutters">
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="text-right">
-							<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-							<button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+							<button type="button" id="submit" name="submit" class="btn btn-secondary">Annuler</button>
+							<button type="button" id="submit" name="submit" class="btn btn-primary">Modifier</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-    <div class="col-12 col-sm-3 offset-1" id="B2">
-        <button type="button" class="btn btn-primary modify-account" style:"margin : 2% 0;">Modifier compte</button>    
-    </div>
     <div class="row h-25" id="bottom-body">
-        <div class="col-11" id="A" style="margin-left : 2%">
-            <a href="/myPlaylist/create" class="btn btn-info" role="button">Créer playlist</a> 
-        </div>
-    {# div réservée pour le mediaplayer - A NE PAS SUPPRIMER #}
+{# div réservée pour le mediaplayer - A NE PAS SUPPRIMER #}
 {# <div class="col-12" id="B"> #}
 </div>
 </div>
 
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
+<div class="accueil">
+    <h4> Vos playlists
+        <a href="/myPlaylist/create" class="btn btn-info" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </a>
+    </h4>
+</div>
 
 
         {% if playlistsTwig %}
@@ -115,8 +121,9 @@
       </div>
     </div>
         {% else %}
-
-        <p style='color : white;'> Aucune playlist existante </p>
+        <div class="accueil">
+            <p> Ajoutez votre première playlist ! </p>
+        </div>
         {% endif %}
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
