@@ -44,7 +44,6 @@ class MyPlaylistController extends AbstractController
             $dirPath = 'assets/upload/playlist/';
 
             $arrExtensionsOK = ['jpg','webp','png'];
-
             $extension = pathinfo($_FILES['image-playlist']['name'], PATHINFO_EXTENSION);
 
         //----------------------------------------------------------------------------//
@@ -87,7 +86,7 @@ class MyPlaylistController extends AbstractController
                 return $this->twig->render('MyPlaylist/create.html.twig', ['errors' => $errors]);
             }
         }
-        return $this->twig->render('MyPlaylist/create.html.twig');
+        return $this->twig->render('MyPlaylist/create.html.twig', );
     }
 
     public function show($id)

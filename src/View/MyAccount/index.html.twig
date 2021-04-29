@@ -29,11 +29,10 @@
 				<div class="account-settings">
 					<div class="user-profile">
 						<div class="user-avatar">
-							<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar-user">
+							<img src="https://i.pravatar.cc/300" alt="avatar-user">
                              <a class="updateUserImage" href="#" ><p>Changer votre avatar</p></a>
 						</div>
 						<h4 class="user-name"><b>{{user.nom}}</b></h4>
-						<h5 class="user-email">Inscrit(e) depuis le ...</h5>
 					</div>
 					<div class="about">
 						<h6 class="mb-2 text-primary">
@@ -44,39 +43,27 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+	<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
 		<div class="card h-100">
 			<div class="card-body">
 				<div class="row gutters">
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-						<h6 class="mb-3 text-primary">Vos informations</h6>
+						<h6 class="mb-4 text-primary">Vos informations</h6>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
-							<label for="nom">Nom</label>
-							<input type="text" class="form-control" id="fullName" placeholder="Entrez un nouveau nom">
-						</div>
-                        <div class="form-group">
-							<label for="prenom">Prénom</label>
-							<input type="text" class="form-control" id="fullName" placeholder="Entrez un nouveau prénom">
+							<label for="nom"><b>Votre nom</b> : {{user.nom}}</label>
 						</div>
 					</div>
 				</div>
 				<div class="row gutters">
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
-							<label for="eMail">Email</label>
-							<input type="email" class="form-control" id="eMail" placeholder="Entre un nouvel email">
+							<label for="eMail"><b>Votre e-mail</b> : {{user.email}}</label>
 						</div>
 					</div>
 				</div>
 				<div class="row gutters">
-					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-						<div class="text-right">
-							<button type="button" id="submit" name="submit" class="btn btn-secondary">Annuler</button>
-							<button type="button" id="submit" name="submit" class="btn btn-primary">Modifier</button>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
