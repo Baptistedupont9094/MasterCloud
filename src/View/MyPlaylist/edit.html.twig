@@ -11,26 +11,23 @@
     {% endfor %}
 {% endif %}
 
-<div class="card" style="width: 25rem;">
+<div class="card card-columns mx-auto" style="width: 25rem;">
     <div class="card-body">
-        <form class="form-group" action='/myPlaylist/edit/?id={{ playlist.id }}' method='post' enctype="multipart/form-data">
+        <form class="form-group" action='/myPlaylist/create' method='post' enctype="multipart/form-data">
             
             <div class="col">
-                <input class="form-control" type="text" id='nom-playlist' name="nom-playlist" placeholder="{{ playlist.nom}}" value="{{ playlist.nom}}" required>
+                <input class="form-control" type="text" id='nom-playlist' name="nom-playlist" placeholder="Nouveau nom de votre playlist" required>
             </div>
 
             <div class="input-group col mt-4 mb-4">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Image playlist</span>
-                </div>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="image-playlist" name="image-playlist" aria-describedby="inputGroupFileAddon01" required>
-                    <label class="custom-file-label" for="image-playlist">Nouvelle image</label>
+                    <label for="exampleFormControlFile1"></label>
+                    <input type="file" class="form-control-file" name="image-playlist" id="exampleFormControlFile1">
                 </div>
             </div>
 
             <div class="col mt-2">
-                <p>Souhaitez-vous que la playlist soit privée ou publique ?<p>
+                <p><b>Visibilité de votre playlist pour la communauté MasterCloud</b></p>
             </div>
             <div class="form-check mb-2 mr-sm-2">
                 <label class="col-6 form-check-label" for="privee">Privée</label>
@@ -38,11 +35,11 @@
             </div>
 
             <div class="form-check mb-2 mr-sm-2">
-                <label class="col-6 form-check-label" for="publique"> Publique</label>
+                <label class="col-6 form-check-label" for="publique">Publique</label>
                 <input class="col-1 form-check-input" type="radio" id="publique" name="est-privee" value="publique" required>
             </div>
 
-            <button name="envoyer" class="col btn btn-info mt-4 mb-2">Envoyer</button>
+            <button name="envoyer" class="col btn btn-info mt-4 mb-2">Modifier</button>
         </form>
     </div>
 </div>

@@ -20,7 +20,7 @@
       <h4 class="mt-0 mb-2 uppercase text-gray-500 tracking-widest text-xs">Playlist</h4>
       <h1 class="mt-0 mb-2 text-white text-4xl">{{ playlist.nom }}</h1>
       
-      <p class="text-gray-600 text-sm">Crée par <a>Utilisateur</a> - NB songs, 3 hr 2 min</p>
+      <p class="text-gray-600 text-sm">Crée par <a><b>{{user.nom}}</b></a> - NB songs </p>
     </div>
   </div>
     <div class="mt-6 flex justify-between">
@@ -30,15 +30,15 @@
             {# href="/mediaPlayer/index/?id={{ playlist.id}}&loadmediaplayer=ok" #}
             <a id="loadmediaplayer" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</a>
           {% endif %}
-            <a href="/myPlaylist/addmusic" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter musique</a>
+            <a href="/myPlaylist/addmusic" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter une musique</a>
             <button class="mr-2 border border-white block p-2 rounded-full"><img src="https://image.flaticon.com/icons/svg/2485/2485986.svg" height="25" width="25"></button>
             <div class="btn-group dropup">
               <button type="button" class="mr-2 border border-white block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ...
               </button>
               <div class="dropdown-menu bg-dark">
-                <a class="dropdown-item" href="/myPlaylist/edit/?id={{ playlist.id}}">Modifier playlist</a>
-                <a class="dropdown-item" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer playlist</a>
+                <a class="dropdown-item" href="/myPlaylist/edit/?id={{ playlist.id}}">Modifier</a>
+                <a class="dropdown-item" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Partager</a>
               </div>
@@ -72,7 +72,7 @@
            </div>
         {% endfor %}
     {% else %}
-        <p> Ta playlist est bien vide, tu peux ajouter des musiques </p>
+        <p> Votre playlist est actuellement vide. Trouvez l'inspiration dans la section Explorer. </p>
     {% endif %}
   </div>
 
