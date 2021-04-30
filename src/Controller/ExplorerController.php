@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Model\SearchManager;
 use App\Model\PlaylistManager;
+use App\Model\VoteManager;
 
 class ExplorerController extends AbstractController
 {
