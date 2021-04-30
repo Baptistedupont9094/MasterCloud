@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\Model\PlaylistManager;
 use App\Model\MusicManager;
 use App\Service\ValidationService;
+use App\Model\VoteManager;
 
 class MyPlaylistController extends AbstractController
 {
@@ -260,7 +261,7 @@ class MyPlaylistController extends AbstractController
             die();
         }
 
-        $vote = new Vote($pdo);
+        $vote = new VoteManager($pdo);
         if ($_GET['vote'] == 1) {
             $vote->like('playlist', $_GET['playlist_id'], $_SESSION['utilisateur_id']);
         } else {

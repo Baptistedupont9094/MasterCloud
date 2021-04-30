@@ -68,7 +68,8 @@ class PlaylistManager extends AbstractManager
         if (isset($_SESSION['utilisateur_id'])) {
             $vote = false;
 
-            $req = $pdo->prepare('SELECT * FROM ' . static::TABLE . ' WHERE ref = ' . $ref . 'AND id= ' . $playlistId . 'AND utilisateur_id = ' . $utilisateurId);
+            $req = $pdo->prepare('SELECT * FROM ' . static::TABLE . ' WHERE ref = '
+            . $ref . 'AND id= ' . $playlistId . 'AND utilisateur_id = ' . $utilisateurId);
             $req->execute(['playlist', $_GET['id'], $_SESSION['utilisateur_id']]);
             $vote = $req->fetch();
         }

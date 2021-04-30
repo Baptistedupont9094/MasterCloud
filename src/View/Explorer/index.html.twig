@@ -13,26 +13,29 @@
                 <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
                     <img src="/{{playlist.image}}" class="card-img">
 
-                    <div>
+                    <div class="text-center text-white">
                         {{playlist.nom}}
                     </div>
 
+                    <div class="text-center text-white">
+                        Créé par: {{utilisateurs.nom}}
+                    </div>
+                    
                     <div class="vote {#{{Vote::getClass(vote)}}#}">
 
                         <div class="vote_bar">
                             <div class="vote_progress" style="width:{{(playlist.nombre_likes + playlist.nombre_dislikes) == 0 ? 100 : (100 * (playlist.nombre_likes/(playlist.nombre_likes + playlist.nombre_dislikes)))}}%"></div>
                         </div>
 
-                        <div class="vote_btns">
+                        <div class="vote {#{{Vote::getClass(vote)}}#}">
 
                             <form method="POST">
-                                <button type="submit" class="vote_btn vote_like"><i class="bi bi-hand-thumbs-up-fill"></i> {{playlist.nombre_likes}} </button>
+                                <button type="submit" class="vote_btn vote_like"><i class="bi bi-hand-thumbs-up"></i> {{playlist.nombre_likes}} </button>
                             </form>
 
                             <form method="POST">
-                                <button type="submit" class="vote_btn vote_dislike"><i class="bi bi-hand-thumbs-down-fill"></i> {{playlist.nombre_dislikes}} </button>
+                                <button type="submit" class="vote_btn vote_dislike"><i class="bi bi-hand-thumbs-down"></i> {{playlist.nombre_dislikes}} </button>
                             </form>
-
                         </div>
                     </div>
                 </div>
