@@ -7,5 +7,7 @@ db.php
 node_modules
 upload/musique/*
 !.gitkeep
-upload/playlist/*
 !.gitkeep
+
+# Images uploadées
+/public/assets/upload/

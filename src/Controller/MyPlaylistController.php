@@ -107,74 +107,78 @@ class MyPlaylistController extends AbstractController
     public function addmusic()
     {
         $errors = [];
+        $music = $_POST;
+        $music['playlist_id'] = isset($_REQUEST['playlist_id']) ? $_REQUEST['playlist_id'] : "";
+
+        if (empty($music['playlist_id'])) {
+            header('Location: /home');
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //const, idéal pour modif la taille sans changer chaque ligne
-            define('MAX_SIZE_FILE', 1000000);
+            $queriesFromYT = [];
+            parse_str(parse_url(isset($music['source']) ? $music['source'] : '', PHP_URL_QUERY), $queriesFromYT);
+            $music['source'] = $queriesFromYT['v'];
 
-        //----------------------------------------------------------------------------//
+            if (
+                empty($music['nom']) || 
+                empty($music['artiste']) || 
+                empty($music['album']) || 
+                empty($music['genre']) || 
+                empty($music['source'])
+            ) {
+                $errors[] = 'Vous devez remplir tous les champs';
+            } else {
+                //const, idéal pour modif la taille sans changer chaque ligne
+                define('MAX_SIZE_FILE', 1000000);
 
-            //récup. le chemin du dossier pour y stocker les fichiers uploadés
-            //puis crée un tableau avec les seuls formats autorisés
-            //+ récup. l'extension du fichier pour test à venir.
-            $dirPath = 'assets/upload/musique/';
+                //----------------------------------------------------------------------------//
+                //récup. le chemin du dossier pour y stocker les fichiers uploadés
+                //puis crée un tableau avec les seuls formats autorisés
+                //+ récup. l'extension du fichier pour test à venir.
+                $dirPath = 'assets/upload/musique/';
+                $arrExtensionsOK = ['jpg','webp','png'];
+                $extension = pathinfo($_FILES['image-musique']['name'], PATHINFO_EXTENSION);
 
-            $arrExtensionsOK = ['jpg','webp','png'];
+                //----------------------------------------------------------------------------//
+                //var qui contient le futur chemin du fichier à uploader
+                $filePath = $dirPath . uniqid() . ".$extension";
 
-            $extension = pathinfo($_FILES['image-musique']['name'], PATHINFO_EXTENSION);
+                //premier test : voir si l'extension du fichier est correct
+                if (!in_array($extension, $arrExtensionsOK)) {
+                    array_push($errors, 'Veuillez sélectionner un fichier au bon format(jpg, png, webp).');
+                }
 
-        //----------------------------------------------------------------------------//
+                //deuxième test: voir si la taille ne dépasse pas la taille max. autorisée
+                if (file_exists($_FILES['image-musique']['tmp_name'])) {
+                    if (filesize($_FILES['image-musique']['tmp_name']) > MAX_SIZE_FILE) {
+                        array_push($errors, 'Votre fichier dépasse la taille maximale (1Mo).');
+                    }
+                }
 
+                //Récupère en chaîne de caractères le nom de l'host,
+                //nécéssaire pour des test plus tard
+                if (parse_url($_POST['source'], PHP_URL_HOST) !== 'www.youtube.com') {
+                    array_push($errors, "Ceci n'est pas un lien Youtube, veuillez réessayez.");
+                }
 
-            //var qui contient le futur chemin du fichier à uploader
-            $filePath = $dirPath . uniqid() . ".$extension";
+                if (empty($errors)) {
+                    $music['image'] = $filePath;
 
-            //premier test : voir si l'extension du fichier est correct
-            if (!in_array($extension, $arrExtensionsOK)) {
-                array_push($errors, 'Veuillez sélectionner un fichier au bon format(jpg, png, webp).');
-            }
+                    $musicManager = new MusicManager();
+                    $musicManager->insert($music);
 
-            //deuxième test: voir si la taille ne dépasse pas la taille max. autorisée
-            if (file_exists($_FILES['image-musique']['tmp_name'])) {
-                if (filesize($_FILES['image-musique']['tmp_name']) > MAX_SIZE_FILE) {
-                    array_push($errors, 'Votre fichier dépasse la taille maximale (1Mo).');
+                    //Le fichier est uploadé dans le dossier /assets/upload/playlist
+                    move_uploaded_file($_FILES['image-musique']['tmp_name'], $filePath);
+
+                    header('Location: /myPlaylist/show/?id=' . $music['playlist_id']);
                 }
             }
-
-            //Récupère en chaîne de caractères le nom de l'host,
-            //nécéssaire pour des test plus tard
-            $urlHost = parse_url($_POST['url'], PHP_URL_HOST);
-
-
-            if ($urlHost !== 'www.youtube.com') {
-                array_push($errors, "Ceci n'est pas un lien Youtube, veuillez réessayez.");
-            }
-
-            if (empty($errors)) {
-                $queriesFromYT = [];
-                //Récupère dans un tableau les query string de l'url Youtube
-                parse_str(parse_url($_POST['url'], PHP_URL_QUERY), $queriesFromYT);
-
-                $musicManager = new MusicManager();
-                $musicManager->insert(
-                    [
-                        'nom' => trim($_POST['nom-musique']),
-                        'artiste' => trim($_POST['artiste']),
-                        'album' => trim($_POST['album']),
-                        'genre' => trim($_POST['genre']),
-                        'image' => trim($filePath),
-                        'source' => trim($queriesFromYT['v']),
-                        'playlist_id' => $_SESSION['id-playlist']
-                    ]
-                );
-                //Le fichier est uploadé dans le dossier /assets/upload/playlist
-                move_uploaded_file($_FILES['image-musique']['tmp_name'], $filePath);
-                header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
-            } else {
-                return $this->twig->render('MyPlaylist/addmusic.html.twig', ['errors' => $errors]);
-            }
         }
-        return $this->twig->render('MyPlaylist/addmusic.html.twig');
+
+        return $this->twig->render('MyPlaylist/addmusic.html.twig',  [
+            'music' => $music,
+            'errors' => $errors
+        ]);
     }
 
     public function deletePlaylist($id)

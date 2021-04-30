@@ -26,8 +26,8 @@ class LoginController extends AbstractController
         if (isset($_SESSION["user"])) {
             header('Location: /explorer/index');
         }
-        define('EMAIL', 'pe_capel_show@gmail.com');
-        define('PASSWORD', 'test');
+        
+        $error = '';
 
         if (!empty($_POST)) {
             $email = $_POST['email'];
@@ -35,13 +35,18 @@ class LoginController extends AbstractController
             $userManager = new UserManager();
             $emailArray = $userManager->selectOneByEmail($email);
 
-            if ($email === $emailArray['email'] && password_verify($password, $emailArray['mot_de_passe'])) {
+            if (!empty($emailArray) && $email === $emailArray['email'] && password_verify($password, $emailArray['mot_de_passe'])) {
                 $emailArray['est_connecte'] = true;
                 $_SESSION['user'] = $emailArray;
                 header('Location: /explorer/index');
+            } else {
+                $error = 'Identifiants incorrects';
             }
         }
-        return $this->twig->render('Login/index.html.twig');
+
+        return $this->twig->render('Login/index.html.twig', [
+            'error' => $error,
+        ]);
     }
     public function register()
     {

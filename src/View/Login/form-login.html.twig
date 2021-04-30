@@ -1,16 +1,17 @@
-{% block content %}
-
-
-
-
 {# Formulaire de base pour s'inscrire et se connecter #}
 
     {# Formulaire "d'accueil" pour s'inscrire ou se connecter #}
 
     <div id="logreg-forms">
         <form class="form-signin" method = 'POST' action ="">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Bienvenue sur MasterCloud
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">
+                Bienvenue sur MasterCloud
             </h1>
+
+            {% if error is not empty %}
+                <p class="text-danger text-center">{{ error }}</p>
+            {% endif %}
+
             <div class="social-login">
                 <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i></span> </button>
                 <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i></span> </button>
@@ -36,10 +37,10 @@
                 
                 <p style="text-align:center">OU</p>
 
-                <input type="text" id="user-name" class="form-control" placeholder="Nom" required="" autofocus="" name='user'>
-                <input type="email" id="user-email" class="form-control" placeholder="Adresse email" required autofocus="" name='email'>
-                <input type="password" id="user-pass" class="form-control" placeholder="Mot de passe" required autofocus="" name='password1'>
-                <input type="password" id="user-repeatpass" class="form-control" placeholder="Répétez le mot de passe" required autofocus="" name='repeatpassword'>
+                <input type="text" id="user-name" class="mb-2 form-control" placeholder="Nom" required="" autofocus="" name='user'>
+                <input type="email" id="user-email" class="mb-2 form-control" placeholder="Adresse email" required autofocus="" name='email'>
+                <input type="password" id="user-pass" class="mb-2 form-control" placeholder="Mot de passe" required autofocus="" name='password1'>
+                <input type="password" id="user-repeatpass" class="mb-2 form-control" placeholder="Répétez le mot de passe" required autofocus="" name='repeatpassword'>
 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> S'inscrire</button>
                 <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
@@ -130,7 +131,6 @@
 #logreg-forms .form-signup .social-btn{ width:210px; }
 
 #logreg-forms .form-signup input {
-    margin-bottom: 2px; margin-bottom: -1px;
     border-radius: 200px;
     border-style: none;
     background: black;
@@ -264,6 +264,3 @@
             $('#logreg-forms #cancel_signup').click(toggleSignUp);
         })
     </script>
-
-
-{% endblock %}
