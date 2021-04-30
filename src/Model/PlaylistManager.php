@@ -54,4 +54,12 @@ class PlaylistManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    //Récupère le nombre de playlists d'un utilisateur dans la BDD
+    public function selectNbPlaylistsbyUserID(int $utilisateurId): array
+    {
+        $query = 'SELECT count(id) as somme FROM ' . static::TABLE . ' WHERE utilisateur_id=' . $utilisateurId . ';';
+
+        return $this->pdo->query($query)->fetch();
+    }
 }
