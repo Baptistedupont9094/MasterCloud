@@ -25,7 +25,6 @@ class MyPlaylistController extends AbstractController
 
     public function create()
     {
-
         if (!isset($_SESSION['user'])) {
                 header('location: /');
         }
@@ -45,7 +44,6 @@ class MyPlaylistController extends AbstractController
             $dirPath = 'assets/upload/playlist/';
 
             $arrExtensionsOK = ['jpg','webp','png'];
-
             $extension = pathinfo($_FILES['image-playlist']['name'], PATHINFO_EXTENSION);
 
         //----------------------------------------------------------------------------//
@@ -72,7 +70,6 @@ class MyPlaylistController extends AbstractController
                 //on récupère le chemin du fichier pour le garder en dehors du scope
                 $_SESSION['file'] = $filePath;
                 $playlistManager = new PlaylistManager();
-
                 $playlistManager->insert([
                     'nom' => trim($_POST['nom-playlist']),
                     'image' => trim($filePath),
@@ -109,7 +106,6 @@ class MyPlaylistController extends AbstractController
 
     public function addmusic()
     {
-
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -207,7 +203,6 @@ class MyPlaylistController extends AbstractController
 
     public function edit()
     {
-
         $id = $_GET['id'];
 
         $playlistManager = new PlaylistManager();

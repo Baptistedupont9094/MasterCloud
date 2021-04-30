@@ -11,7 +11,7 @@
     {% endfor %}
 {% endif %}
 
-<div class="card" style="width: 25rem;">
+<div class="card card-columns mx-auto" style="width: 25rem;">
     <div class="card-body">
         <form class="form-group" action='/myPlaylist/addmusic' method='post' enctype="multipart/form-data">
             
@@ -32,16 +32,16 @@
             </div>
             <div class="input-group col mt-4 mb-4">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Image musique</span>
+                    <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
                 </div>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="image-musique" name="image-musique" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="image-musique">Choisir image</label>
+                    <label class="custom-file-label" for="image-musique">Choisir votre image</label>
                 </div>
             </div>
 
 
-            <button name="envoyer" class="col btn btn-info mt-4 mb-2">Envoyer</button>
+            <button name="envoyer" class="col btn btn-info mt-4 mb-2">Ajouter</button>
         </form>
     </div>
 </div>

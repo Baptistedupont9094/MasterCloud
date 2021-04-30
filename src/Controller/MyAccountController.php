@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\PlaylistManager;
+use App\Model\UserManager;
 
 class MyAccountController extends AbstractController
 {
@@ -28,6 +29,7 @@ class MyAccountController extends AbstractController
         } else {
             $playlistManager = new PlaylistManager();
             $playlists = $playlistManager->selectAllPlaylistsbyUserID($_SESSION['user']['id']);
+            $this->twig->addGlobal('nbPlaylists', $playlistManager->selectNbPlaylistsbyUserID($_SESSION['user']['id']));
             return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists]);
         }
         return $this->twig->render('MyAccount/index.html.twig');
