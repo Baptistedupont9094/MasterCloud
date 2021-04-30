@@ -67,10 +67,6 @@ class Connection
                 $this->pdoConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
         } catch (PDOException $e) {
-            echo "<pre>";
-            print_r($e);
-            echo "</pre>";
-            exit;
             echo '<div class="error">Error !: ' . $e->getMessage() . '</div>';
         }
     }
