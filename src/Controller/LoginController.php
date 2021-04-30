@@ -26,7 +26,7 @@ class LoginController extends AbstractController
         if (isset($_SESSION["user"])) {
             header('Location: /explorer/index');
         }
-        
+
         $error = '';
 
         if (!empty($_POST)) {
@@ -35,7 +35,11 @@ class LoginController extends AbstractController
             $userManager = new UserManager();
             $emailArray = $userManager->selectOneByEmail($email);
 
-            if (!empty($emailArray) && $email === $emailArray['email'] && password_verify($password, $emailArray['mot_de_passe'])) {
+            if (
+                !empty($emailArray) &&
+                $email === $emailArray['email'] &&
+                password_verify($password, $emailArray['mot_de_passe'])
+            ) {
                 $emailArray['est_connecte'] = true;
                 $_SESSION['user'] = $emailArray;
                 header('Location: /explorer/index');

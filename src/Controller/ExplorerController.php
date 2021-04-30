@@ -24,7 +24,6 @@ class ExplorerController extends AbstractController
 
     public function index()
     {
-
         $searchManager = new SearchManager();
 
         if (!empty($_POST)) {

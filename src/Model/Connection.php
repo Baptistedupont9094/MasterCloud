@@ -56,7 +56,7 @@ class Connection
         }
         try {
             $this->pdoConnection = new PDO(
-                'mysql:host=' . $this->host . '; dbname=' . $this->dbName . '; charset=utf8',
+                'mysql:port=3307;host=' . $this->host . '; dbname=' . $this->dbName . '; charset=utf8',
                 $this->user,
                 $this->password
             );
@@ -67,6 +67,10 @@ class Connection
                 $this->pdoConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
         } catch (PDOException $e) {
+            echo "<pre>";
+            print_r($e);
+            echo "</pre>";
+            exit;
             echo '<div class="error">Error !: ' . $e->getMessage() . '</div>';
         }
     }

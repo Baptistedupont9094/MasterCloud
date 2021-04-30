@@ -26,7 +26,7 @@ class MyPlaylistController extends AbstractController
     public function create()
     {
         if (!isset($_SESSION['user'])) {
-                header('location: /');
+            header('location: /');
         }
 
         $errors = [];
@@ -36,7 +36,7 @@ class MyPlaylistController extends AbstractController
             //const, idéal pour modif la taille sans changer chaque ligne
             define('MAX_SIZE_FILE', 1000000);
 
-        //----------------------------------------------------------------------------//
+            //----------------------------------------------------------------------------//
 
             //récup. le chemin du dossier pour y stocker les fichiers uploadés
             //puis crée un tableau avec les seuls formats autorisés
@@ -46,7 +46,7 @@ class MyPlaylistController extends AbstractController
             $arrExtensionsOK = ['jpg','webp','png'];
             $extension = pathinfo($_FILES['image-playlist']['name'], PATHINFO_EXTENSION);
 
-        //----------------------------------------------------------------------------//
+            //----------------------------------------------------------------------------//
 
 
             //var qui contient le futur chemin du fichier à uploader
@@ -77,8 +77,8 @@ class MyPlaylistController extends AbstractController
                     'est_privee' => ($_POST['est-privee'] === 'privee' ? true : false),
                     'utilisateur_id' => $_SESSION['user']['id']
                     ]);
-                    //Le fichier est uploadé dans le dossier /assets/upload/playlist
-                    move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
+                //Le fichier est uploadé dans le dossier /assets/upload/playlist
+                move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
 
                 header('Location: /myAccount/index');
             } else {
@@ -120,10 +120,10 @@ class MyPlaylistController extends AbstractController
             $music['source'] = $queriesFromYT['v'];
 
             if (
-                empty($music['nom']) || 
-                empty($music['artiste']) || 
-                empty($music['album']) || 
-                empty($music['genre']) || 
+                empty($music['nom']) ||
+                empty($music['artiste']) ||
+                empty($music['album']) ||
+                empty($music['genre']) ||
                 empty($music['source'])
             ) {
                 $errors[] = 'Vous devez remplir tous les champs';
@@ -175,7 +175,7 @@ class MyPlaylistController extends AbstractController
             }
         }
 
-        return $this->twig->render('MyPlaylist/addmusic.html.twig',  [
+        return $this->twig->render('MyPlaylist/addmusic.html.twig', [
             'music' => $music,
             'errors' => $errors
         ]);
@@ -183,7 +183,6 @@ class MyPlaylistController extends AbstractController
 
     public function deletePlaylist($id)
     {
-
         $playlistManager = new PlaylistManager();
 
         $id = $_SESSION['id-playlist'];
@@ -195,7 +194,6 @@ class MyPlaylistController extends AbstractController
 
     public function deleteMusic($id)
     {
-
         $musicManager = new MusicManager();
 
         $id = $_GET['id'];
@@ -220,7 +218,7 @@ class MyPlaylistController extends AbstractController
             //const, idéal pour modif la taille sans changer chaque ligne
             define('MAX_SIZE_FILE', 1000000);
 
-        //----------------------------------------------------------------------------//
+            //----------------------------------------------------------------------------//
 
             //récup. le chemin du dossier pour y stocker les fichiers uploadés
             //puis crée un tableau avec les seuls formats autorisés
@@ -231,7 +229,7 @@ class MyPlaylistController extends AbstractController
 
             $extension = pathinfo($_FILES['image-playlist']['name'], PATHINFO_EXTENSION);
 
-        //----------------------------------------------------------------------------//
+            //----------------------------------------------------------------------------//
 
 
             //var qui contient le futur chemin du fichier à uploader
