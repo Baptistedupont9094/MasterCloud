@@ -9,28 +9,19 @@
 
     <div id="logreg-forms">
         <form class="form-signin" method = 'POST' action ="">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Se connecter</h1>
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Bienvenue sur MasterCloud
+            </h1>
             <div class="social-login">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
-                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> via Google+</span> </button>
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i></span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i></span> </button>
             </div>
-            <p style="text-align:center"> OU </p>
-            <input type="email" id="inputEmail" name ="email" class="form-control" placeholder="Adresse email" required="" autofocus="">
-            <input type="password" id="inputPassword" name ="password" class="form-control" placeholder="Mot de passe" required="">
+            <p style="text-align:center; color:white;"> OU </p>
+            <input type="email" id="inputEmail" name ="email" class="form-control" placeholder="Votre email" required="" autofocus="">
+            <input type="password" id="inputPassword" name ="password" class="form-control" placeholder="Votre mot de passe" required="">
             
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Connexion</button>
-            <a href="#" id="forgot_pswd">Mot de passe oublié ?</a>
 
-
-            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Créer un nouveau compte </button>
-        </form>
-
-    {# Modal formulaire réinitialiser le mot de passe #}
-
-        <form action="/reset/password/" class="form-reset">
-            <input type="email" id="resetEmail" class="form-control" placeholder="Adresse email" required="" autofocus="">
-            <button class="btn btn-primary btn-block" type="submit">Réinitialiser le mot de passe</button>
-            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Retour</a>
+            <button class="btn btn-primary btn-block" type="submit" id="btn-signup"><i class="fas fa-user-plus"></i> Créer un nouveau compte </button>
         </form>
 
      {# Modal formulaire d'inscription #}   
@@ -67,10 +58,10 @@
 #logreg-forms{
     width:412px;
     margin:10vh auto;
-    background-color:#f3f3f3;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    border-radius: .25rem;
+    -webkit-box-shadow: 4px 4px 4px 4px rgba(29,29,29,0.46); 
+    box-shadow: 4px 4px 4px 4px rgba(29,29,29,0.46);
 }
 #logreg-forms form {
     width: 100%;
@@ -85,15 +76,22 @@
     padding: 10px;
     font-size: 16px;
 }
-#logreg-forms .form-control:focus { z-index: 2; }
+#logreg-forms .form-control:focus { z-index: 2; background: transparent;}
 #logreg-forms .form-signin input[type="email"] {
     margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    /* border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; */
+    border-radius: 200px;
+    border-style: none;
+    background: transparent;
 }
 #logreg-forms .form-signin input[type="password"] {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    /* border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; */
+    border-radius: 200px;
+    border-style: none;
+    margin-top: 2px;
+    background: transparent;
 }
 
 #logreg-forms .social-login{
@@ -101,11 +99,12 @@
     margin:0 auto;
     margin-bottom: 14px;
 }
-#logreg-forms .social-btn{
-    font-weight: 100;
-    color:white;
-    width:190px;
-    font-size: 0.9rem;
+#logreg-forms .social-btn {
+	font-weight: 100;
+	color: white;
+	width: 190px;
+	font-size: 0.9rem;
+	border-radius: 200px;
 }
 
 #logreg-forms a{
@@ -130,7 +129,12 @@
 
 #logreg-forms .form-signup .social-btn{ width:210px; }
 
-#logreg-forms .form-signup input { margin-bottom: 2px;}
+#logreg-forms .form-signup input {
+    margin-bottom: 2px; margin-bottom: -1px;
+    border-radius: 200px;
+    border-style: none;
+    background: black;
+}
 
 .form-signup .social-login{
     width:210px !important;
@@ -153,9 +157,8 @@
         font-size: 1.3rem;
         font-weight: 100;
         color:white;
-        width:200px;
-        height: 56px;
-        
+        width:190px;
+        height: 56px;   
     }
     #logreg-forms .social-btn:nth-child(1){
         margin-bottom: 5px;
@@ -173,6 +176,68 @@
     
 }   
 
+/*test bouton*/
+
+#logreg-forms button[type="submit"] {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+#logreg-forms button[type="submit"]:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+#logreg-forms button[type="submit"]:active {
+    color: #000
+}
+
+#logreg-forms button[type="submit"]:active:after {
+    background: transparent;
+}
+
+#logreg-forms button[type="submit"]:hover:before {
+    opacity: 1;
+}
+
+#logreg-forms button[type="submit"]:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
 </style>
 
 {# ----------------------------------------------------- FIN STYLE CSS ----------------------------------------------------------------------------- #}
@@ -184,7 +249,6 @@
         function toggleResetPswd(e){
             e.preventDefault();
             $('#logreg-forms .form-signin').toggle() // display:block or none
-            $('#logreg-forms .form-reset').toggle() // display:block or none
         }
 
         function toggleSignUp(e){
@@ -195,7 +259,6 @@
 
         $(()=>{
             // Login Register Form
-            $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
             $('#logreg-forms #cancel_reset').click(toggleResetPswd);
             $('#logreg-forms #btn-signup').click(toggleSignUp);
             $('#logreg-forms #cancel_signup').click(toggleSignUp);
