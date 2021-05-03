@@ -55,25 +55,17 @@ class PlaylistManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    //Récupère le nombre de playlists d'un utilisateur dans la BDD
-    public function selectNbPlaylistsbyUserID(int $utilisateurId): array
-    {
-        $query = 'SELECT count(id) as somme FROM ' . static::TABLE . ' WHERE utilisateur_id=' . $utilisateurId . ';';
+    // public function selectAllVotes(int $playlistId)
+    // {
+    //     if (isset($_SESSION['utilisateur_id'])) {
+    //         $vote = false;
 
-        return $this->pdo->query($query)->fetch();
-    }
-
-    public function selectAllVotes(int $playlistId)
-    {
-        if (isset($_SESSION['utilisateur_id'])) {
-            $vote = false;
-
-            $req = $pdo->prepare('SELECT * FROM ' . static::TABLE . ' WHERE ref = '
-            . $ref . 'AND id= ' . $playlistId . 'AND utilisateur_id = ' . $utilisateurId);
-            $req->execute(['playlist', $_GET['id'], $_SESSION['utilisateur_id']]);
-            $vote = $req->fetch();
-        }
-    }
+    //         $req = $pdo->prepare('SELECT * FROM ' . static::TABLE . ' WHERE ref = '
+    //         . $ref . 'AND id= ' . $playlistId . 'AND utilisateur_id = ' . $utilisateurId);
+    //         $req->execute(['playlist', $_GET['id'], $_SESSION['utilisateur_id']]);
+    //         $vote = $req->fetch();
+    //     }
+    // }
 
     public function likes()
     {
