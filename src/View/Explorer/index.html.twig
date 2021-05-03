@@ -1,6 +1,30 @@
 {% extends 'layout.html.twig' %}
+
 {% block navbar %}
     {% include 'Components/navbar.html.twig'%}
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        document.querySelectorAll('.vote_btn').forEach(element => {
+            element.addEventListener('click', event => {
+                event.preventDefault();
+
+                const clickedElement = event.currentTarget;
+                const urlToCall = clickedElement.getAttribute('href');
+                const vote = parseInt(clickedElement.dataset.vote);
+                
+                fetch(urlToCall)
+                    .then(res => {
+                        if (res.ok) {
+                            const countElement = clickedElement.querySelector('.vote-count');
+                            const voteCount = parseInt(countElement.innerHTML);
+                            countElement.innerHTML = voteCount + 1;
+                        }
+                    })
+            }, false)
+        })
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -21,22 +45,20 @@
                         Créé par: {{utilisateurs.nom}}
                     </div>
                     
-                    <div class="vote {#{{Vote::getClass(vote)}}#}">
-
-                        <div class="vote_bar">
+                    <div class="vote d-flex align-items-center">
+                        <div class="vote_bar flex-grow-1">
                             <div class="vote_progress" style="width:{{(playlist.nombre_likes + playlist.nombre_dislikes) == 0 ? 100 : (100 * (playlist.nombre_likes/(playlist.nombre_likes + playlist.nombre_dislikes)))}}%"></div>
                         </div>
 
-                        <div class="vote {#{{Vote::getClass(vote)}}#}">
+                        <a href="/myPlaylist/likes?playlist_id={{ playlist.id }}" data-vote="1" class="btn vote_btn vote_like">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                            <span class="vote-count">{{playlist.nombre_likes}}</span>
+                        </a>
 
-                            <form method="POST">
-                                <button type="submit" class="vote_btn vote_like"><i class="bi bi-hand-thumbs-up"></i> {{playlist.nombre_likes}} </button>
-                            </form>
-
-                            <form method="POST">
-                                <button type="submit" class="vote_btn vote_dislike"><i class="bi bi-hand-thumbs-down"></i> {{playlist.nombre_dislikes}} </button>
-                            </form>
-                        </div>
+                        <a href="/myPlaylist/dislikes?playlist_id={{ playlist.id }}" data-vote="0" class="btn vote_btn vote_like">
+                            <i class="bi bi-hand-thumbs-down"></i>
+                            <span class="vote-count">{{playlist.nombre_dislikes}}</span>
+                        </a>
                     </div>
                 </div>
             {% endfor %}

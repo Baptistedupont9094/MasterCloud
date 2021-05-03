@@ -55,6 +55,14 @@ class PlaylistManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    //Récupère le nombre de playlists d'un utilisateur dans la BDD
+    public function selectNbPlaylistsbyUserID(int $utilisateurId): array
+    {
+        $query = 'SELECT count(id) as somme FROM ' . static::TABLE . ' WHERE utilisateur_id=' . $utilisateurId . ';';
+
+        return $this->pdo->query($query)->fetch();
+    }
+
     // public function selectAllVotes(int $playlistId)
     // {
     //     if (isset($_SESSION['utilisateur_id'])) {
@@ -67,17 +75,23 @@ class PlaylistManager extends AbstractManager
     //     }
     // }
 
-    public function likes()
+    public function likes(int $id)
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-        " SET 'nombre_likes' = :nombre_likes+1 WHERE id=:id");
+        " SET nombre_likes = nombre_likes + 1 WHERE id = :id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
         return $statement->execute();
     }
 
-    public function dislikes()
+    public function dislikes(int $id)
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-        " SET 'nombre_dislikes' = :nombre_dislikes+1 WHERE id=:id");
+        " SET nombre_dislikes = nombre_dislikes + 1 WHERE id = :id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
         return $statement->execute();
     }
 }
