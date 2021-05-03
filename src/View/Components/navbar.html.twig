@@ -31,19 +31,19 @@
         {# Le deuxième collapse-navbar permet de placer la barre de recherche au centre #}
 
           <div class="container">
-          <form method="POST" action="/explorer">
-            <div class="row">
-              {# Pour la barre de recherche #}
-              <input class="col-7 searchBar form-control" type="search"  placeholder="Votre recherche" aria-label="Search">
-              {# Pour le bouton search-bar #}
-                            <button class="searchButton btn btn-secondary" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#909090" class="bi bi-search" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-              </button>
+            <form method="POST" action="/explorer">
+              <div class="row">
+                {# Pour la barre de recherche #}
+                <input class="col-7 searchBar form-control" name="search" type="search" placeholder="Votre recherche" aria-label="Search">
 
-            </div>
-               </form>
+                {# Pour le bouton search-bar #}
+                <button type="submit" class="searchButton btn btn-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#909090" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
           </div>
           
           </ul>
@@ -51,4 +51,23 @@
       </div>
     </div>
   </nav>
+
+  <script>
+    document.querySelector('[name="search"]').addEventListener('keyup', event => {
+      const searchValue = event.currentTarget.value;
+
+      const form = new FormData();
+      form.append('search', searchValue);
+
+      fetch('/explorer/searchAjax', {
+        method: 'POST', 
+        body: form,
+      })
+        .then(response => response.text())
+        .then(html => {
+          // On met à jour le contenu du div search-result avec le html retourné par searchAjax
+          document.querySelector('.search-result').innerHTML = html;
+        });
+    }, false);
+  </script>
 {% endblock %}
