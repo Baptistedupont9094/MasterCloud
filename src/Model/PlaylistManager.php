@@ -7,6 +7,23 @@ class PlaylistManager extends AbstractManager
     public const TABLE = 'playlist';
 
     /**
+     * Get all row from database.
+     */
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = '
+            SELECT t.*, u.nom as utilisateur FROM ' . static::TABLE . ' t 
+            LEFT JOIN utilisateur u ON t.utilisateur_id = u.id
+        ';
+
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
      * Insert new item in database
      */
     public function insert(array $playlist): int
@@ -61,5 +78,25 @@ class PlaylistManager extends AbstractManager
         $query = 'SELECT count(id) as somme FROM ' . static::TABLE . ' WHERE utilisateur_id=' . $utilisateurId . ';';
 
         return $this->pdo->query($query)->fetch();
+    }
+
+    public function likes(int $id)
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET nombre_likes = nombre_likes + 1 WHERE id = :id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function dislikes(int $id)
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET nombre_dislikes = nombre_dislikes + 1 WHERE id = :id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
     }
 }

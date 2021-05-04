@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\SearchManager;
+use App\Model\PlaylistManager;
 
 class ExplorerController extends AbstractController
 {
@@ -28,12 +29,13 @@ class ExplorerController extends AbstractController
             return $this->twig->render('Explorer/index.html.twig', ["resultArray" => $result]);
         }
 
-
         if (!isset($_SESSION['user'])) {
             header('location: /login/index');
         }
 
-        return $this->twig->render('Explorer/index.html.twig');
+        return $this->twig->render('Explorer/index.html.twig', [
+            'playlists' => (new PlaylistManager())->selectAll()
+        ]);
     }
 
     public function searchAjax()
@@ -50,5 +52,24 @@ class ExplorerController extends AbstractController
         return $this->twig->render('Components/search-result.html.twig', [
             'searchResults' => $result,
         ]);
+    }
+    public function likes()
+    {
+        if (isset($_GET['playlist_id'])) {
+            $playlistManager = new PlaylistManager();
+            $playlistManager->likes($_GET['playlist_id']);
+        }
+
+        header('Location: /Explorer/index');
+    }
+
+    public function dislikes()
+    {
+        if (isset($_GET['playlist_id'])) {
+            $playlistManager = new PlaylistManager();
+            $playlistManager->dislikes($_GET['playlist_id']);
+        }
+
+        header('Location: /Explorer/index');
     }
 }

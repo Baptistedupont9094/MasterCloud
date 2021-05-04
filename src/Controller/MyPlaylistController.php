@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\Model\PlaylistManager;
 use App\Model\MusicManager;
 use App\Service\ValidationService;
+use App\Model\VoteManager;
 
 class MyPlaylistController extends AbstractController
 {

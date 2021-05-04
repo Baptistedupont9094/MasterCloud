@@ -559,3 +559,48 @@ h4, h5, p {
 .cardLogout {
   background-color:#23465A;
 }
+
+/*----------------- DEBUT Barre et boutons likes---------------*/
+.vote{
+  margin: 10px 10px;
+  text-align: right;
+}
+
+.vote form{
+  display:inline-block;
+}
+
+.vote_bar{
+  display: inline-block;
+  width: 50%;
+  height: 4px;
+  background-color: rgb(201, 71, 71);
+}
+
+.vote_progress{
+  height: 4px;
+  width: 50%;
+  background-color: rgb(46, 170, 46);
+}
+
+.vote_btns{
+  margin-top: 10px;
+  text-align: right;
+}
+
+.vote_btn{
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.vote_like:hover, .is-liked .vote_like{
+  color:rgb(46, 170, 46);
+}
+
+.vote_dislike:hover, .is-disliked .vote_dislike{
+  color:rgb(201, 71, 71);
+}
+
+/*---------------- Fin Barre et boutons likes----------------*/

@@ -1,5 +1,5 @@
 {% for result in searchResults %}
     <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
-        <img src="/{{ result.image }}"  class="card-img">    
+        {% include 'Components/playlist-card.html.twig' with  { playlist: result } %}
     </div>
 {% endfor %}
