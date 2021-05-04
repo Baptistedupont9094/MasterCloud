@@ -253,24 +253,4 @@ class MyPlaylistController extends AbstractController
         }
         return $this->twig->render('MyPlaylist/edit.html.twig', ['playlist' => $playlistToEdit]);
     }
-
-    public function likes()
-    {
-        if (isset($_GET['playlist_id'])) {
-            $playlistManager = new PlaylistManager();
-            $playlistManager->likes($_GET['playlist_id']);
-        }
-
-        header('Location: /Explorer/index');
-    }
-
-    public function dislikes()
-    {
-        if (isset($_GET['playlist_id'])) {
-            $playlistManager = new PlaylistManager();
-            $playlistManager->dislikes($_GET['playlist_id']);
-        }
-
-        header('Location: /Explorer/index');
-    }
 }

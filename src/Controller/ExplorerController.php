@@ -55,4 +55,23 @@ class ExplorerController extends AbstractController
             'searchResults' => $result,
         ]);
     }
+    public function likes()
+    {
+        if (isset($_GET['playlist_id'])) {
+            $playlistManager = new PlaylistManager();
+            $playlistManager->likes($_GET['playlist_id']);
+        }
+
+        header('Location: /Explorer/index');
+    }
+
+    public function dislikes()
+    {
+        if (isset($_GET['playlist_id'])) {
+            $playlistManager = new PlaylistManager();
+            $playlistManager->dislikes($_GET['playlist_id']);
+        }
+
+        header('Location: /Explorer/index');
+    }
 }
