@@ -7,6 +7,23 @@ class PlaylistManager extends AbstractManager
     public const TABLE = 'playlist';
 
     /**
+     * Get all row from database.
+     */
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = '
+            SELECT t.*, u.nom as utilisateur FROM ' . static::TABLE . ' t 
+            LEFT JOIN utilisateur u ON t.utilisateur_id = u.id
+        ';
+
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
      * Insert new item in database
      */
     public function insert(array $playlist): int
@@ -62,18 +79,6 @@ class PlaylistManager extends AbstractManager
 
         return $this->pdo->query($query)->fetch();
     }
-
-    // public function selectAllVotes(int $playlistId)
-    // {
-    //     if (isset($_SESSION['utilisateur_id'])) {
-    //         $vote = false;
-
-    //         $req = $pdo->prepare('SELECT * FROM ' . static::TABLE . ' WHERE ref = '
-    //         . $ref . 'AND id= ' . $playlistId . 'AND utilisateur_id = ' . $utilisateurId);
-    //         $req->execute(['playlist', $_GET['id'], $_SESSION['utilisateur_id']]);
-    //         $vote = $req->fetch();
-    //     }
-    // }
 
     public function likes(int $id)
     {

@@ -29,15 +29,13 @@ class ExplorerController extends AbstractController
             return $this->twig->render('Explorer/index.html.twig', ["resultArray" => $result]);
         }
 
-        $playlistManager = new PlaylistManager();
-
-        $playlistTableau = $playlistManager->selectAll();
-
         if (!isset($_SESSION['user'])) {
             header('location: /login/index');
         }
 
-        return $this->twig->render('Explorer/index.html.twig');
+        return $this->twig->render('Explorer/index.html.twig', [
+            'playlists' => (new PlaylistManager())->selectAll()
+        ]);
     }
 
     public function searchAjax()

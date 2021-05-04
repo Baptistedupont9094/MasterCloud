@@ -31,35 +31,10 @@
     <div class="col-12">
         <h1> Explorer </h1>    
 
-        {# Test boucle pour rendu thumbnails de playlist #}
-         <div class="row">
-            {% for playlist in playlistTableau %}
+        <div class="row search-result">
+            {% for playlist in playlists %}
                 <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
-                    <img src="/{{playlist.image}}" class="card-img">
-
-                    <div class="text-center text-white">
-                        {{playlist.nom}}
-                    </div>
-
-                    <div class="text-center text-white">
-                        Créé par: {{utilisateurs.nom}}
-                    </div>
-                    
-                    <div class="vote d-flex align-items-center">
-                        <div class="vote_bar flex-grow-1">
-                            <div class="vote_progress" style="width:{{(playlist.nombre_likes + playlist.nombre_dislikes) == 0 ? 100 : (100 * (playlist.nombre_likes/(playlist.nombre_likes + playlist.nombre_dislikes)))}}%"></div>
-                        </div>
-
-                        <a href="/explorer/likes?playlist_id={{ playlist.id }}" data-vote="1" class="btn vote_btn vote_like">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            <span class="vote-count">{{playlist.nombre_likes}}</span>
-                        </a>
-
-                        <a href="/explorer/dislikes?playlist_id={{ playlist.id }}" data-vote="0" class="btn vote_btn vote_like">
-                            <i class="bi bi-hand-thumbs-down"></i>
-                            <span class="vote-count">{{playlist.nombre_dislikes}}</span>
-                        </a>
-                    </div>
+                    {% include 'Components/playlist-card.html.twig' with  { playlist: playlist } %}
                 </div>
             {% endfor %}
         </div>

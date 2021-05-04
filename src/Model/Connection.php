@@ -56,7 +56,7 @@ class Connection
         }
         try {
             $this->pdoConnection = new PDO(
-                'mysql:port=3307;host=' . $this->host . '; dbname=' . $this->dbName . '; charset=utf8',
+                'mysql:host=' . $this->host . '; dbname=' . $this->dbName . '; charset=utf8',
                 $this->user,
                 $this->password
             );
