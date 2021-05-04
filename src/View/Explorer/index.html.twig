@@ -7,21 +7,19 @@
     <div class="col-12">
         <h1> Explorer </h1>       
         {# Test boucle pour rendu thumbnails de playlist #}
-         <div class="row">
-        {% if resultArray %}
+         <div class="row search-result">
+            {% if resultArray %}
                 {% for playlist in resultArray %}
-            <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
-            <img src="/{{ playlist.image }}"  class="card-img">
-            
-            </div>
-        {% endfor %}
-        {% else %}
+                    <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
+                        <img src="/{{ playlist.image }}"  class="card-img">
+                    </div>
+                {% endfor %}
+            {% else %}
                 {% for i in 0..50 %}
-            <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
-            <img src="https://picsum.photos/300/200"  class="card-img">
-            
-            </div>
-        {% endfor %}
-        {% endif %}
+                    <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
+                        <img src="https://picsum.photos/300/200"  class="card-img">
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
 {% endblock %}

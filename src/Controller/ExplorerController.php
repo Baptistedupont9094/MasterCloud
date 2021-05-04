@@ -15,13 +15,7 @@ class ExplorerController extends AbstractController
 {
     /**
      * Affiche page Explorer
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
      */
-
     public function index()
     {
         $searchManager = new SearchManager();
@@ -30,6 +24,7 @@ class ExplorerController extends AbstractController
             $searchItem = $_POST['search'];
             $searchItem = strtolower($searchItem);
             $result = $searchManager->search($searchItem);
+
             return $this->twig->render('Explorer/index.html.twig', ["resultArray" => $result]);
         }
 
@@ -37,6 +32,23 @@ class ExplorerController extends AbstractController
         if (!isset($_SESSION['user'])) {
             header('location: /login/index');
         }
+
         return $this->twig->render('Explorer/index.html.twig');
+    }
+
+    public function searchAjax()
+    {
+        $result = [];
+
+        if (!empty($_POST)) {
+            $searchManager = new SearchManager();
+            $searchItem = $_POST['search'];
+            $searchItem = strtolower($searchItem);
+            $result = $searchManager->search($searchItem);
+        }
+
+        return $this->twig->render('Components/search-result.html.twig', [
+            'searchResults' => $result,
+        ]);
     }
 }
