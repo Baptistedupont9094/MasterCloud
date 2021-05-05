@@ -598,6 +598,7 @@ h4, h5, p {
   margin-left: 10px;
   cursor: pointer;
   transition: color 0.3s;
+  color:whitesmoke;
 }
 
 .vote_like:hover, .is-liked .vote_like{
