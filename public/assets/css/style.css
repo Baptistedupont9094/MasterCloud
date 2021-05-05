@@ -16,6 +16,7 @@ div ul li a {
 
 h1 {
   color:#EAF0FF;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .sidebar {
@@ -637,15 +638,11 @@ h4, h5, p {
 #logreg-forms .form-control:focus { z-index: 2; background: transparent;}
 #logreg-forms .form-signin input[type="email"] {
   margin-bottom: -1px;
-  /* border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0; */
   border-radius: 200px;
   border-style: none;
   background: transparent;
 }
 #logreg-forms .form-signin input[type="password"] {
-  /* border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0; */
   border-radius: 200px;
   border-style: none;
   margin-top: 2px;
