@@ -12,7 +12,12 @@ class PlaylistManager extends AbstractManager
     public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
     {
         $query = '
-            SELECT t.*, u.nom as utilisateur FROM ' . static::TABLE . ' t 
+            SELECT 
+                t.*, 
+                u.nom as utilisateur, 
+                (SELECT COUNT(playlist_id) FROM votes WHERE playlist_id = t.id AND `like` = 1) as likes,
+                (SELECT COUNT(playlist_id) FROM votes WHERE playlist_id = t.id AND `like` = 0) as dislikes 
+            FROM ' . static::TABLE . ' t 
             LEFT JOIN utilisateur u ON t.utilisateur_id = u.id
         ';
 

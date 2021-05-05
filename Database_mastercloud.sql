@@ -45,32 +45,10 @@ CREATE TABLE `musique`(
 
 CREATE TABLE `votes`(
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`playlist_id` INT,
-	`ref` VARCHAR(50) NOT NULL,
+	`like` BOOLEAN NOT NULL,
 	`utilisateur_id` INT NOT NULL,
-	`vote` INT NOT NULL,
-	`created_at` DATETIME,
+	`playlist_id` INT NOT NULL,
 	PRIMARY KEY(`id`),
 	FOREIGN KEY(`utilisateur_id`) REFERENCES `utilisateur`(`id`),
 	FOREIGN KEY(`playlist_id`) REFERENCES `playlist`(`id`)
 );
-
-
--- CREATE TABLE `commentaire`(
--- 	`id`INT NOT NULL AUTO_INCREMENT,
--- 	`playlist_id` INT NOT NULL,
--- 	`utilisateur_id` INT NOT NULL,
--- 	`contenu` TEXT NOT NULL,
--- 	PRIMARY KEY(`id`),
--- 	CONSTRAINT fk_commentaire_utilisateur
--- 			FOREIGN KEY (utilisateur_id)
--- 			REFERENCES utilisateur(id),
--- 	CONSTRAINT fk_commentaire_playlist
--- 			FOREIGN KEY (playlist_id)
--- 			REFERENCES playlist(id)
-	
--- );
-
-
-
-
