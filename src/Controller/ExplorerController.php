@@ -108,4 +108,25 @@ class ExplorerController extends AbstractController
             'like' => $like,
         ]);
     }
+
+    public function top10()
+    {
+        return $this->twig->render('Explorer/top10.html.twig', [
+            'top10Playlists' => (new PlaylistManager())->selectTop10Playlists()
+        ]);
+    }
+
+    public function top3()
+    {
+        return $this->twig->render('Explorer/top3.html.twig', [
+            'top3Playlists' => (new PlaylistManager())->selectTop3Playlists()
+        ]);
+    }
+
+    public function myPlaylists()
+    {
+        return $this->twig->render('Explorer/myplaylists.html.twig', [
+            'myPlaylists' => (new PlaylistManager())->selectAllPlaylistsbyUserID($_SESSION['user']['id'])
+        ]);
+    }
 }

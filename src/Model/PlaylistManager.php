@@ -85,6 +85,35 @@ class PlaylistManager extends AbstractManager
         return $this->pdo->query($query)->fetch();
     }
 
+    //Récupère le top 3 des playlists (publiques) de la communauté MasterCloud
+    public function selectTop3Playlists(): array
+    {
+        $query = '
+            SELECT playlist.*, nombre_likes-nombre_dislikes as ratio, 
+            ROW_NUMBER() OVER (ORDER BY nombre_likes-nombre_dislikes  DESC) as top, utilisateur.nom as username
+            FROM ' . static::TABLE .
+            ' RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
+            WHERE (nombre_likes-nombre_dislikes) > 0 AND est_privee IS FALSE
+            ORDER BY nombre_likes-nombre_dislikes DESC LIMIT 3;
+        ';
+        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //Récupère le top 10 des playlists (publiques) de la communauté MasterCloud
+    public function selectTop10Playlists(): array
+    {
+
+        $query = '
+            SELECT playlist.*, nombre_likes-nombre_dislikes as ratio, 
+            ROW_NUMBER() OVER (ORDER BY nombre_likes-nombre_dislikes  DESC) as top, utilisateur.nom as username
+            FROM ' . static::TABLE .
+            ' RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
+            WHERE (nombre_likes-nombre_dislikes) > 0 AND est_privee IS FALSE
+            ORDER BY nombre_likes-nombre_dislikes DESC LIMIT 10;
+        ';
+        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function likes(int $id)
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
