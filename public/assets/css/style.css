@@ -102,6 +102,18 @@ li{
   margin: 3px auto;
 }
 
+.carousel-item h4 {
+  color: white;
+  width: 180px;
+  margin: 20px auto;
+}
+
+.carousel-item p {
+  color: white;
+  width: 150px;
+  margin: 3px auto;
+}
+
 
 /*---------------- Fin Carousel Top des playlists ----------------*/
 
