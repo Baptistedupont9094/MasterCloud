@@ -37,7 +37,6 @@ body {
 }
 
 .searchBar {
-  /* width: 800px; */
   background: #181818;
   border-color:#424242;
 }
@@ -47,9 +46,12 @@ body {
   background: #424242;
   border-color:#424242;
 }
+
 li{
   list-style-type: none;
 }
+
+
 
 /*---------------- FIN navbar ----------------*/
 
