@@ -34,6 +34,7 @@ body {
 .navbar-brand img {
   height: 40px;
   margin: 0px;
+  max-width: none;
 }
 
 .searchBar {
