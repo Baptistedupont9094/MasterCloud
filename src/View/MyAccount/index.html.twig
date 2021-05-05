@@ -3,15 +3,6 @@
     <link rel="stylesheet" href="/assets/css/carousel.css">
     {% include 'Components/navbar.html.twig' %}
 {% endblock %}
-{% block stylesheet %}
-<style>
-.navbar{
-  background-color: #23465A;
-}
-
-</style>
-{% endblock %}
-
 
 {% block content %}
 <div class="accueil">
@@ -95,7 +86,7 @@
            le tableau permet d'afficher les images des playlists
            dans la div carousel #}
 
-            <div class="carousel">
+            <div class="carousel" style="overflow: hidden;">
                 <div class="carousel-row">
             {% for playlist in playlistsTwig %}
                     <a class="carousel-tile" href="/myPlaylist/show/?id={{ playlist.id }}" style="background : url(/{{ playlist.image }}); background-size: cover;">
@@ -113,7 +104,3 @@
         </div>
         {% endif %}
 {% endblock %}
-
-
-
-

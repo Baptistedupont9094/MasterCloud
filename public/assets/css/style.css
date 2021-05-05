@@ -51,6 +51,27 @@ li{
   list-style-type: none;
 }
 
+#nav-element-desktop
+{
+  display : initial;
+}
+
+#nav-element-mobile
+{
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  #nav-element-mobile
+  {
+    display: initial;
+  }
+
+  #nav-element-desktop
+  {
+    display : none;
+  }
+}
 
 
 /*---------------- FIN navbar ----------------*/
