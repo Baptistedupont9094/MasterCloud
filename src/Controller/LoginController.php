@@ -129,6 +129,17 @@ class LoginController extends AbstractController
                 unset($masterCloudUser['mot_de_passe']);
             }
 
+            // Mise à jour de l'url de l'avatar
+            $avatarData = [
+                'https://cdn.discordapp.com/avatars/',
+                $discordUser->getId(),
+                '/',
+                $discordUser->getAvatarHash(), /** @phpstan-ignore-line */
+                '.png',
+            ];
+
+            $masterCloudUser['avatar'] = implode('', $avatarData);
+
             $_SESSION['user'] = $masterCloudUser;
             header('Location: /');
         }
@@ -187,6 +198,9 @@ class LoginController extends AbstractController
                 // On supprime le mot de passe du user en session
                 unset($masterCloudUser['mot_de_passe']);
             }
+
+            // Mise à jour de l'url de l'avatar
+            $masterCloudUser['avatar'] = $discordUser->getAvatar(); /** @phpstan-ignore-line */
 
             $_SESSION['user'] = $masterCloudUser;
 
