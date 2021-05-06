@@ -14,6 +14,9 @@ use League\OAuth2\Client\Provider\Google;
 use Wohali\OAuth2\Client\Provider\Discord;
 use App\Model\UserManager;
 
+/**
+ * @SuppressWarnings(PHPMD.ErrorControlOperator) Suppression des erreurs PHPMD sur l'utilisation du @
+ */
 class LoginController extends AbstractController
 {
     /**
