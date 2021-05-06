@@ -14,7 +14,7 @@ class PlaylistManager extends AbstractManager
         $query = '
             SELECT 
                 t.*, 
-                u.nom as utilisateur, 
+                u.nom as username, 
                 (SELECT COUNT(playlist_id) FROM votes WHERE playlist_id = t.id AND `like` = 1) as likes,
                 (SELECT COUNT(playlist_id) FROM votes WHERE playlist_id = t.id AND `like` = 0) as dislikes 
             FROM ' . static::TABLE . ' t 
@@ -72,9 +72,19 @@ class PlaylistManager extends AbstractManager
     //Récupère toutes les playlists d'un utilisateur dans la BDD
     public function selectAllPlaylistsbyUserID(int $utilisateurId): array
     {
-        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE utilisateur_id=' . $utilisateurId . ';';
+        $query = '
+            SELECT playlist.*, nombre_likes - nombre_dislikes as ratio, utilisateur.nom as username
+            FROM ' . static::TABLE . ' 
+            RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
+            WHERE utilisateur.id = :userId
+            ORDER BY ratio DESC';
+        ;
 
-        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':userId', $utilisateurId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 
     //Récupère le nombre de playlists d'un utilisateur dans la BDD

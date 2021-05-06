@@ -4,42 +4,14 @@
     {% include 'Components/navbar.html.twig'%}
 {% endblock %}
 
-{% block javascript %}
-    <script>
-        document.querySelectorAll('.vote_btn').forEach(element => {
-            element.addEventListener('click', event => {
-                event.preventDefault();
-
-                const clickedElement = event.currentTarget;
-                const urlToCall = clickedElement.getAttribute('href');
-                const vote = parseInt(clickedElement.dataset.vote);
-                
-                fetch(urlToCall)
-                    .then(res => {
-                        if (res.ok) {
-                            const countElement = clickedElement.querySelector('.vote-count');
-                            const voteCount = parseInt(countElement.innerHTML);
-                            countElement.innerHTML = voteCount + 1;
-                        }
-                    })
-            }, false)
-        })
-    </script>
-{% endblock %}
-
 {% block content %}
     <div class="col-12">
-        <h1> Le top 3 des playlists de la communauté </h1>    
+        <h1>Le top 3 des playlists de la communauté </h1>
 
         <div class="row search-result">
-            {% for playlist in  top3Playlists %}
-                {% if playlist.est_privee == false %}
-                <a href="/myPlaylist/show/{{ playlist.id }}">
-                    <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
-                        {% include 'Components/playlist-card.html.twig' with  { playlist: playlist } %}
-                    </div>
-                </a> 
-                {% endif %}
-            {% endfor %}
+            {% include 'Components/playlist-list.html.twig' with {
+                playlists: top3Playlists
+            }%}
         </div>
+    </div>
 {% endblock %}

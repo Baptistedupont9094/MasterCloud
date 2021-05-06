@@ -1,25 +1,28 @@
-<a href="/myPlaylist/show/{{ playlist.id }}" style="background: url('/{{playlist.image}}'); background-size: cover;">
-    <div class="text-center text-white" style="margin-top: 57%">
-        {{playlist.nom}}
-    </div>
-
-    <div class="text-center text-white">
-        Créé par: {{ playlist.username }}
-    </div>
-</a>
-
-<div class="vote d-flex align-items-center">
-    <div class="vote_bar flex-grow-1">
-        <div class="vote_progress" style="width:{{(playlist.nombre_likes + playlist.nombre_dislikes) == 0 ? 100 : (100 * (playlist.nombre_likes/(playlist.nombre_likes + playlist.nombre_dislikes)))}}%"></div>
-    </div>
-
-    <a href="/explorer/likes?playlist_id={{ playlist.id }}" data-playlist-id="{{ playlist.id }}" data-vote="1" class="btn vote_btn vote_like">
-        <i class="bi bi-hand-thumbs-up"></i>
-        <span class="vote-count">{{playlist.likes}}</span>
+<div class="card bg-dark text-white">
+    <a href="/myPlaylist/show/{{ playlist.id }}">
+        <img src="/{{ playlist.image }}" class="card-img-top">
     </a>
 
-    <a href="/explorer/dislikes?playlist_id={{ playlist.id }}" data-playlist-id="{{ playlist.id }}" data-vote="0" class="btn vote_btn vote_dislike">
-        <i class="bi bi-hand-thumbs-down"></i>
-        <span class="vote-count">{{playlist.dislikes}}</span>
-    </a>
+    <div class="card-body px-3 py-2">
+        <h5 class="card-title m-0 text-truncate font-weight-bold">{{ playlist.nom }}</h5>
+
+        <p class="card-text m-0">
+            <small class="text-muted">Par </small>
+            <small class="text-white-60">{{ playlist.username }}</small>
+        </p>
+
+        {% if is_logged and hideVoteButton != true %}
+            <div class="text-right">
+                <a href="/explorer/likes?playlist_id={{ playlist.id }}" data-playlist-id="{{ playlist.id }}" data-vote="1" class="vote_btn vote_like text-decoration-none">
+                    <i class="bi bi-hand-thumbs-up"></i>
+                    <span class="vote-count">{{playlist.likes}}</span>
+                </a>
+
+                <a href="/explorer/dislikes?playlist_id={{ playlist.id }}" data-playlist-id="{{ playlist.id }}" data-vote="0" class="vote_btn vote_dislike text-decoration-none">
+                    <i class="bi bi-hand-thumbs-down"></i>
+                    <span class="vote-count">{{playlist.dislikes}}</span>
+                </a>
+            </div>
+        {% endif %}
+    </div>
 </div>
