@@ -29,9 +29,10 @@ class MyAccountController extends AbstractController
         } else {
             $playlistManager = new PlaylistManager();
             $playlists = $playlistManager->selectAllPlaylistsbyUserID($_SESSION['user']['id']);
-            $this->twig->addGlobal('nbPlaylists', $playlistManager->selectNbPlaylistsbyUserID($_SESSION['user']['id']));
-            return $this->twig->render('MyAccount/index.html.twig', ['playlistsTwig' => $playlists,
-            'playlists' => (new PlaylistManager())->selectAll()
+            return $this->twig->render('MyAccount/index.html.twig',
+            [
+                'playlistsTwig' => $playlists,
+                'playlists' => (new PlaylistManager())->selectAll()
             ]);
         }
         return $this->twig->render('MyAccount/index.html.twig');
