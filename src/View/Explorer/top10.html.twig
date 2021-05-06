@@ -3,7 +3,11 @@
 {% block navbar %}
     {% include 'Components/navbar.html.twig'%}
 {% endblock %}
-
+{% block sidebar %}
+<div class="sidebar col-3 col-lg-2 col-md-0 col-sm-0 pl-0 shadow-lg rounded">
+{% include 'Components/sidebar.html.twig' %}
+</div>
+{% endblock %}
 {% block content %}
     <div class="col-12">
         <h1>Le top 10 des playlists de la communauté </h1>
