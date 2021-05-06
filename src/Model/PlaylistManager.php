@@ -86,31 +86,17 @@ class PlaylistManager extends AbstractManager
     }
 
     //Récupère le top 3 des playlists (publiques) de la communauté MasterCloud
-    public function selectTop3Playlists(): array
+    public function selectTop(int $count = 3): array
     {
         $query = '
-            SELECT playlist.*, nombre_likes-nombre_dislikes as ratio, 
-            ROW_NUMBER() OVER (ORDER BY nombre_likes-nombre_dislikes  DESC) as top, utilisateur.nom as username
-            FROM ' . static::TABLE .
-            ' RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
-            WHERE (nombre_likes-nombre_dislikes) > 0 AND est_privee IS FALSE
-            ORDER BY nombre_likes-nombre_dislikes DESC LIMIT 3;
-        ';
-        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
-    }
+            SELECT playlist.*, nombre_likes - nombre_dislikes as ratio, utilisateur.nom as username
+            FROM ' . static::TABLE . ' 
+            RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
+            WHERE est_privee IS FALSE
+            HAVING ratio > 0 
+            ORDER BY ratio DESC LIMIT ' . $count;
+        ;
 
-    //Récupère le top 10 des playlists (publiques) de la communauté MasterCloud
-    public function selectTop10Playlists(): array
-    {
-
-        $query = '
-            SELECT playlist.*, nombre_likes-nombre_dislikes as ratio, 
-            ROW_NUMBER() OVER (ORDER BY nombre_likes-nombre_dislikes  DESC) as top, utilisateur.nom as username
-            FROM ' . static::TABLE .
-            ' RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
-            WHERE (nombre_likes-nombre_dislikes) > 0 AND est_privee IS FALSE
-            ORDER BY nombre_likes-nombre_dislikes DESC LIMIT 10;
-        ';
         return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
     }
 

@@ -79,7 +79,7 @@ li{
 
 /*---------------- Carousel Top des playlists ----------------*/
 
-.carousel-inner > .carousel-item > img {
+.carousel-inner > .carousel-item img {
   width:300px;
   height:300px;
   margin: auto;

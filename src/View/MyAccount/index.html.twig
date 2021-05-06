@@ -88,15 +88,18 @@
 
             <div class="carousel" style="overflow: hidden;">
                 <div class="carousel-row">
-            {% for playlist in playlistsTwig %}
-                    <a class="carousel-tile" href="/myPlaylist/show/?id={{ playlist.id }}" style="background : url(/{{ playlist.image }}); background-size: cover;">
-                    </a>
-            {% endfor %}
+					{% for playlist in playlistsTwig %}
+							<a 
+								class="carousel-tile" 
+								href="/myPlaylist/show/{{ playlist.id }}" 
+								style="background : url(/{{ playlist.image }}); background-size: cover;"
+							>
+							</a>
+					{% endfor %}
                 </div>
             </div>
-            <div class="col-12" id="B">
 
-      </div>
+            <div class="col-12" id="B"></div>
     </div>
         {% else %}
         <div class="accueil">

@@ -104,11 +104,6 @@ class MyPlaylistController extends AbstractController
 
     public function show($id)
     {
-        $id = (int)$_GET['id'];
-        //conserve l'id, pour pouvoir revenir en arrière après
-        //soumission de formulaire.
-        $_SESSION['id-playlist'] = $id;
-
         $playlistManager = new PlaylistManager();
         $playlist = $playlistManager->selectOneById($id);
 
@@ -156,7 +151,7 @@ class MyPlaylistController extends AbstractController
                 //Le fichier est uploadé dans le dossier /assets/upload/playlist
                 move_uploaded_file($_FILES['image-musique']['tmp_name'], $filePath);
 
-                header('Location: /myPlaylist/show/?id=' . $music['playlist_id']);
+                header('Location: /myPlaylist/show/' . $music['playlist_id']);
             }
         }
 
@@ -185,7 +180,7 @@ class MyPlaylistController extends AbstractController
 
         $musicManager->delete($id);
 
-        header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
+        header('Location: /myPlaylist/show/' . $_SESSION['id-playlist']);
     }
 
     public function edit()
@@ -246,7 +241,7 @@ class MyPlaylistController extends AbstractController
                 $playlistManager->update($playlistToEdit);
                 //Le fichier est uploadé dans le dossier /assets/upload/playlist
                 move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
-                header('Location: /myPlaylist/show/?id=' . $_SESSION['id-playlist']);
+                header('Location: /myPlaylist/show/' . $_SESSION['id-playlist']);
             } else {
                 return $this->twig->render('MyPlaylist/edit.html.twig', ['errors' => $errors]);
             }
