@@ -48,7 +48,7 @@ class LoginController extends AbstractController
             ) {
                 $emailArray['est_connecte'] = true;
                 $_SESSION['user'] = $emailArray;
-                header('Location: /explorer/index');
+                header('Location: /myAccount');
             } else {
                 $error = 'Identifiants incorrects';
             }
@@ -71,7 +71,7 @@ class LoginController extends AbstractController
             $emailArray = $userManager->selectOneByEmail($_POST['email']);
             $emailArray['est_connecte'] = true;
             $_SESSION['user'] = $emailArray;
-            header('Location: /');
+            header('Location: /myAccount');
         } else {
             header('Location: /login/index');
         }
@@ -141,7 +141,7 @@ class LoginController extends AbstractController
             $masterCloudUser['avatar'] = implode('', $avatarData);
 
             $_SESSION['user'] = $masterCloudUser;
-            header('Location: /');
+            header('Location: /myAccount');
         }
     }
 
@@ -204,7 +204,7 @@ class LoginController extends AbstractController
 
             $_SESSION['user'] = $masterCloudUser;
 
-            header('Location: /');
+            header('Location: /myAccount');
         }
     }
 
