@@ -8,7 +8,6 @@
  */
 
 namespace App\Controller;
-
 use League\OAuth2\Client\Provider\Google;
 use App\Model\UserManager;
 
@@ -78,13 +77,11 @@ class LoginController extends AbstractController
             'clientSecret' => 'IdRlJX2CFOogZda0-sZ_s6K_kUHmohRD',
             'redirectUri' => 'http://localhost:8000/login/loginDiscord'
         ]);
-
         if (!isset($_GET['code'])) {
             // Step 1. Get authorization code
             $authUrl = $provider->getAuthorizationUrl();
             $_SESSION['oauth2state'] = $provider->getState();
             header('Location: ' . $authUrl);
-
         // Check given state against previously stored one to mitigate CSRF attack
         } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
             unset($_SESSION['oauth2state']);
@@ -118,39 +115,46 @@ class LoginController extends AbstractController
             }
 
             $_SESSION['user'] = $masterCloudUser;
-
+            
             header('Location: /Explorer');
         }
     }
-    public function loginGoogle()
-    {
+            public function loginGoogle()
+            {
 
         $provider = new Google([
-        'clientId'     => '193879673157-spj2riskhlp0dpn62bapno76hd958sr6.apps.googleusercontent.com',
-        'clientSecret' => 'Ry5ZukyqNsVpl57hQB_LaItp',
-        'redirectUri'  => 'http://localhost:8000/login/loginGoogle',
+            'clientId'     => '193879673157-spj2riskhlp0dpn62bapno76hd958sr6.apps.googleusercontent.com',
+            'clientSecret' => 'Ry5ZukyqNsVpl57hQB_LaItp',
+            'redirectUri'  => 'http://localhost:8000/login/loginGoogle',
         ]);
 
         if (!empty($_GET['error'])) {
+
             // Got an error, probably user denied access
             exit('Got error: ' . htmlspecialchars($_GET['error'], ENT_QUOTES, 'UTF-8'));
+
         } elseif (empty($_GET['code'])) {
+
             // If we don't have an authorization code then get one
             $authUrl = $provider->getAuthorizationUrl();
             $_SESSION['oauth2state'] = $provider->getState();
             header('Location: ' . $authUrl);
             exit;
+
         } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
+
             // State is invalid, possible CSRF attack in progress
             unset($_SESSION['oauth2state']);
             exit('Invalid state');
+
         } else {
+
             // Try to get an access token (using the authorization code grant)
             $token = $provider->getAccessToken('authorization_code', [
                 'code' => $_GET['code']
             ]);
-
-            // Récupération du user sur google
+        
+            // Récupération du user sur discord
             $discordUser = $provider->getResourceOwner($token);
 
             // On vérifie si le user existe déjà sur mastercloud
@@ -173,8 +177,9 @@ class LoginController extends AbstractController
             }
 
             $_SESSION['user'] = $masterCloudUser;
-
+            
             header('Location: /Explorer');
         }
+
     }
 }
