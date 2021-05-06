@@ -133,4 +133,3 @@ class ExplorerController extends AbstractController
         ]);
     }
 }
-

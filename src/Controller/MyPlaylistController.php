@@ -98,7 +98,7 @@ class MyPlaylistController extends AbstractController
             } else {
                 return $this->twig->render('MyPlaylist/create.html.twig', ['errors' => $errors,
                 'playlists' => (new PlaylistManager())->selectAll()
-            ]);
+                ]);
             }
         }
         return $this->twig->render('MyPlaylist/create.html.twig', [
