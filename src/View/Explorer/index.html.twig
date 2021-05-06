@@ -41,12 +41,11 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-12">
-        <h1> Explorer </h1>    
+    <div class="col-12">  
 
         <div class="row search-result">
             {% for playlist in playlists %}
-                <div class="card mt-4 mb-4 ml-3 mr-3" style="width: 18rem;">
+                <div class="card mt-4 mb-4 ml-3 mr-3" style="background : url(/{{ playlist.image }}); background-size: cover; height: 18rem;width: 18rem;">
                     {% include 'Components/playlist-card.html.twig' with  { playlist: playlist } %}
                 </div>
             {% endfor %}
