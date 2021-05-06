@@ -83,7 +83,7 @@ class LoginController extends AbstractController
         ]);
 
         $provider->setHttpClient(
-            new GuzzleHttpClient(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ))
+            @new GuzzleHttpClient(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ))
         );
 
         if (!isset($_GET['code'])) {
@@ -140,7 +140,7 @@ class LoginController extends AbstractController
         ]);
 
         $provider->setHttpClient(
-            new GuzzleHttpClient(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ))
+            @new GuzzleHttpClient(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ))
         );
 
         if (!empty($_GET['error'])) {
