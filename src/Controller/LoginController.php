@@ -82,7 +82,7 @@ class LoginController extends AbstractController
         $provider = new Discord([
             'clientId' => '839433803223007232',
             'clientSecret' => 'IdRlJX2CFOogZda0-sZ_s6K_kUHmohRD',
-            'redirectUri' => 'http://localhost:8000/login/loginDiscord'
+            'redirectUri'  => $this->getHostFullUrl() . '/login/loginDiscord',
         ]);
 
         $provider->setHttpClient(
@@ -139,7 +139,7 @@ class LoginController extends AbstractController
         $provider = new Google([
             'clientId'     => '193879673157-spj2riskhlp0dpn62bapno76hd958sr6.apps.googleusercontent.com',
             'clientSecret' => 'Ry5ZukyqNsVpl57hQB_LaItp',
-            'redirectUri'  => 'http://localhost:8000/login/loginGoogle',
+            'redirectUri'  => $this->getHostFullUrl() . '/login/loginGoogle',
         ]);
 
         $provider->setHttpClient(
@@ -192,5 +192,19 @@ class LoginController extends AbstractController
 
             header('Location: /');
         }
+    }
+
+    /**
+     * Renvoi l'URL complète du serveur.
+     *
+     * Ex : http://localhost:8000
+     * Ex : https://monserveur.com
+     */
+    private function getHostFullUrl()
+    {
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http";
+        $url .=  "://" . $_SERVER['HTTP_HOST'];
+
+        return $url;
     }
 }
