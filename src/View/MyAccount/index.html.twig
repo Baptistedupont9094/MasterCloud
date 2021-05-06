@@ -27,7 +27,7 @@
 					</div>
 					<div class="about">
 						<h6 class="mb-2 text-primary">
-                            Vous avez {{ nbPlaylists.somme }} playlist(s).
+                            Vous avez {{ playlistsTwig|length }} playlist(s).
                         </h6>
 					</div>
 				</div>
@@ -86,19 +86,13 @@
            le tableau permet d'afficher les images des playlists
            dans la div carousel #}
 
-            <div class="carousel" style="overflow: hidden;">
-                <div class="carousel-row">
-					{% for playlist in playlistsTwig %}
-							<a 
-								class="carousel-tile" 
-								href="/myPlaylist/show/{{ playlist.id }}" 
-								style="background : url(/{{ playlist.image }}); background-size: cover;"
-							>
-							</a>
-					{% endfor %}
-                </div>
-            </div>
-
+		   <div class="row search-result">
+				{% include 'Components/playlist-list.html.twig' with {
+					playlists: playlistsTwig,
+					hideVoteButton: true
+				}%}
+			</div>
+			
             <div class="col-12" id="B"></div>
     </div>
         {% else %}

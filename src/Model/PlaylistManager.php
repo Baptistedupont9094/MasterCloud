@@ -75,8 +75,8 @@ class PlaylistManager extends AbstractManager
         $query = '
             SELECT playlist.*, nombre_likes - nombre_dislikes as ratio, utilisateur.nom as username
             FROM ' . static::TABLE . ' 
-            RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
-            WHERE utilisateur.id = :userId
+            INNER JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
+            WHERE playlist.utilisateur_id = :userId
             ORDER BY ratio DESC';
         ;
 
