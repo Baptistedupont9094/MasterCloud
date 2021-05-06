@@ -9,6 +9,9 @@
 
 namespace App\Controller;
 
+use App\Model\PlaylistManager;
+use App\Model\UserManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -21,6 +24,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $playlistManager = new PlaylistManager();
+        $playlistsTop3 = $playlistManager->selectTop();
+        return $this->twig->render('Home/index.html.twig', ['playlistsTop3' => $playlistsTop3]);
     }
 }

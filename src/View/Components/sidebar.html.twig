@@ -1,32 +1,19 @@
 {% block sidebar %} 
-  <div class="categorie p-2 col-3 col-lg-2 col-md-1 col-sm-1 w-100">
-    <ul>
-      <li><a href="">Playlist</a></li>
-      <li><a href="">Communauté</a></li>
-      <li><a href="">Musique</a></li>
-    </ul> 
-      <ul>
-        <li><a href="">Playlist</a></li>
-        <li><a href="">Communauté</a></li>
-        <li><a href="">Musique</a></li>
-      </ul> 
+  <div class="categorie p-2">
       <div>
         <ul>
-          <li><a href="">#Top 1</a></li>
-          <li><a href="">#Top 10</a></li>
-          <li><a href="">#Top 100</a></li>
+          <li><a href="/explorer/top3">#Top 3</a></li>
+          <li><a href="/explorer/top10">#Top 10</a></li>
+          <li><a href="/explorer/myPlaylists">Mes playlists</a></li>
+          {% for playlist in playlists %}
+          <li>
+            <a href="/myPlaylist/show/{{ playlist.id }}">
+              {{ playlist.nom }}
+            </a>
+          </li>
+          {% endfor %}
         </ul>
       </div>
-      <ul>
-        <li><a href="">New</a></li>
-        <li><a href="">Genre</a></li>
-        <li><a href="">Mes playlists</a></li>
-      </ul>
-    <ul>
-      <li><a href="">New</a></li>
-      <li><a href="">Genre</a></li>
-      <li><a href="">Mes playlists</a></li>
-    </ul>
 
   </div>
  {% endblock %}

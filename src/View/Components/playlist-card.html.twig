@@ -1,16 +1,18 @@
-<a href="/myPlaylist/show/?id={{ playlist.id }}">
+<a href="/myPlaylist/show/{{ playlist.id }}" style="background: url('/{{playlist.image}}'); background-size: cover;">
     <div class="text-center text-white" style="margin-top: 57%">
         {{playlist.nom}}
     </div>
 
     <div class="text-center text-white">
-        Créé par: {{ playlist.utilisateur }}
+        Créé par: {{ playlist.username }}
     </div>
 </a>
-    <div class="vote d-flex align-items-center">
-        <div class="vote_bar flex-grow-1">
-            <div class="vote_progress" style="width:{{(playlist.nombre_likes + playlist.nombre_dislikes) == 0 ? 100 : (100 * (playlist.nombre_likes/(playlist.nombre_likes + playlist.nombre_dislikes)))}}%"></div>
-        </div>
+
+<div class="vote d-flex align-items-center">
+    <div class="vote_bar flex-grow-1">
+        <div class="vote_progress" style="width:{{(playlist.nombre_likes + playlist.nombre_dislikes) == 0 ? 100 : (100 * (playlist.nombre_likes/(playlist.nombre_likes + playlist.nombre_dislikes)))}}%"></div>
+    </div>
+
     <a href="/explorer/likes?playlist_id={{ playlist.id }}" data-playlist-id="{{ playlist.id }}" data-vote="1" class="btn vote_btn vote_like">
         <i class="bi bi-hand-thumbs-up"></i>
         <span class="vote-count">{{playlist.likes}}</span>

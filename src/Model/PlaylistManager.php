@@ -85,6 +85,21 @@ class PlaylistManager extends AbstractManager
         return $this->pdo->query($query)->fetch();
     }
 
+    //Récupère le top 3 des playlists (publiques) de la communauté MasterCloud
+    public function selectTop(int $count = 3): array
+    {
+        $query = '
+            SELECT playlist.*, nombre_likes - nombre_dislikes as ratio, utilisateur.nom as username
+            FROM ' . static::TABLE . ' 
+            RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
+            WHERE est_privee IS FALSE
+            HAVING ratio > 0 
+            ORDER BY ratio DESC LIMIT ' . $count;
+        ;
+
+        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function likes(int $id)
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
