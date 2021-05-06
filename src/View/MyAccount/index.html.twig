@@ -86,15 +86,18 @@
            le tableau permet d'afficher les images des playlists
            dans la div carousel #}
 
-		   <div class="row search-result">
-				{% include 'Components/playlist-list.html.twig' with {
-					playlists: playlistsTwig,
-					hideVoteButton: true
-				}%}
-			</div>
-			
-            <div class="col-12" id="B"></div>
-    </div>
+            <div class="carousel" style="overflow: hidden;">
+                <div class="carousel-row">
+					{% for playlist in playlistsTwig %}
+							<a 
+								class="carousel-tile" 
+								href="/myPlaylist/show/{{ playlist.id }}" 
+								style="background : url(/{{ playlist.image }}); background-size: cover;"
+							>
+							</a>
+					{% endfor %}
+                </div>
+            </div>
         {% else %}
         <div class="accueil">
             <p style='color : white; text-align : center;'> Ajoutez votre première playlist ! </p>

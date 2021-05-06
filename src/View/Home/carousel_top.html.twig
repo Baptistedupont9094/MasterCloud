@@ -1,45 +1,18 @@
 {% block content %}
 
             
-<div class="col-12 p-3 mb-2 h-50">
-
-    <div class="bd-example">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <h1>Le <b>top 3</b> des playlists <b>MasterCloud</b></h1>
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-
-
-            <div class="carousel-inner">
-                {%  for playlist in playlistsTop3 %}
-                    <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
-                        <a href="/myPlaylist/show/{{ playlist.id }}">
-                            <img src="/{{ playlist.image }}" class="d-block" alt="cover-album">
-
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1><b>#{{ loop.index }}</b></h1>                    
-                                <h4><b> {{ playlist.nom }}</b></h4>
-                                <p><b>Créateur : {{ playlist.username }}</b></p>
-                            </div>
-                        </a>
-                    </div>
-                {%  endfor %}        
+            <div class="accueil carousel" style="overflow: hidden;">
+                <div class="carousel-row">
+					{% for playlist in playlistsTop3 %}
+							<a 
+								class="carousel-tile" 
+								href="/myPlaylist/show/{{ playlist.id }}" 
+								style="background : url(/{{ playlist.image }}); background-size: cover;"
+							>
+							</a>
+					{% endfor %}
+                </div>
             </div>
-
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-</div>
 
 
 
