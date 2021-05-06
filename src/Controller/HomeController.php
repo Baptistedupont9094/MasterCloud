@@ -26,7 +26,7 @@ class HomeController extends AbstractController
     {
         $playlistManager = new PlaylistManager();
         $playlistsTop3 = $playlistManager->selectTop();
-        $this->twig->addGlobal('top3Playlists', $playlistManager->selectTop(10));
+        $this->twig->addGlobal('top10Playlists', $playlistManager->selectTop(10));
         return $this->twig->render('Home/index.html.twig', ['playlistsTop3' => $playlistsTop3]);
     }
 }

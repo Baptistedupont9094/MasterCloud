@@ -5,6 +5,13 @@
           <li><a href="/explorer/top3">#Top 3</a></li>
           <li><a href="/explorer/top10">#Top 10</a></li>
           <li><a href="/explorer/myPlaylists">Mes playlists</a></li>
+          {% for playlist in playlists %}
+          <li>
+            <a href="/myPlaylist/show/{{ playlist.id }}">
+              {{ playlist.nom }}
+            </a>
+          </li>
+          {% endfor %}
         </ul>
       </div>
 

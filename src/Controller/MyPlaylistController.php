@@ -96,10 +96,14 @@ class MyPlaylistController extends AbstractController
 
                 header('Location: /myAccount/index');
             } else {
-                return $this->twig->render('MyPlaylist/create.html.twig', ['errors' => $errors]);
+                return $this->twig->render('MyPlaylist/create.html.twig', ['errors' => $errors,
+                'playlists' => (new PlaylistManager())->selectAll()
+            ]);
             }
         }
-        return $this->twig->render('MyPlaylist/create.html.twig');
+        return $this->twig->render('MyPlaylist/create.html.twig', [
+            'playlists' => (new PlaylistManager())->selectAll()
+        ]);
     }
 
     public function show($id)
@@ -110,7 +114,9 @@ class MyPlaylistController extends AbstractController
         $musicManager = new MusicManager();
         $musics = $musicManager->selectAllMusicsbyPlaylistID($id);
 
-        return $this->twig->render('MyPlaylist/show.html.twig', ['playlist' => $playlist, 'listeMusiques' => $musics]);
+        return $this->twig->render('MyPlaylist/show.html.twig', ['playlist' => $playlist, 'listeMusiques' => $musics,
+        'playlists' => (new PlaylistManager())->selectAll()
+        ]);
     }
 
     public function addmusic()
@@ -157,7 +163,8 @@ class MyPlaylistController extends AbstractController
 
         return $this->twig->render('MyPlaylist/addmusic.html.twig', [
             'music' => $music,
-            'errors' => $errors
+            'errors' => $errors,
+            'playlists' => (new PlaylistManager())->selectAll()
         ]);
     }
 
@@ -243,9 +250,13 @@ class MyPlaylistController extends AbstractController
                 move_uploaded_file($_FILES['image-playlist']['tmp_name'], $filePath);
                 header('Location: /myPlaylist/show/' . $_SESSION['id-playlist']);
             } else {
-                return $this->twig->render('MyPlaylist/edit.html.twig', ['errors' => $errors]);
+                return $this->twig->render('MyPlaylist/edit.html.twig', ['errors' => $errors,
+                'playlists' => (new PlaylistManager())->selectAll()
+                ]);
             }
         }
-        return $this->twig->render('MyPlaylist/edit.html.twig', ['playlist' => $playlistToEdit]);
+        return $this->twig->render('MyPlaylist/edit.html.twig', ['playlist' => $playlistToEdit,
+        'playlists' => (new PlaylistManager())->selectAll()
+        ]);
     }
 }
