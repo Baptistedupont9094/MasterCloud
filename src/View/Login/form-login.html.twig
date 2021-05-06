@@ -13,8 +13,8 @@
             {% endif %}
 
             <div class="social-login">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i></span> </button>
-                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i></span> </button>
+                <a href='/login/loginDiscord' class="btn facebook-btn social-btn col-6 offset-3 mb-2" type="button"><span><i class="bi bi-discord"></i></span> </a>
+                <a href='/login/loginGoogle' class="btn google-btn social-btn col-6 offset-3" type="button"><span><i class="fab fa-google-plus-g"></i></span> </a>
             </div>
             <p style="text-align:center; color:white;"> OU </p>
             <input type="email" id="inputEmail" name ="email" class="form-control" placeholder="Votre email" required="" autofocus="">
@@ -29,12 +29,9 @@
 
         <form action="/login/register" class="form-signup" method='POST'>
                 <div class="social-login">
-                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> via Facebook</span> </button>
+                    <a href='/login/loginDiscord' class="btn facebook-btn social-btn1 col-6 offset-3 mb-2" type="button"><span><i class="bi bi-discord"></i></span> </a>
+                    <a href='/login/loginGoogle' class="btn google-btn social-btn1 col-6 offset-3" type="button"><span><i class="fab fa-google-plus-g"></i></span> </a>
                 </div>
-                <div class="social-login">
-                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> via Google+</span> </button>
-                </div>
-                
                 <p style="text-align:center">OU</p>
 
                 <input type="text" id="user-name" class="mb-2 form-control" placeholder="Nom" required="" autofocus="" name='user'>
@@ -102,6 +99,7 @@
 }
 #logreg-forms .social-btn {
 	font-weight: 100;
+     max-width:100%;
 	color: white;
 	width: 190px;
 	font-size: 0.9rem;
@@ -118,7 +116,16 @@
     width:200px;
     border:1px solid red;
 }
-
+#logreg-forms .social-btn1{
+    margin-left: 0;
+    font-weight: 100;
+    max-width:100%;
+	color: white;
+	width: 190px;
+	font-size: 0.9rem;
+	border-radius: 200px;
+   
+}
 
 #logreg-forms button[type="submit"]{ margin-top:10px; }
 
