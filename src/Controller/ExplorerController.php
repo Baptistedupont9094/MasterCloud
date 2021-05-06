@@ -11,9 +11,24 @@ namespace App\Controller;
 
 use App\Model\SearchManager;
 use App\Model\PlaylistManager;
+use App\Model\VoteManager;
+use App\Service\AuthService;
+use App\Service\ValidationService;
 
 class ExplorerController extends AbstractController
 {
+    /**
+     * @var ValidationService Service de validation
+     */
+    private ValidationService $validationService;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->validationService = new ValidationService();
+    }
+
     /**
      * Affiche page Explorer
      */
@@ -21,6 +36,7 @@ class ExplorerController extends AbstractController
     {
         $searchManager = new SearchManager();
 
+    // var_dump((new PlaylistManager)->selectAll());exit;
         if (!empty($_POST)) {
             $searchItem = $_POST['search'];
             $searchItem = strtolower($searchItem);
@@ -53,23 +69,43 @@ class ExplorerController extends AbstractController
             'searchResults' => $result,
         ]);
     }
+
     public function likes()
     {
+        $voteData = false;
+
         if (isset($_GET['playlist_id'])) {
-            $playlistManager = new PlaylistManager();
-            $playlistManager->likes($_GET['playlist_id']);
+            $voteData = $this->vote((int) $_GET['playlist_id'], true);
         }
 
-        header('Location: /Explorer/index');
+        header('Content-Type: application/json');
+        return json_encode($voteData);
     }
 
     public function dislikes()
     {
+        $voteData = false;
+
         if (isset($_GET['playlist_id'])) {
-            $playlistManager = new PlaylistManager();
-            $playlistManager->dislikes($_GET['playlist_id']);
+            $voteData = $this->vote((int) $_GET['playlist_id'], false);
         }
 
-        header('Location: /Explorer/index');
+        header('Content-Type: application/json');
+        return json_encode($voteData);
+    }
+
+    private function vote(int $playlistId, bool $like)
+    {
+        $authService = new AuthService();
+
+        if (!$authService->isLogged()) {
+            return false;
+        }
+
+        return (new VoteManager())->vote([
+            'utilisateur_id' => $authService->getUser()['id'],
+            'playlist_id' => $playlistId,
+            'like' => $like,
+        ]);
     }
 }

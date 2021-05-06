@@ -10,6 +10,10 @@
  <div class="text-gray-300 min-h-screen p-10 " style="background-color:#181818;">
   
   <!-- header -->
+
+  <div class="col-2 mb-4">
+  <a href="/myAccount" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Retour </a> 
+  </div>
   <div class="flex">
 
 
@@ -31,16 +35,14 @@
             <a id="loadmediaplayer" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</a>
           {% endif %}
             <a href="/myPlaylist/addmusic?playlist_id={{ playlist.id}}" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter une musique</a>
-            <button class="mr-2 border border-white block p-2 rounded-full"><img src="https://image.flaticon.com/icons/svg/2485/2485986.svg" height="25" width="25"></button>
             <div class="btn-group dropup">
-              <button type="button" class="mr-2 border border-white block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="mr-2 border border-light block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ...
               </button>
               <div class="dropdown-menu bg-dark">
-                <a class="dropdown-item" href="/myPlaylist/edit/?id={{ playlist.id}}">Modifier</a>
-                <a class="dropdown-item" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Partager</a>
+                <a class="dropdown-item text-light" href="/myPlaylist/edit/?id={{ playlist.id}}">Modifier</a>
+                <a class="dropdown-item text-light" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer</a>
+                <a class="dropdown-item text-light" href="#">Partager</a>
               </div>
             </div>
           </div>
