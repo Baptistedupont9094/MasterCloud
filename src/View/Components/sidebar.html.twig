@@ -1,15 +1,17 @@
 {% block sidebar %} 
   <div class="categorie p-2">
     <ul>
-      <li><a href="/explorer/top3">#Top 3</a></li>
-      <li><a href="/explorer/top10">#Top 10</a></li>
+      <li class="my-1"><a href="/explorer/top3" class="text-white">#Top 3</a></li>
+      <li class="my-1"><a href="/explorer/top10" class="text-white">#Top 10</a></li>
 
       {% if is_logged %}
-        <li><a href="/explorer/myPlaylists">Mes playlists</a></li>
+        <li class="mt-4">
+          <a href="/explorer/myPlaylists" class="text-white">Mes playlists</a>
+        </li>
 
-        {% for playlist in playlists %}
-          <li>
-            <a href="/myPlaylist/show/{{ playlist.id }}">
+        {% for playlist in myPlaylists %}
+          <li class="my-1">
+            <a href="/myPlaylist/show/{{ playlist.id }}" class="text-white">
               {{ playlist.nom }}
             </a>
           </li>

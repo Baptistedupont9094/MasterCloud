@@ -29,6 +29,33 @@ class PlaylistManager extends AbstractManager
     }
 
     /**
+     * Get all row from database.
+     */
+    public function selectAllByUser(int $userId, string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = '
+            SELECT 
+                t.*, 
+                u.nom as username, 
+                (SELECT COUNT(playlist_id) FROM votes WHERE playlist_id = t.id AND `like` = 1) as likes,
+                (SELECT COUNT(playlist_id) FROM votes WHERE playlist_id = t.id AND `like` = 0) as dislikes 
+            FROM ' . static::TABLE . ' t 
+            LEFT JOIN utilisateur u ON t.utilisateur_id = u.id
+            WHERE t.utilisateur_id = :userId
+        ';
+
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('userId', $userId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+    /**
      * Insert new item in database
      */
     public function insert(array $playlist): int

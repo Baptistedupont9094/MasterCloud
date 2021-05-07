@@ -13,20 +13,19 @@ use App\Model\SearchManager;
 use App\Model\PlaylistManager;
 use App\Model\VoteManager;
 use App\Service\AuthService;
-use App\Service\ValidationService;
 
 class ExplorerController extends AbstractController
 {
     /**
-     * @var ValidationService Service de validation
+     * @var AuthService Service d'authentification
      */
-    private ValidationService $validationService;
+    private AuthService $authService;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->validationService = new ValidationService();
+        $this->authService = new AuthService();
     }
 
     /**
@@ -36,7 +35,6 @@ class ExplorerController extends AbstractController
     {
         $searchManager = new SearchManager();
 
-    // var_dump((new PlaylistManager)->selectAll());exit;
         if (!empty($_POST)) {
             $searchItem = $_POST['search'];
             $searchItem = strtolower($searchItem);
@@ -45,8 +43,11 @@ class ExplorerController extends AbstractController
             return $this->twig->render('Explorer/index.html.twig', ["resultArray" => $result]);
         }
 
+        $manager = new PlaylistManager();
+
         return $this->twig->render('Explorer/index.html.twig', [
-            'playlists' => (new PlaylistManager())->selectAll()
+            'myPlaylists' => $manager->selectAllByUser($this->authService->getUser()['id']),
+            'playlists' => $manager->selectAll(),
         ]);
     }
 
@@ -92,14 +93,12 @@ class ExplorerController extends AbstractController
 
     private function vote(int $playlistId, bool $like)
     {
-        $authService = new AuthService();
-
-        if (!$authService->isLogged()) {
+        if (!$this->authService->isLogged()) {
             return false;
         }
 
         return (new VoteManager())->vote([
-            'utilisateur_id' => $authService->getUser()['id'],
+            'utilisateur_id' => $this->authService->getUser()['id'],
             'playlist_id' => $playlistId,
             'like' => $like,
         ]);
@@ -111,7 +110,7 @@ class ExplorerController extends AbstractController
 
         return $this->twig->render('Explorer/top10.html.twig', [
             'top10Playlists' => $manager->selectTop(10),
-            'playlists' => $manager->selectAll()
+            'myPlaylists' => $manager->selectAllByUser($this->authService->getUser()['id']),
         ]);
     }
 
@@ -121,15 +120,16 @@ class ExplorerController extends AbstractController
 
         return $this->twig->render('Explorer/top3.html.twig', [
             'top3Playlists' => $manager->selectTop(),
-            'playlists' => $manager->selectAll()
+            'myPlaylists' => $manager->selectAllByUser($this->authService->getUser()['id']),
         ]);
     }
 
     public function myPlaylists()
     {
+        $manager = new PlaylistManager();
+
         return $this->twig->render('Explorer/myplaylists.html.twig', [
-            'myPlaylists' => (new PlaylistManager())->selectAllPlaylistsbyUserID($_SESSION['user']['id']),
-            'playlists' => (new PlaylistManager())->selectAll()
+            'myPlaylists' => $manager->selectAllByUser($this->authService->getUser()['id']),
         ]);
     }
 }

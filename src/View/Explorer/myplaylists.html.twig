@@ -1,10 +1,6 @@
-{% extends 'layout.html.twig' %}
+{% set with_sidebar = true %}
 
-{% block sidebar %}
-    <div class="sidebar col-3 col-lg-2 col-md-0 col-sm-0 pl-0 shadow-lg rounded">
-        {% include 'Components/sidebar.html.twig' %}
-    </div>
-{% endblock %}
+{% extends 'layout.html.twig' %}
 
 {% block content %}
     <div class="col-12"> 
@@ -16,4 +12,5 @@
                 hideVoteButton: true,
             }%}
         </div>
+    </div>
 {% endblock %}

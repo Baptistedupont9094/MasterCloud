@@ -11,8 +11,8 @@ namespace App\Controller;
 
 use App\Model\PlaylistManager;
 use App\Model\MusicManager;
+use App\Service\AuthService;
 use App\Service\ValidationService;
-use App\Model\VoteManager;
 
 class MyPlaylistController extends AbstractController
 {
@@ -21,11 +21,17 @@ class MyPlaylistController extends AbstractController
      */
     private ValidationService $validationService;
 
+    /**
+     * @var AuthService Service d'authentification
+     */
+    private AuthService $authService;
+
     public function __construct()
     {
         parent::__construct();
 
         $this->validationService = new ValidationService();
+        $this->authService = new AuthService();
     }
 
     /**
@@ -114,8 +120,10 @@ class MyPlaylistController extends AbstractController
         $musicManager = new MusicManager();
         $musics = $musicManager->selectAllMusicsbyPlaylistID($id);
 
-        return $this->twig->render('MyPlaylist/show.html.twig', ['playlist' => $playlist, 'listeMusiques' => $musics,
-        'playlists' => (new PlaylistManager())->selectAll()
+        return $this->twig->render('MyPlaylist/show.html.twig', [
+            'playlist' => $playlist,
+            'listeMusiques' => $musics,
+            'playlists' => $playlistManager->selectAllByUser($this->authService->getUser()['id']),
         ]);
     }
 

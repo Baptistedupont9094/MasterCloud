@@ -3,68 +3,74 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-  {# <h1>{{ playlist.nom }}</h1> #}
-
- <div class="text-gray-300 min-h-screen p-10 " style="background-color:#1818189c;">
+ <div class="min-h-screen p-10 text-white">
   
   <div class="flex">
     <img class="mr-6" style="width: 200px; height : 200px; background-size: cover" src="/{{ playlist.image }}">
     
     <div class="flex flex-col justify-center">
       <!-- content -->
-      <h4 class="mt-0 mb-2 uppercase text-gray-500 tracking-widest text-xs">Playlist</h4>
+      <h4 class="m-0 mb-2 uppercase tracking-widest text-xs">Playlist</h4>
       <h1 class="mt-0 mb-2 text-white text-4xl">{{ playlist.nom }}</h1>
-      
-      <p class="text-gray-600 text-sm">Crée par <a><b>{{user.nom}}</b></a></p>
+      <p class="m-0 text-sm">Crée par <a><b>{{user.nom}}</b></a></p>
     </div>
   </div>
   
-    <div class="mt-6 flex justify-between">
-        <div class="flex">
-        {% if listeMusiques %}
-            {# Fait apparaître le bouton play #}
-            {# href="/mediaPlayer/index/?id={{ playlist.id}}&loadmediaplayer=ok" #}
-            <a id="loadmediaplayer" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</a>
-          {% endif %}
-            <a href="/myPlaylist/addmusic?playlist_id={{ playlist.id}}" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter une musique</a>
-             <div class="btn-group dropup">
-              <button type="button" class="mr-2 border border-white block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ...
-              </button>
-              <div class="dropdown-menu bg-dark">
-                <a class="dropdown-item text-light" href="/myPlaylist/edit/?id={{ playlist.id}}">Modifier</a>
-                <a class="dropdown-item text-light" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer</a>
-                <a class="dropdown-item text-light" href="#">Partager</a>
-              </div>
-            </div>
+  <div class="mt-6 flex justify-between">
+    <div class="flex">
+      {% if listeMusiques %}
+        {# Fait apparaître le bouton play #}
+        {# href="/mediaPlayer/index/?id={{ playlist.id}}&loadmediaplayer=ok" #}
+        <a id="loadmediaplayer" href="#" class="mr-2 text-decoration-none bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</a>
+      {% endif %}
+
+      {% if is_logged and user.id == playlist.utilisateur_id %}
+        <a href="/myPlaylist/addmusic?playlist_id={{ playlist.id}}" class="mr-2 text-decoration-none bg-green-500 text-green-100 block py-2 px-8 rounded-full">Ajouter une musique</a>
+            
+        <div class="btn-group dropup">
+          <button type="button" class="mr-2 border border-white block p-2 rounded-full" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ...
+          </button>
+
+          <div class="dropdown-menu bg-dark">
+            <a class="dropdown-item text-light" href="/myPlaylist/edit/?id={{ playlist.id}}">Modifier</a>
+            <a class="dropdown-item text-light" href="/myPlaylist/deletePlaylist/?id={{ playlist.id}}">Supprimer</a>
+            <a class="dropdown-item text-light" href="#">Partager</a>
           </div>
-      </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
   
   <!-- song list   -->
   <div class="mt-10">
     <!-- song list header -->
-    <div class="flex text-gray-600">
-      <div class="p-2 w-8 flex-shrink-0"></div>
+    <div class="flex">
       <div class="p-2 w-full">Title</div>
       <div class="p-2 w-full">Artist</div>
       <div class="p-2 w-full">Album</div>
-      <div class="p-2 w-12 flex-shrink-0 text-right">Supprimer</div>
+
+      {% if is_logged and user.id == playlist.utilisateur_id %}
+        <div class="p-2 w-12 flex-shrink-0 text-right">Supprimer</div>
+      {% endif %}
     </div>
 
     {% if listeMusiques %}
-        {% for musique in listeMusiques %}
-            <div class="flex border-b border-gray-800 hover:bg-gray-800">
-            <div class="p-1 w-8 flex-shrink-0"></div>
-            <div class="p-1 w-full">{{ musique.nom }}</div>
-            <div class="p-1 w-full">{{ musique.artiste }}</div>
-            <div class="p-1 w-full">{{ musique.album }}</div>
-            <a href='/myPlaylist/deleteMusic/?id={{ musique.id}}'class="p-3 w-12 flex-shrink-0 text-right">
-              <img src='https://img.icons8.com/nolan/344/delete-sign.png' height="40" width="40">
-            </a>
-           </div>
-        {% endfor %}
+      {% for musique in listeMusiques %}
+          <div class="flex border-b border-gray-800 hover:bg-gray-800">
+            <div class="p-2 w-full">{{ musique.nom }}</div>
+            <div class="p-2 w-full">{{ musique.artiste }}</div>
+            <div class="p-2 w-full">{{ musique.album }}</div>
+
+            {% if is_logged and user.id == playlist.utilisateur_id %}
+              <a href='/myPlaylist/deleteMusic/?id={{ musique.id}}'class="p-2 text-center w-12 flex-shrink-0 ">
+                <img src='https://img.icons8.com/nolan/344/delete-sign.png' height="40" width="40">
+              </a>
+            {% endif %}
+          </div>
+      {% endfor %}
     {% else %}
-        <p> Votre playlist est actuellement vide. Trouvez l'inspiration dans la section Explorer. </p>
+      <p> Votre playlist est actuellement vide. Trouvez l'inspiration dans la section Explorer. </p>
     {% endif %}
   </div>
 
