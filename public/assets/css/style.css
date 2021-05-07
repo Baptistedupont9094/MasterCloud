@@ -685,6 +685,11 @@ h4, h5, p {
    
 }
 
+#logreg-forms {
+
+background: #0000007a;
+}
+
 #logreg-forms button[type="submit"]{ margin-top:10px; }
 
 #logreg-forms .facebook-btn{  background-color:#3C589C; }
