@@ -27,6 +27,7 @@ body {
   background-color:#181818;
 }
 
+
 /*---------------- FIN Couleur site----------------*/
 
 /*---------------- DEBUT navbar ----------------*/
@@ -491,7 +492,7 @@ input[type=range].mediaplayer-bar
 
 .sidebar{
   padding:0;
-  height: auto;
+  height: 100vh;
   display: flex;
 }
 
@@ -638,6 +639,12 @@ h4, h5, p {
     -webkit-box-shadow: 4px 4px 4px 4px rgba(29,29,29,0.46); 
     box-shadow: 4px 4px 4px 4px rgba(29,29,29,0.46);
 }
+#logreg-forms .form-signin, #logreg-forms .form-signup{
+
+  background: #00000073;
+}
+
+
 #logreg-forms form {
     width: 100%;
     max-width: 410px;
