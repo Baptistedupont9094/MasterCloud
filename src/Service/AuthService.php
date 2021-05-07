@@ -19,6 +19,6 @@ class AuthService
 
     public function getUser(): ?array
     {
-        return $this->isLogged() ? $_SESSION['user'] : null;
+        return $this->isLogged() ? $_SESSION['user'] : ['id' => 0];
     }
 }

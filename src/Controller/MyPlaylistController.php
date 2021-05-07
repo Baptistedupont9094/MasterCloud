@@ -123,7 +123,7 @@ class MyPlaylistController extends AbstractController
         return $this->twig->render('MyPlaylist/show.html.twig', [
             'playlist' => $playlist,
             'listeMusiques' => $musics,
-            'playlists' => $playlistManager->selectAllByUser($this->authService->getUser()['id']),
+            'myPlaylists' => $playlistManager->selectAllByUser($this->authService->getUser()['id']),
         ]);
     }
 

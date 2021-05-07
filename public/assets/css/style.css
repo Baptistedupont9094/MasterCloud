@@ -1,4 +1,12 @@
 /*---------------- DEBUT Couleur site ----------------*/
+.content-block {
+  background-color:#1818189c;
+}
+
+.home .content-block {
+  background: none;
+}
+
 .navbar{
   background-color: transparent;
 }
