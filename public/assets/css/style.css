@@ -770,15 +770,12 @@ h4, h5, p {
 
 /*-------Cards Présentation -----*/
 
-html body {
-  margin: 0 0 0 0;
-}
 .infocardContainer * {
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
 h2 {
-  font-weight: 600; font-style: italic; font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 600; font-style: italic; font-family: "Josefin Sans", sans-serif;
 }
 header {
   height: 2em;
@@ -813,7 +810,7 @@ a:hover {
   --margin-top: 100px;
 }
 .infocardContainer:hover {
-  width: 620px;
+  width: 600px;
   border-radius: 100px 10px 100px 100px;
   transition: all 1s ease-out;
 }
