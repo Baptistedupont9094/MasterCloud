@@ -20,7 +20,7 @@ h1 {
 }
 
 .sidebar {
-  background-color: #000;
+  background-color: #1818189c;
 }
 
 body {
@@ -683,6 +683,11 @@ h4, h5, p {
 	font-size: 0.9rem;
 	border-radius: 200px;
    
+}
+
+#logreg-forms {
+
+background: #0000007a;
 }
 
 #logreg-forms button[type="submit"]{ margin-top:10px; }
