@@ -1,36 +1,35 @@
 {% block content %}
-<div class="fluid overflow-auto p-0 m-0 ">
-    <div class="presentation_home col-12 p-2 pt-5 pb-5">
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div>
-                <h1>Amenez vos playlists partout avec vous</h1>
-
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img  src="/assets/images/play1.png">
-                        <h1>Créer des playlists</h1>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/assets/images/stop1.png">
-                        <h1>Aucune publicité</h1>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/assets/images/partage1.png">
-                        <h1>Partage tes créations avec la communauté</h1>
-                    </div>
-                </div>
-                <div>
-                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+<div class="carouselPres row mb-5">
+    <div class="infocardContainer">
+        <div id="main">
+            <img src="/assets/images/play.jpg"></img>
+        </div>
+        <div id="textbois">
+            <h2>Crée tes playlists</h2>
+            <p>Inscris toi gratuitement</p>
+            <p>Ajoute le lien Youtube de tes musiques préférées</p>
+            <p>Profite sans limite</p>
+        </div>
+    </div>
+    <div class="infocardContainer">
+        <div id="main">
+            <img src="/assets/images/stopmain1.jpg"></img>
+        </div>
+        <div id="textbois">
+            <h2>Oublie les pubs</h2>
+            <p>Ecoute tes playlists sans interruption</p>
+        </div>
+    </div>
+    <div class="infocardContainer">
+        <div id="main">
+            <img src="/assets/images/partage2.jpg"></img>
+        </div>
+        <div id="textbois">
+            <h2>Partage tes créations</h2>
+            <p>Ecoute les playlists des autres utilisateurs</p>
+            <p>Like ou dislike les playlists</p>
         </div>
     </div>
 </div>
+
 {% endblock %}
