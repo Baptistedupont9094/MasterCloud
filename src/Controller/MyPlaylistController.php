@@ -172,7 +172,7 @@ class MyPlaylistController extends AbstractController
     {
         $playlistManager = new PlaylistManager();
 
-        $id = $_SESSION['id-playlist'];
+        $id = $_GET['id'];
 
         $playlistManager->delete($id);
 

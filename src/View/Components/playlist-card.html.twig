@@ -2,7 +2,6 @@
     <a href="/myPlaylist/show/{{ playlist.id }}">
         <img src="/{{ playlist.image }}" class="card-img-top" style='height: 12rem'>
     </a>
-
     <div class="card-body px-3 py-2">
         <h5 class="card-title m-0 text-truncate font-weight-bold">{{ playlist.nom }}</h5>
 
@@ -15,12 +14,12 @@
             <div class="text-right">
                 <a href="/explorer/likes?playlist_id={{ playlist.id }}" data-playlist-id="{{ playlist.id }}" data-vote="1" class="vote_btn vote_like text-decoration-none">
                     <i class="bi bi-hand-thumbs-up"></i>
-                    <span class="vote-count">{{playlist.likes}}</span>
+                    <span class="vote-count">{{playlist.nombre_likes}}</span>
                 </a>
 
                 <a href="/explorer/dislikes?playlist_id={{ playlist.id }}" data-playlist-id="{{ playlist.id }}" data-vote="0" class="vote_btn vote_dislike text-decoration-none">
                     <i class="bi bi-hand-thumbs-down"></i>
-                    <span class="vote-count">{{playlist.dislikes}}</span>
+                    <span class="vote-count">{{playlist.nombre_dislikes}}</span>
                 </a>
             </div>
         {% endif %}
