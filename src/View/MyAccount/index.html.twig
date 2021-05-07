@@ -1,18 +1,13 @@
 {% extends 'layout.html.twig' %}
-{% block navbar %}
-    <link rel="stylesheet" href="/assets/css/carousel.css">
-    {% include 'Components/navbar.html.twig' %}
-{% endblock %}
 
 {% block content %}
-<div class="accueil">
-    <h1>Bonjour <b>{{user.nom}}</b>.</h1>
-    <p> Ravi de vous voir !</p>
-</div>
+	<div class="accueil">
+		<h1>Bonjour <b>{{user.nom}}</b>.</h1>
+		<p> Ravi de vous voir !</p>
+	</div>
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
            
-<div class="container">
 <div class="row gutters">
 	<div class="col-xl-3 offset-xl-3 col-lg-3 offset-lg-3 col-md-12 col-sm-12 col-12 ">
 		<div class="card h-100">
@@ -62,8 +57,6 @@
 {# div réservée pour le mediaplayer - A NE PAS SUPPRIMER #}
 {# <div class="col-12" id="B"> #}
 </div>
-</div>
-
 
 {# ------------------------------------------------------------------------------------------------------------------------ #}
 <div class="accueil">

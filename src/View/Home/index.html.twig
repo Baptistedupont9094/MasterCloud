@@ -1,49 +1,6 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://kit.fontawesome.com/ecbff98221.js" crossorigin="anonymous"></script>
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        {# Classes Bootstrap #}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/carousel.css">
-    {# JQuery #}
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+{% extends 'layout.html.twig' %}
 
-</head>
-
-<body class="h-100" style="height:100vh">
-    <div id="container">
-        <video id="background_video" autoplay muted loop>
-            <source src="/assets/Vvideo2.mp4" type="video/mp4">
-            <div id="video_cover"></div>
-            <div id="overlay"></div>
-        </video>
-    </div>
-
-    <div class="fluid p-0 overflow-hidden h-100 d-flex flex-column">
-
-        {% include 'Components/navbar_home.html.twig'%}
-
-    </div>
-    <div class="col-12 p-0 g-0 d-flex flex-column no-gutters">
-
-        {% include 'Home/carousel_top.html.twig'%}
-
-        {% include 'Home/carousel_presentation.html.twig'%}
-
-        {% include 'Components/footer.html.twig'%}
-
-    </div>
-
-
- {# Script Bootstrap #}
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"> 
-</script>
-<script src"/assets/js/script.js"></script>
-</body>
-</html>
+{% block content %}
+    {% include 'Home/carousel_top.html.twig'%}
+    {% include 'Home/carousel_presentation.html.twig'%}
+{% endblock %}

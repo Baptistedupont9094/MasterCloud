@@ -62,12 +62,8 @@
       -webkit-transform-origin: center left;
       transform-origin: center left;
       cursor: pointer;
-      cursor: hand;
-}
-
-/* Add Extra Margin to Last Carousel Tile */
-.carousel-tile:last-of-type {
-      margin-right: calc(var(--carousel-tile-width)/2);
+      background-size: cover;
+      background-position: center center;
 }
 
 /* Ensure All Elements Inside Tile are Block */

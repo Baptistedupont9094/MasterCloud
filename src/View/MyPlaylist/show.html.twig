@@ -1,22 +1,13 @@
-{% extends 'layout.html.twig' %}
-{% block stylesheet %}
+{% set with_sidebar = true %}
 
-{% endblock %}
-{% block navbar %}
-    {% include 'Components/navbar.html.twig' %}
-{% endblock %}
+{% extends 'layout.html.twig' %}
 
 {% block content %}
+  <h1>{{ playlist.nom }}</h1>
+
  <div class="text-gray-300 min-h-screen p-10 " style="background-color:#181818;">
   
-  <!-- header -->
-
-  <div class="col-2 mb-4">
-  <a href="/myAccount" class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Retour </a> 
-  </div>
   <div class="flex">
-
-
     <img class="mr-6" style="width: 200px; height : 200px; background-size: cover" src="/{{ playlist.image }}">
     
     <div class="flex flex-col justify-center">
@@ -27,6 +18,7 @@
       <p class="text-gray-600 text-sm">Crée par <a><b>{{user.nom}}</b></a></p>
     </div>
   </div>
+  
     <div class="mt-6 flex justify-between">
         <div class="flex">
         {% if listeMusiques %}

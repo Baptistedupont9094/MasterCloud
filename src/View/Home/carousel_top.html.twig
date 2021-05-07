@@ -1,19 +1,14 @@
-{% block content %}
+<h1 class="text-center">Top 3</h1>
 
-            
-            <div class="accueil carousel" style="overflow: hidden;">
-                <div class="carousel-row">
-					{% for playlist in playlistsTop3 %}
-							<a 
-								class="carousel-tile" 
-								href="/myPlaylist/show/{{ playlist.id }}" 
-								style="background : url(/{{ playlist.image }}); background-size: cover;"
-							>
-							</a>
-					{% endfor %}
-                </div>
-            </div>
-
-
-
-{% endblock %}
+<div class="accueil carousel">
+	<div class="carousel-row">
+		{% for playlist in playlistsTop3 %}
+			<a 
+				class="carousel-tile" 
+				href="/myPlaylist/show/{{ playlist.id }}" 
+				style="background-image: url(/{{ playlist.image }});"
+			>
+			</a>
+		{% endfor %}
+	</div>
+</div>

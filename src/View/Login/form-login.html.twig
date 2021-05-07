@@ -1,22 +1,23 @@
 {# Formulaire de base pour s'inscrire et se connecter #}
+{# Formulaire "d'accueil" pour s'inscrire ou se connecter #}
+<div class="row justify-content-center">
+    <div class="col-11 col-md-10 col-lg-6 col-xl-4" id="logreg-forms">
+        <h1 class="h3 mt-4 mb-2 font-weight-normal" style="text-align: center">
+            Bienvenue sur MasterCloud
+        </h1>
 
-    {# Formulaire "d'accueil" pour s'inscrire ou se connecter #}
-
-    <div id="logreg-forms" class='offset-4'>
         <form class="form-signin" method = 'POST' action ="">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">
-                Bienvenue sur MasterCloud
-            </h1>
-
             {% if error is not empty %}
                 <p class="text-danger text-center">{{ error }}</p>
             {% endif %}
 
-            <div class="social-login">
-                <a href='/login/loginDiscord' class="btn facebook-btn social-btn col-6 offset-3 mb-2" type="button"><span><i class="bi bi-discord"></i></span> </a>
-                <a href='/login/loginGoogle' class="btn google-btn social-btn col-6 offset-3" type="button"><span><i class="fab fa-google-plus-g"></i></span> </a>
+            <div>
+                <a href='/login/loginDiscord' class="d-block btn facebook-btn social-btn" type="button"><span><i class="bi bi-discord"></i></span> </a>
+                <a href='/login/loginGoogle' class="d-block btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i></span> </a>
             </div>
+
             <p style="text-align:center; color:white;"> OU </p>
+
             <input type="email" id="inputEmail" name ="email" class="form-control" placeholder="Votre email" required="" autofocus="">
             <input type="password" id="inputPassword" name ="password" class="form-control" placeholder="Votre mot de passe" required="">
             
@@ -25,46 +26,44 @@
             <button class="btn btn-primary btn-block" type="submit" id="btn-signup"><i class="fas fa-user-plus"></i> Créer un nouveau compte </button>
         </form>
 
-     {# Modal formulaire d'inscription #}   
+        {# Modal formulaire d'inscription #}   
 
         <form action="/login/register" class="form-signup" method='POST'>
-                <div class="social-login">
-                    <a href='/login/loginDiscord' class="btn facebook-btn social-btn1 col-6 offset-3 mb-2" type="button"><span><i class="bi bi-discord"></i></span> </a>
-                    <a href='/login/loginGoogle' class="btn google-btn social-btn1 col-6 offset-3" type="button"><span><i class="fab fa-google-plus-g"></i></span> </a>
-                </div>
-                <p style="text-align:center">OU</p>
+            <div>
+                <a href='/login/loginDiscord' class="d-block btn facebook-btn social-btn" type="button"><span><i class="bi bi-discord"></i></span> </a>
+                <a href='/login/loginGoogle' class="d-block btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i></span> </a>
+            </div>
 
-                <input type="text" id="user-name" class="mb-2 form-control" placeholder="Nom" required="" autofocus="" name='user'>
-                <input type="email" id="user-email" class="mb-2 form-control" placeholder="Adresse email" required autofocus="" name='email'>
-                <input type="password" id="user-pass" class="mb-2 form-control" placeholder="Mot de passe" required autofocus="" name='password1'>
-                <input type="password" id="user-repeatpass" class="mb-2 form-control" placeholder="Répétez le mot de passe" required autofocus="" name='repeatpassword'>
+            <p style="text-align:center">OU</p>
 
-                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> S'inscrire</button>
-                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
+            <input type="text" id="user-name" class="mb-2 form-control" placeholder="Nom" required="" autofocus="" name='user'>
+            <input type="email" id="user-email" class="mb-2 form-control" placeholder="Adresse email" required autofocus="" name='email'>
+            <input type="password" id="user-pass" class="mb-2 form-control" placeholder="Mot de passe" required autofocus="" name='password1'>
+            <input type="password" id="user-repeatpass" class="mb-2 form-control" placeholder="Répétez le mot de passe" required autofocus="" name='repeatpassword'>
+
+            <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> S'inscrire</button>
+            <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Retour</a>
         </form>         
     </div>
-
-
-{# ----------------------------------------------------------FIN FORMULAIRE------------------------------------------------------------------------------- #}
+</div>
 
 {# --------------------------------------------------- Script JS pour modals ------------------------------------------------------------------------ #}
-    
-    <script>
-        function toggleResetPswd(e){
-            e.preventDefault();
-            $('#logreg-forms .form-signin').toggle() // display:block or none
-        }
+<script>
+    function toggleResetPswd(e){
+        e.preventDefault();
+        $('#logreg-forms .form-signin').toggle() // display:block or none
+    }
 
-        function toggleSignUp(e){
-            e.preventDefault();
-            $('#logreg-forms .form-signin').toggle(); // display:block or none
-            $('#logreg-forms .form-signup').toggle(); // display:block or none
-        }
+    function toggleSignUp(e){
+        e.preventDefault();
+        $('#logreg-forms .form-signin').toggle(); // display:block or none
+        $('#logreg-forms .form-signup').toggle(); // display:block or none
+    }
 
-        $(()=>{
-            // Login Register Form
-            $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-            $('#logreg-forms #btn-signup').click(toggleSignUp);
-            $('#logreg-forms #cancel_signup').click(toggleSignUp);
-        })
-    </script>
+    $(()=>{
+        // Login Register Form
+        $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+        $('#logreg-forms #btn-signup').click(toggleSignUp);
+        $('#logreg-forms #cancel_signup').click(toggleSignUp);
+    })
+</script>

@@ -107,17 +107,21 @@ class ExplorerController extends AbstractController
 
     public function top10()
     {
+        $manager = new PlaylistManager();
+
         return $this->twig->render('Explorer/top10.html.twig', [
-            'top10Playlists' => (new PlaylistManager())->selectTop(10),
-            'playlists' => (new PlaylistManager())->selectAll()
+            'top10Playlists' => $manager->selectTop(10),
+            'playlists' => $manager->selectAll()
         ]);
     }
 
     public function top3()
     {
+        $manager = new PlaylistManager();
+
         return $this->twig->render('Explorer/top3.html.twig', [
-            'top3Playlists' => (new PlaylistManager())->selectTop(),
-            'playlists' => (new PlaylistManager())->selectAll()
+            'top3Playlists' => $manager->selectTop(),
+            'playlists' => $manager->selectAll()
         ]);
     }
 
