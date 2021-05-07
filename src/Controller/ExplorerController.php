@@ -45,10 +45,6 @@ class ExplorerController extends AbstractController
             return $this->twig->render('Explorer/index.html.twig', ["resultArray" => $result]);
         }
 
-        if (!isset($_SESSION['user'])) {
-            header('location: /login/index');
-        }
-
         return $this->twig->render('Explorer/index.html.twig', [
             'playlists' => (new PlaylistManager())->selectAll()
         ]);
