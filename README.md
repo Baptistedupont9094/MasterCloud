@@ -15,7 +15,7 @@
   :man: <b>Seïf Al-Yakoob</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/seif-31">@seif-31</a> <br>
   
-  <img style='width : 40px; height : 40px; border-radius: 50%' src='https://avatars.githubusercontent.com/u/59924187?v=4'/>
+  <img   <img width= 40px; height = 40px; border-radius = 50% src='https://avatars.githubusercontent.com/u/59924187?v=4'/>
   :woman: <b>Léa Mahler</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/leamahler85">@leamahler85</a> <br>
 
