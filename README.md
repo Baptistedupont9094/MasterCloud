@@ -8,6 +8,13 @@
     <i> Page d'accueil affichant les 3 playlists les plus appréciées de la communauté</i>
   </kbd>
  </p>
+ 
+<p align='center'>
+  <kbd>
+    <img src='/readme-src/presentation-accueil.gif' height=300px width=600px/> <br>
+    <i>Présentation brêve des fonctionnalités du site pour les utilisateurs</i>
+  </kbd>
+ </p>
 
 <h2> :scroll: Collaborateurs</h2>
 
