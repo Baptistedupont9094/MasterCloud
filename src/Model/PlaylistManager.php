@@ -130,7 +130,7 @@ class PlaylistManager extends AbstractManager
             FROM ' . static::TABLE . ' 
             RIGHT JOIN utilisateur ON playlist.utilisateur_id = utilisateur.id
             WHERE est_privee IS FALSE
-            HAVING ratio > 0 
+            HAVING ratio >= 0 
             ORDER BY ratio DESC LIMIT ' . $count;
         ;
 
