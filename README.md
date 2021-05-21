@@ -15,11 +15,11 @@
        •
     <img src='https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png' width=25px height=25px>
        •
-    <img src='https://pngimg.com/uploads/mysql/mysql_PNG6.png' width=50px height=25px>
-       •
     <img src='https://fuzati.com/wp-content/uploads/2016/12/Bootstrap-Logo.png' width=40px height=30px>
        •
     <img src='/readme-src/twig-logo.png' width=58px height=30px>
+       •
+     <img src='https://pngimg.com/uploads/mysql/mysql_PNG6.png' width=50px height=25px>
        •
     </p>
 <h2 id="table-of-contents"> :book: Sommaire</h2>
