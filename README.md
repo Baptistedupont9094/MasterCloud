@@ -1,7 +1,11 @@
 # Mastercloud
 ## Sujet : Gestion de playlist musicales
 
-## Fonctionnalités mises en place
+## Introduction
+
+## Explications des différentes fonctionnalités du site
+
+### lol
 
 ## Collaborateurs
 
