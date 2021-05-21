@@ -6,7 +6,7 @@
 ## Explications des différentes fonctionnalités du site
 
 <!-- COLLABORATEURS -->
-<h2 id="contributors"> :scroll: Collaborateur</h2>
+<h2 id="contributors"> :scroll: Collaborateurs</h2>
 
 <p>
 <!--   :mortar_board: <i>All participants in this project are graduate students in the <a href="https://www.concordia.ca/ginacody/computer-science-software-eng.html">Department of Computer Science and Software Engineering</a> <b>@</b> <a href="https://www.concordia.ca/">Concordia University</a></i> <br> <br> -->
