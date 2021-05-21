@@ -40,7 +40,7 @@
  
 
 <p>
-    Master Cloud est une application web permettant de créer et gérer des playlists musicales. Les utilisateurs peuvent rejoindre la communauté en ligne et partager leurs musiques. Tout les visiteurs du site peuvent écouter les musiques des playlists tout en naviguant sur Internet sans soucis. Les utilisateurs peuvent chercher leurs musiques préférées sur Youtube pour compléter leurs playlists.
+    <b>Master Cloud</b> est une application web permettant de créer et gérer des playlists musicales. Les utilisateurs peuvent rejoindre la communauté en ligne et partager leurs musiques. Tout les visiteurs du site peuvent écouter les musiques des playlists tout en naviguant sur Internet sans soucis. Les utilisateurs peuvent chercher leurs musiques préférées sur Youtube pour compléter leurs playlists.
 </p> 
  <p align='center'>
   <kbd>
