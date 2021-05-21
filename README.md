@@ -24,7 +24,7 @@
   :man: <b>Clément Bacquet</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/ATX834">@ATX834</a> <br>
 </p>
-<h3> :mag: Superviseur </h3>
+<h3> Superviseur </h3>
 <p>
   :man: <b>Vincent Vaur</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/vincent-vaur">@vincent-vaur</a> <br>
