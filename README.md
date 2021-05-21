@@ -5,8 +5,6 @@
 
 ## Explications des différentes fonctionnalités du site
 
-#### lol
-
 ## Collaborateurs
 
 * [Seïf Al-yakoob](https://github.com/seif-31)
