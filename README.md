@@ -1,20 +1,15 @@
 <h1> :musical_note: Mastercloud :musical_note: </h1>
-
-## Sujet : Gestion de playlist musicales
-
-## Introduction
-
-## Explications des différentes fonctionnalités du site
-
-<!-- COLLABORATEURS -->
-<h2 id="contributors"> :scroll: Collaborateurs</h2>
+<h2> Sujet : Gestion de playlist musicales</h2>
+<h2> Introduction</h2>
+<h2> Explications des différentes fonctionnalités du site</h2>
+<h2> :scroll: Collaborateurs</h2>
 
 <p>
-<!--   :mortar_board: <i>All participants in this project are graduate students in the <a href="https://www.concordia.ca/ginacody/computer-science-software-eng.html">Department of Computer Science and Software Engineering</a> <b>@</b> <a href="https://www.concordia.ca/">Concordia University</a></i> <br> <br> -->
-  
+ 
   :man: <b>Seïf Al-Yakoob</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/seif-31">@seif-31</a> <br>
   
+  <img style='width : 40px; height : 40px; border-radius: 50%' src='https://avatars.githubusercontent.com/u/59924187?v=4'/>
   :woman: <b>Léa Mahler</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/leamahler85">@leamahler85</a> <br>
 
