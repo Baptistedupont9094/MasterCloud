@@ -1,5 +1,24 @@
-<h1> Master Cloud </h1>
-<h2> :musical_note: Gestion de playlist musicales </h2>
+<p align='center'>
+    <img src='/public/assets/images/logo.png' height=80px width=80px/> <br>
+ </p>
+
+
+<h1 align='center'> Master Cloud </h1>
+<h2 id="table-of-contents"> :book: Sommaire</h2>
+
+<details open="open">
+  <summary>Index</summary>
+  <ol>
+    <li><a href="#gestion-playlists"> ➤ Gestion de playlist musicales</a></li>
+    <li><a href="#fonctionnalites"> ➤ Fonctionnalités</a></li>
+    <li><a href="#deploiement"> ➤ Déploiement</a></li>
+    <li><a href="#collaborateurs"> ➤ Collaborateurs</a></li>
+    <li><a href="#references"> ➤ Références</a></li>
+  </ol>
+</details> 
+
+
+<h2 id='gestion-playlists'> :musical_note: Gestion de playlist musicales </h2>
  
 
 <p>
@@ -18,7 +37,7 @@
   </kbd>
  </p>
  
-<h2> :floppy_disk: Fonctionnalités </h2> 
+<h2 id="fonctionnalites"> :floppy_disk: Fonctionnalités </h2> 
  
  <p>
    Un visiteur peut consulter les différentes playlists de la communauté et les écouter sans besoin de créer un compte.
@@ -57,11 +76,11 @@
   </kbd>
  </p>
  
-<h2> :computer: Déploiement </h2>
+<h2 id='deploiement'> :computer: Déploiement </h2>
 
 L'application est déployée sur https://tlse-php-2021-march-project-2-group-1.phprover.wilders.dev
 
-<h2> :scroll: Collaborateurs</h2>
+<h2 id='collaborateurs'> :scroll: Collaborateurs</h2>
 
 <p>
  
@@ -83,7 +102,7 @@ L'application est déployée sur https://tlse-php-2021-march-project-2-group-1.p
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/vincent-vaur">@vincent-vaur</a> <br>
 </p>
 
-<h2> :books: Références </h2>
+<h2 id='references'> :books: Références </h2>
 
 <p>
   ➤ Utilisation de l'architecture <a href="https://github.com/WildCodeSchool/simple-mvc">Simple-MVC</a>
