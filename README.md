@@ -23,9 +23,8 @@
 <!--   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>m_afzali93@yahoo.com</a> <br> -->
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/baptistedupont9094">@baptistedupont9094</a> <br>
 
-  :boy: <b>Mohammad Amin Shamshiri</b> <br>
-<!--   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>mohammadamin.shamshiri@mail.concordia.ca</a> <br> -->
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/ATX834">@ATX834</a> <br>
+  :boy: <b>Clément Bacquet</b> <br>
+GitHub: <a href="https://github.com/ATX834">@ATX834</a> <br>
 </p>
 Superviseur : 
 * [Vincent VAUR](https://github.com/vincent-vaur)
