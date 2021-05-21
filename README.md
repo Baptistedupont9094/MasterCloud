@@ -32,3 +32,5 @@
 
 ## Déploiement
 Le site est déployé sur https://tlse-php-2021-march-project-2-group-1.phprover.wilders.dev
+
+✤ <i>Ceci est le deuxième projet au sein de la Wild Code School - Développeur web (avril 2021)<i>
