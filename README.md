@@ -13,5 +13,5 @@
 Superviseur : 
 * [Vincent VAUR](https://github.com/vincent-vaur)
 
-Déploiement
+## Déploiement
 Le site est déployé sur https://tlse-php-2021-march-project-2-group-1.phprover.wilders.dev
