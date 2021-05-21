@@ -3,18 +3,6 @@
 
 ## Fonctionnalités mises en place
 
-Recherche de bien suivant critères utilisateur
-Calculateur de mensualités sur les pages d'achat de bien
-Mises en avant des coups de coeur de l'agance
-Affichage des dernières annonces
-Côté administrateur :
-
-Ajout et modification de biens
-Suppression de bien
-Administration de slogans
-Administration des documents à fournir
-Messagerie suite à soumission du formulaire de contact
-
 ## Collaborateurs
 
 [Seïf Al-yakoob](https://github.com/seif-31)
