@@ -11,10 +11,10 @@
 <p>
 <!--   :mortar_board: <i>All participants in this project are graduate students in the <a href="https://www.concordia.ca/ginacody/computer-science-software-eng.html">Department of Computer Science and Software Engineering</a> <b>@</b> <a href="https://www.concordia.ca/">Concordia University</a></i> <br> <br> -->
   
-  👨 <b>Seïf Al-Yakoob/b> <br>
+  :man: <b>Seïf Al-Yakoob</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/seif-31">@seif-31</a> <br>
   
-  👩 <b>Léa Mahler</b> <br>
+  :woman: <b>Léa Mahler</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/leamahler85">@leamahler85</a> <br>
 
   :man: <b>Baptiste Dupont</b> <br>
@@ -23,8 +23,11 @@
   :man: <b>Clément Bacquet</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/ATX834">@ATX834</a> <br>
 </p>
-Superviseur : 
-* [Vincent VAUR](https://github.com/vincent-vaur)
+<h2> :scroll: Superviseur </h2>
+<p>
+  :man: <b>Vincent Vaur</b> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/vincent-vaur">@vincent-vaur</a> <br>
+</p>
 
 ## Déploiement
 Le site est déployé sur https://tlse-php-2021-march-project-2-group-1.phprover.wilders.dev
