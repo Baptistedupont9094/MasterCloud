@@ -2,6 +2,13 @@
 <h2> Sujet : Gestion de playlist musicales</h2>
 <h2> Introduction</h2>
 <h2> Explications des différentes fonctionnalités du site</h2>
+ <p align='center'>
+  <kbd>
+    <img src='https://i.gyazo.com/21974c02368af57a8eacff5ace4a6997.jpg' height=300px width=600px/> <br>
+    <i> Page d'accueil affichant les 3 playlists les plus appréciées de la communauté</i>
+  </kbd>
+ </p>
+
 <h2> :scroll: Collaborateurs</h2>
 
 <p>
