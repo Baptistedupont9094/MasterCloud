@@ -19,7 +19,7 @@
        •
     <img src='https://fuzati.com/wp-content/uploads/2016/12/Bootstrap-Logo.png' width=40px height=30px>
        •
-    <img src='https://www.tasarimrehberi.net/wp-content/uploads/2018/02/twig-logo.png' width=50px height=25px>
+    <img src='/readme-src/twig-logo.png' width=58px height=30px>
        •
     </p>
 <h2 id="table-of-contents"> :book: Sommaire</h2>
