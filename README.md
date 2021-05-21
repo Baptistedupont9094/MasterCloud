@@ -1,6 +1,10 @@
 <h1> Master Cloud </h1>
 <h2> :musical_note: Gestion de playlist musicales </h2>
-<h2> :floppy_disk: Fonctionnalités </h2>
+ 
+
+<p>
+    Master Cloud est une application web permettant de créer et gérer des playlists musicales. Les utilisateurs peuvent rejoindre la communauté en ligne et partager leurs musiques. Tout les visiteurs du site peuvent écouter les musiques des playlists tout en naviguant sur Internet sans soucis. Les utilisateurs peuvent chercher leurs musiques préférées sur Youtube pour compléter leurs playlists.
+</p> 
  <p align='center'>
   <kbd>
     <img src='/readme-src/page-accueil.jpg' height=300px width=600px/> <br>
@@ -14,6 +18,21 @@
   </kbd>
  </p>
  
+<h2> :floppy_disk: Fonctionnalités </h2> 
+ 
+ <p>
+   Un visiteur peut consulter les différentes playlists de la communauté et les écouter sans besoin de créer un compte.
+ </p>
+ <p align='center'>
+  <kbd>
+    <img src='/readme-src/page-explorer.png' height=325px width=600px/> <br>
+    <i>Visualisez les playlists de la communauté</i>
+  </kbd>
+ </p>
+ 
+ <p>
+    En créant un compte, les utilisateurs sont capables de créer et intéragir avec leurs playlists.
+ </p>
  <p align='center'>
   <kbd>
     <img src='/readme-src/inscription.gif' height=400px width=300px/> <br>
@@ -21,16 +40,20 @@
   </kbd>
  </p>
  
-  <p align='center'>
-  <kbd>
-    <img src='/readme-src/page-explorer.png' height=325px width=600px/> <br>
-    <i>Visualisez les playlists de la communauté</i>
-  </kbd>
- </p>
-  <p align='center'>
+ <p align='center'>
   <kbd>
     <img src='/readme-src/création-playlist.gif' height=350px width=700px/> <br>
     <i>Créez et gérez vos playlists</i>
+  </kbd>
+ </p>
+ 
+ <p>
+  En cliquant sur une playlist, les utilisateurs auront accès à son contenu et pourront l'écouter tranquillement tout en naviguant sur Internet. 
+ </p>
+ <p align='center'>
+  <kbd>
+    <img src='/readme-src/ecoute-musique.gif' height=360px width=800px/> <br>
+    <i>Ecoutez partout les musiques des playlists Master Cloud</i>
   </kbd>
  </p>
  
