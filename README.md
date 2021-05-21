@@ -27,7 +27,7 @@
 <details open="open">
   <summary>Index</summary>
   <ol>
-    <li><a href="#gestion-playlists"> ➤ Gestion de playlist musicales</a></li>
+    <li><a href="#gestion-playlists"> ➤ Gestion de playlists musicales</a></li>
     <li><a href="#fonctionnalites"> ➤ Fonctionnalités</a></li>
     <li><a href="#deploiement"> ➤ Déploiement</a></li>
     <li><a href="#collaborateurs"> ➤ Collaborateurs</a></li>
