@@ -36,7 +36,7 @@
 </details> 
 
 
-<h2 id='gestion-playlists'> :musical_note: Gestion de playlist musicales </h2>
+<h2 id='gestion-playlists'> :musical_note: Gestion de playlists musicales </h2>
  
 
 <p>
